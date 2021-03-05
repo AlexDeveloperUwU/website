@@ -1,0 +1,47 @@
+body {
+	height: 100%;
+	margin: 0;
+	text-align: center;
+	width: 100%;
+	background: rgb(0,255,205);
+	background: linear-gradient(90deg, rgba(0,255,205,1) 0%, rgba(219,255,0,0.7567401960784313) 100%);
+}
+
+h1 {
+  font-family: Palatino, 'Palatino Linotype', serif;
+	font-size: 32px;
+    color: rgb(0, 0, 0); 
+}
+
+h2 {
+	font-size: 32px;
+}
+
+
+.hero {
+	padding: 0px;
+	margin: 30px;
+}
+
+
+p {
+    font-size: 30px;
+}
+
+.hero a {
+	color: #ff0000;
+	font-size: 1.25em;
+	text-decoration: none;
+}
+
+.footer p {
+    font-size: 20px;
+}
+
+.linkslist {
+	font-size: 30px;
+}
+
+a {
+	padding-left: 10px;
+}
