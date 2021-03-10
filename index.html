@@ -5,6 +5,11 @@
 	<link rel="canonical" href="https://alexdeveloperuwu.github.io/" />
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 	<link rel="stylesheet" type="text/css" href="menu.css"/>
+	<script>
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('/arc-sw.js', {scope: '/{repository}/'})
+  }
+	</script>
   <script async src="https://arc.io/widget.min.js#cVZUpUgi"></script>
 </head>
 <body>
