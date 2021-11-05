@@ -205,8 +205,8 @@ input, select, textarea {
 
 /* BG */
 @keyframes bgcolor {
-0%   {background: red;}
-  25%  {background: yellow;}
+  0%   {background: red;}
+  25%  {background: orangered;}
   50%  {background: blue;}
   75%  {background: green;}
   100% {background: red;}
@@ -214,7 +214,7 @@ input, select, textarea {
 
 body {
     -webkit-animation: bgcolor 20s infinite;
-    animation: bgcolor 10s infinite;
+    animation: bgcolor 15s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
 }
