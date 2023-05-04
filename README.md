@@ -1,5 +1,5 @@
 # Página web oficial de AlexDevUwU
-En este repositorio encontrarás mi página web oficial, que está en [esta](https://alexdevuwu.tk) URL.
+En este repositorio encontrarás mi página web oficial, que está en [esta](https://alexdevuwu.com) URL.
 
 Próximamente la renovaré para incluir una tienda de servicios con un backend en Node.js, cosa que estoy actualmente haciendo, pero en un repositorio privado.
 La tienda de servicios es creada 100% desde 0, utlilizando varios servicios como PayPal Checkout y Auth0.
