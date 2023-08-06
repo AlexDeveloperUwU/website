@@ -135,16 +135,13 @@
                     <p>Si estoy en directo, podrás verlo desde aquí, de una forma cómoda y adaptada a tu dispositivo</p>
                 </header>
             </div>
-            <div class="twitch">
+            <div class="twitch" style="display: none;">
                 <div class="twitch-video">
-                    <iframe src="https://player.twitch.tv/?channel=alexdevuwu&parent=alexdevuwu.com&autoplay=true"
-                        frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%">
-                    </iframe>
+                    <iframe src="" frameborder="0" scrolling="no" allowfullscreen="true" height="100%"
+                        width="100%"></iframe>
                 </div>
                 <div class="twitch-chat">
-                    <iframe frameborder="0" scrolling="no"
-                        src="https://www.twitch.tv/embed/alexdevuwu/chat?parent=alexdevuwu.com" height="100%" width="100%">
-                    </iframe>
+                    <iframe frameborder="0" scrolling="no" src="" height="100%" width="100%"></iframe>
                 </div>
             </div>
         </section>
@@ -163,6 +160,17 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script> // Esto permite que se ejecute la animación del texto antes de que cargue todo lo de twitch, con lo que lo carga luego de la animación
+        window.addEventListener('load', function () {
+            const twitchContainer = document.querySelector('.twitch');
+            const twitchVideo = twitchContainer.querySelector('.twitch-video iframe');
+            const twitchChat = twitchContainer.querySelector('.twitch-chat iframe');
+
+            twitchVideo.src = "https://player.twitch.tv/?channel=alexdevuwu&parent=alexdevuwu.com&autoplay=true";
+            twitchChat.src = "https://www.twitch.tv/embed/alexdevuwu/chat?parent=alexdevuwu.com";
+            twitchContainer.style.display = 'block';
+        });
+    </script>
 
 </body>
 
