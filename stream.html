@@ -55,6 +55,14 @@
     gtag('js', new Date());
     gtag('config', 'G-CL4W8JPFP6');
   </script>
+
+  <!-- Player Dependencies -->
+  <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.17.0/video.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flv.js/1.3.4/flv.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-flvjs@0.2.0/dist/videojs-flvjs.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body class="landing is-preload is-mobile">
@@ -68,12 +76,11 @@
             <div id="menu">
               <ul>
                 <li><a href="./index.html">Inicio</a></li>
-                <li><a href="#one">1. Mi lore</a></li>
-                <li><a href="#two">2. Contenido del canal</a></li>
-                <li><a href="#three">3. Mi directo</a></li>
+                <li><a href="./vtuber.html">Mi canal</a></li>
                 <li><a href="./projects.html">Proyectos</a></li>
                 <li><a href="./links.html">Enlaces</a></li>
-                <li><a href="./stream.html">Directos DJ</a></li>
+                <li><a href="#one">1. Por qué directos aquí?</a></li>
+                <li><a href="#two">2. Únete a la fiesta!</a></li>
               </ul>
             </div>
           </li>
@@ -83,68 +90,61 @@
     <section id="banner">
       <div class="inner">
         <h2>AlexDevUwU</h2>
-        <p>Streamer, gamer y VTuber<br /></p>
+        <p>Directos de música<br /></p>
       </div>
-      <a href="#one" class="more scrolly">Explora mi canal!</a>
+      <a href="#one" class="more scrolly">Únete a la fiesta!</a>
     </section>
     <section id="one" class="wrapper style1 special">
       <div class="inner">
         <header class="major">
-          <h2>Mi lore<br />
+          <h2>Directos de DJ<br />
           </h2>
-          <p>Desde una infancia difícil y ser considerado tonto, mi vida dio un giro inesperado a los 4 años
-            cuando un rayo me electrocutó mientras usaba una computadora. Sobreviví, pero mi comportamiento
-            cambió drásticamente, volviéndome inteligente y racional. Mi madre notó estos cambios y me
-            sometió a pruebas de superdotado, donde sorprendentemente, superé el récord mundial.<br /></p>
-          <p>A lo largo de los años, me sumergí en la programación, creando aplicaciones y software
-            revolucionarios. A los 17 años, decidí desafiar mi nivel académico al cursar el bachillerato,
-            pero resultó fácil para mí y obtuve excelentes calificaciones con poco esfuerzo. <br /></p>
-          <p> Junto con una amiga, creamos un grupo VTuber llamado KuokoaVT que alcanzó la fama. A través de
-            Twitch, nos convertimos en un fenómeno mundial, superando récords de audiencia y revolucionando
-            el mundo de los VTubers.<br /></p>
-          <p>Aunque ganamos fama y dinero, nos diferenciamos al usar nuestros recursos para apoyar a otros.
-            Ayudamos a nuevos talentos y organizamos eventos con premios para la comunidad. Nuestro enfoque
-            altruista nos permitió ganar el respaldo de marcas y anuncios.<br /></p>
-          <p>Ahora, emocionados y agradecidos, esperamos lo que depara el futuro para nuestro grupo, siempre
-            con la convicción de hacer el bien y seguir innovando en el mundo del entretenimiento en línea.
+          <p>
+            Me encanta mezclar música y "montar fiesta" con mi estilo de música especial, el problema es que cada vez es más complicado hacer directos de ello, ya que el copyright pone cada vez más y más impedimentos.<br /><br />
+            Instagram tira los directos, en Twitch te mandan una notita para casa y te dicen que no lo vuelvas a hacer, en Youtube más de lo mismo, y tampoco hay muchos más lugares donde se pueda hacer esto.<br /><br />
+            Por eso, he decidido hacerlo en mi propia web, donde no hay nadie que me pueda decir nada, y si me dicen algo, me lo dicen a mí, no a una plataforma que me puede banear o algo así.<br /><br />
+            Así que, si quieres ver mis directos, aquí los tienes, y si quieres que te avise cuando haga uno, puedes estar atento a mi Twitter o a mi Instagram personal (si eres amigx mío).
           </p>
         </header>
       </div>
     </section>
-    <section id="two" class="wrapper style1 special">
-      <div class="inner">
-        <header class="major">
-          <h2>Qué suelo hacer en mi canal?<br />
-          </h2>
-          <p>Me gusta mucho hacer Just Chatting, jugar videojuegos, hacer videoreacciones, pero lo que más me
-            mola es hacer colabs</p>
-          <p>Suelo jugar mucho Satisfactory, Minecraft, juegos de aventuras, Fortnite, Valorant y algún
-            "mierdijuego"</p>
-          <p>También puedes encontrarme programando distintos proyectos o haciendo sesiones de pomodoro</p>
-          <p>Algunas veces también me gusta montar fiesta en stream, ya que poseo la DJ Control Compact y
-            mezclo música de NCS y sin copy</p>
-          <p>A veces juego con mis seguidores o subs, y siempre podrás encontrar alguna novedad ya que me
-            gusta integrar formas con las cuales podais interactuar conmigo</p>
-        </header>
-      </div>
-    </section>
-    <section id="three" class="wrapper style1">
+    <section id="two" class="wrapper style1">
       <div class="inner">
         <header class="major" style="text-align: center;">
           <h2>Mira mi directo!</h2>
-          <p>Si estoy en directo, podrás verlo desde aquí, de una forma cómoda y adaptada a tu dispositivo</p>
-          <p>Para que funcione correctamente, debes tener habilitadas las cookies de terceros y debes de tener los ad-blocker deshabilitados</p>
+          <p>Puedes ver mis directos aquí, principalmente serán de música al no tener problemas con el copy, pero algún día quizás los hago de otras cosas.</p>
+          <h4 id="offlinemsg" style="display: none; color:#FF6961"><br><br><br>Ahora mismo estoy offline! Vuelve más tarde :D</h4>
         </header>
       </div>
-      <div class="twitch" style="display: none;">
-        <div class="twitch-video">
-          <iframe src="" frameborder="0" scrolling="no" allowfullscreen="true" height="100%" width="100%"></iframe>
-        </div>
-        <div class="twitch-chat">
-          <iframe frameborder="0" scrolling="no" src="" height="100%" width="100%"></iframe>
-        </div>
+      <div class="responsive-iframe" style="text-align: center; display: none;" id="player">
+        <video id="videojs-flvjs-player" class="video-js vjs-default-skin" controls style="max-width: 100%;" playsinline>
+          <source src="http://loadrunner.alexdevuwu.com:8081/live/eH75k4elSv7doyzcNp0G1X5oYRhzFTCcSoWpqLPdKjie7BFsUL.flv" type='video/x-flv'>
+        </video>
+        <script>
+          // Function to check stream status and show/hide the offline message
+          function checkStreamStatus() {
+            $.get('http://loadrunner.alexdevuwu.com:8081/api/streams', function(data) {
+              if (Object.keys(data).length === 0) {
+                // Stream is offline, show the offline message
+                $('#offlinemsg').show();
+              } else {
+                // Stream is online, hide the offline message
+                $('#offlinemsg').hide();
+                $('#player').show();
+                // Initialize the video player
+                videojs('videojs-flvjs-player', {});
+              }
+            });
+          }
+
+          // Check stream status when the page loads
+          $(document).ready(function() {
+            checkStreamStatus();
+          });
+        </script>
       </div>
     </section>
+
     <footer id="footer">
       <ul class="copyright">
         <li>&copy; AlexDevUwU</li>
@@ -160,19 +160,6 @@
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    // Esto permite que se ejecute la animación del texto antes de que cargue todo lo de twitch, con lo que lo carga luego de la animación
-    window.addEventListener('load', function() {
-      const twitchContainer = document.querySelector('.twitch');
-      const twitchVideo = twitchContainer.querySelector('.twitch-video iframe');
-      const twitchChat = twitchContainer.querySelector('.twitch-chat iframe');
-
-      twitchVideo.src = "https://player.twitch.tv/?channel=alexdevuwu&parent=alexdevuwu.com&autoplay=true";
-      twitchChat.src = "https://www.twitch.tv/embed/alexdevuwu/chat?parent=alexdevuwu.com";
-      twitchContainer.style.display = 'block';
-    });
-  </script>
-
 </body>
 
 </html>
