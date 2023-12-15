@@ -133,8 +133,12 @@
                 $('#offlinemsg').hide();
                 $('#player').show();
                 // Initialize the video player
-                var videoElement = videojs('videojs-flvjs-player', { autoplay: true });
-                videoElement.play();
+                var videoElement = videojs('videojs-flvjs-player', {
+                  autoplay: true
+                });
+                setTimeout(function() {
+                  videoElement.play();
+                }, 5000);
               }
             });
           }
