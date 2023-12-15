@@ -119,12 +119,12 @@
       </div>
       <div class="responsive-iframe" style="text-align: center; display: none;" id="player">
         <video id="videojs-flvjs-player" class="video-js vjs-default-skin" controls style="max-width: 100%;" playsinline>
-          <source src="http://loadrunner.alexdevuwu.com:8081/live/eH75k4elSv7doyzcNp0G1X5oYRhzFTCcSoWpqLPdKjie7BFsUL.flv" type='video/x-flv'>
+          <source src="https://loadrunner.alexdevuwu.com:8443/live/eH75k4elSv7doyzcNp0G1X5oYRhzFTCcSoWpqLPdKjie7BFsUL.flv" type='video/x-flv'>
         </video>
         <script>
           // Function to check stream status and show/hide the offline message
           function checkStreamStatus() {
-            $.get('http://loadrunner.alexdevuwu.com:8081/api/streams', function(data) {
+            $.get('https://loadrunner.alexdevuwu.com:8443/api/streams', function(data) {
               if (Object.keys(data).length === 0) {
                 // Stream is offline, show the offline message
                 $('#offlinemsg').show();
