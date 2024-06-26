@@ -1,20 +1,27 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Enmap from 'enmap';
 
+// Configuración del servidor Express
 const app = express();
+const port = 3000;
 
-// Configuración del motor de plantillas EJS
+// Configuración del directorio y motor de vistas
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Configuración de archivos estáticos
+// Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-// Ruta para servir la página principal
-app.get('/', (req, res) => {
-  res.render('index');
+// Rutas del servidor
+import publicRoutes from './routes/public.js';
+app.use(publicRoutes);
+
+// Iniciar el servidor
+app.listen(port, () => {
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });
-
-// Puerto en el que se ejecutará el servidor
-const PORT = process.env.PORT || 80;
-app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));

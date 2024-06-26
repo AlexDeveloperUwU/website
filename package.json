@@ -1,12 +1,35 @@
 {
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.19",
     "ejs": "^3.1.10",
-    "express": "^4.19.2"
+    "enmap": "^6.0.2",
+    "express": "^4.19.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4"
   },
   "name": "alexdeveloperuwu.github.io",
   "version": "1.0.0",
+  "description": "Mi página web oficial, hecha de forma que sea más interactiva y dinámica",
   "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alexdeveloperuwu/alexdeveloperuwu.github.io.git"
+  },
   "author": "AlexDeveloperUwU",
-  "license": "ISC",
-  "description": "Versión 2 de la página web de AlexDeveloperUwU"
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/alexdeveloperuwu/alexdeveloperuwu.github.io/issues"
+  },
+  "homepage": "https://github.com/alexdeveloperuwu/alexdeveloperuwu.github.io#readme"
 }
