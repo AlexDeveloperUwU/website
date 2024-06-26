@@ -2,7 +2,8 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("frontpage/index");
+  const view = req.query.view || "index";
+  res.render("main", {view: view});
 });
 
 export default router;

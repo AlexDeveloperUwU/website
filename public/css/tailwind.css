@@ -1,3 +1,160 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetbrainsMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Menlo";
+  src: url("/fonts/Menlo-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@layer base {
+  :root {
+    --text-50: #eff1f6;
+    --text-100: #dee3ed;
+    --text-200: #bec6da;
+    --text-300: #9daac8;
+    --text-400: #7c8eb6;
+    --text-500: #5c71a3;
+    --text-600: #495b83;
+    --text-700: #374462;
+    --text-800: #252d41;
+    --text-900: #121721;
+    --text-950: #090b10;
+
+    --background-50: #edeff8;
+    --background-100: #dbdff0;
+    --background-200: #b6bfe2;
+    --background-300: #929fd3;
+    --background-400: #6d7fc5;
+    --background-500: #495fb6;
+    --background-600: #3a4c92;
+    --background-700: #2c396d;
+    --background-800: #1d2649;
+    --background-900: #0f1324;
+    --background-950: #070912;
+
+    --primary-50: #ebeffa;
+    --primary-100: #d6dff5;
+    --primary-200: #aebfea;
+    --primary-300: #859fe0;
+    --primary-400: #5d7fd5;
+    --primary-500: #345fcb;
+    --primary-600: #2a4ca2;
+    --primary-700: #1f397a;
+    --primary-800: #152651;
+    --primary-900: #0a1329;
+    --primary-950: #050914;
+
+    --secondary-50: #e9eefc;
+    --secondary-100: #d3ddf8;
+    --secondary-200: #a6bcf2;
+    --secondary-300: #7a9aeb;
+    --secondary-400: #4e78e4;
+    --secondary-500: #2157de;
+    --secondary-600: #1b45b1;
+    --secondary-700: #143485;
+    --secondary-800: #0d2359;
+    --secondary-900: #07112c;
+    --secondary-950: #030916;
+
+    --accent-50: #e7edfe;
+    --accent-100: #cfdcfc;
+    --accent-200: #9eb8fa;
+    --accent-300: #6e95f7;
+    --accent-400: #3d71f5;
+    --accent-500: #0d4ef2;
+    --accent-600: #0a3ec2;
+    --accent-700: #082f91;
+    --accent-800: #051f61;
+    --accent-900: #031030;
+    --accent-950: #010818;
+  }
+  .dark {
+    --text-50: #090b10;
+    --text-100: #121721;
+    --text-200: #242d42;
+    --text-300: #364463;
+    --text-400: #485a84;
+    --text-500: #5b71a4;
+    --text-600: #7b8db7;
+    --text-700: #9caac9;
+    --text-800: #bdc6db;
+    --text-900: #dee3ed;
+    --text-950: #eff1f6;
+
+    --background-50: #070a12;
+    --background-100: #0f1424;
+    --background-200: #1e2848;
+    --background-300: #2c3c6d;
+    --background-400: #3b5191;
+    --background-500: #4a65b5;
+    --background-600: #6e84c4;
+    --background-700: #92a2d3;
+    --background-800: #b7c1e1;
+    --background-900: #dbe0f0;
+    --background-950: #edf0f8;
+
+    --primary-50: #050914;
+    --primary-100: #0a1329;
+    --primary-200: #152651;
+    --primary-300: #1f397a;
+    --primary-400: #2a4ca2;
+    --primary-500: #345fcb;
+    --primary-600: #5d7fd5;
+    --primary-700: #859fe0;
+    --primary-800: #aebfea;
+    --primary-900: #d6dff5;
+    --primary-950: #ebeffa;
+
+    --secondary-50: #030916;
+    --secondary-100: #07112c;
+    --secondary-200: #0d2359;
+    --secondary-300: #143485;
+    --secondary-400: #1b45b1;
+    --secondary-500: #2157de;
+    --secondary-600: #4e78e4;
+    --secondary-700: #7a9aeb;
+    --secondary-800: #a6bcf2;
+    --secondary-900: #d3ddf8;
+    --secondary-950: #e9eefc;
+
+    --accent-50: #010818;
+    --accent-100: #031030;
+    --accent-200: #051f61;
+    --accent-300: #082f91;
+    --accent-400: #0a3ec2;
+    --accent-500: #0d4ef2;
+    --accent-600: #3d71f5;
+    --accent-700: #6e95f7;
+    --accent-800: #9eb8fa;
+    --accent-900: #cfdcfc;
+    --accent-950: #e7edfe;
+  }
+}
+
+/* Custom scrollbar styles using Tailwind CSS colors */
+body::-webkit-scrollbar {
+  width: 12px; 
+}
+
+body::-webkit-scrollbar-track {
+  background-color: var(--background-800); 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-500); 
+  border-radius: 6px; 
+  border: 3px solid var(--background-800);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-700); 
+}

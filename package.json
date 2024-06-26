@@ -20,12 +20,15 @@
   "description": "Mi página web oficial, hecha de forma que sea más interactiva y dinámica",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run dev\" \"npm run build:css\"",
+    "dev": "nodemon index.js",
+    "build:css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/alexdeveloperuwu/alexdeveloperuwu.github.io.git"
   },
+  "type": "module",
   "author": "AlexDeveloperUwU",
   "license": "UNLICENSED",
   "bugs": {
