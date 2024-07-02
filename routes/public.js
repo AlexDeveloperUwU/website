@@ -6,4 +6,8 @@ router.get("/", (req, res) => {
   res.render("main", {view: view});
 });
 
+router.get("/test", (req, res) => {
+  res.render("test");
+});
+
 export default router;
