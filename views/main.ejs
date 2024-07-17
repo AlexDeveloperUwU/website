@@ -3,16 +3,23 @@
 <%- include('./partials/head') %>
 
 <body class="flex min-h-screen flex-col bg-gray-900 text-white font-mono">
-  <header class="bg-gray-800 p-4">
+  <header id="main-header" class="bg-gray-800 p-4">
     <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
   </header>
 
   <%- include(`partials/${view}.ejs`) %>
 
-  <br>
-  <footer class="bg-gray-800 p-4 text-center">
-    <p>&copy; 2024 AlexDevUwU</p>
-  </footer>
+  <br><br>
+  <script>
+    function adjustBodyPadding() {
+      const header = document.getElementById('main-header');
+      const headerHeight = header.offsetHeight;
+      document.body.style.paddingTop = headerHeight - 50 + 'px';
+    }
+
+    window.addEventListener('load', adjustBodyPadding);
+    window.addEventListener('resize', adjustBodyPadding);
+  </script>
 </body>
 
 </html>

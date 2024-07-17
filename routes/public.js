@@ -3,11 +3,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   const view = req.query.view || "index";
-  res.render("main", {view: view});
-});
-
-router.get("/test", (req, res) => {
-  res.render("test");
+  const extraData = {twitch: valueTwitch, kick: valueKick};
+  res.render("main", {view: view, data: extraData});
 });
 
 export default router;

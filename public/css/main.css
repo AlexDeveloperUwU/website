@@ -898,6 +898,10 @@ select {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.resize {
+  resize: both;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -965,10 +969,6 @@ select {
 
 .text-left {
   text-align: left;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .font-mono {
@@ -1075,7 +1075,27 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 a {
-  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out, color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  /* Asegura que el header esté por encima de otros elementos */
+}
+
+html {
+  font-family: "JetBrains Mono", monospace;
+}
+
+body {
+  background-color: #171b26;
+  color: #d1d5db;
+  scrollbar-gutter: stable both-edges;
 }
 
 .hover\:scale-110:hover {
