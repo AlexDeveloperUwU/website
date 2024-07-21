@@ -8,9 +8,9 @@ export function formSend(data) {
   const embed = new EmbedBuilder()
     .setTitle("<:aclipboard:1263477244186333195> Nuevo mensaje del formulario!")
     .addFields(
-      { name: "Nombre", value: name, inline: true },
-      { name: "Email", value: email, inline: true },
-      { name: "Mensaje", value: message, inline: true }
+      { name: "Nombre", value: name, inline: false },
+      { name: "Email", value: email, inline: false },
+      { name: "Mensaje", value: message, inline: false }
     )
     .setTimestamp()
     .setColor("#11ab9c");
