@@ -15,6 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Manejador de errores
 app.use((err, req, res, next) => {
@@ -26,6 +27,10 @@ app.use((err, req, res, next) => {
 // Rutas del servidor
 import publicRoutes from "./routes/public.js";
 app.use(publicRoutes);
+
+import apiRoutes from "./routes/api.js";
+import e from "express";
+app.use(apiRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {

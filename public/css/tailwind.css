@@ -163,7 +163,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Asegura que el header esté por encima de otros elementos */
+  z-index: 1000;
 }
 
 html {
@@ -174,4 +174,34 @@ body {
   background-color: #171b26;
   color: #d1d5db;
   scrollbar-gutter: stable both-edges;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+
+.hidden {
+  display: none;
 }
