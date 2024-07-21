@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     calendarContainer.innerHTML = `
       <div class="flex justify-between items-center mb-4">
-        <button id="prevMonth" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">Prev</button>
+        <button id="prevMonth" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">⬅</button>
         <h2 class="text-2xl font-bold">${months[month]} ${year}</h2>
-        <button id="nextMonth" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">Next</button>
+        <button id="nextMonth" class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600">⮕</button>
       </div>
       <div class="grid grid-cols-7 gap-4 text-center text-gray-300">
         <div>Dom</div>
