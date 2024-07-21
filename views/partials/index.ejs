@@ -84,14 +84,6 @@
     <section class="mx-auto mt-10 max-w-4xl text-left">
       <h3 class="mb-4 text-2xl font-bold">Plataformas de contenido</h3>
       <div class="space-y-6">
-        <div id="toggleCalendarCard" class="block rounded-lg bg-gray-800 p-6 cursor-pointer transition-colors">
-          <div class="flex items-center">
-            <i class="fa-solid fa-calendar mr-3 text-gray-300"></i>
-            <div>
-              <p class="font-bold text-gray-100">Mostrar/Ocultar Calendario</p>
-            </div>
-          </div>
-        </div>
         <a href="https://twitch.tv/alexdevuwu" class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
           <div class="flex items-center">
             <i class="fab fa-twitch mr-3 text-gray-300"></i>
@@ -121,21 +113,20 @@
         </a>
       </div>
     </section>
-    <section id="calendar" style="display: none;" class="mx-auto mt-10 max-w-4xl text-left hidden">
-      <h3 class="mb-4 text-2xl font-bold">Calendario de contenido</h3>
+    <section class="mx-auto mt-10 max-w-4xl text-left">
+      <h3 class="mb-4 text-2xl font-bold">Calendario</h3>
       <div class="space-y-6">
-        <div id="calendarNotice" style="display: none;" class="block rounded-lg bg-gray-800 p-6">
-          <div class="flex items-center mb-4">
-            <i class="fa-solid fa-palette mr-3 text-gray-300"></i>
-            <h2 class="font-bold text-gray-100">Leyenda de colores</h2>
+        <div id="toggleCalendarCard" class="block rounded-lg bg-gray-800 p-6 cursor-pointer transition-colors">
+          <div class="flex items-center">
+            <i class="fa-solid fa-calendar mr-3 text-gray-300"></i>
+            <div>
+              <p class="font-bold text-gray-100">Mostrar/Ocultar Calendario</p>
+            </div>
           </div>
-          <p class="text-gray-400">
-            - Si en el calendario ves una entrada con color <span class="text-purple-600 font-bold">MORADO</span>, significa directo en Twitch.<br><br>
-            - Si en el calendario ves una entrada con color <span class="text-red-600 font-bold">ROJO</span>, significa vídeo en YouTube.<br><br>
-            - Si en el calendario ves una entrada con color <span class="text-green-600 font-bold">VERDE</span>, significa directo en Kick.
-          </p>
         </div>
-        <div id="content" class="rounded-lg bg-gray-800 p-6"></div>
+        <div id="calendarCard" class="rounded-lg bg-gray-800 p-6 hidden">
+          <div id="calendar" class="mt-4"></div>
+        </div>
       </div>
     </section>
     <section class="mx-auto mt-10 max-w-4xl text-left">
