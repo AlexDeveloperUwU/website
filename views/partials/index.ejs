@@ -120,10 +120,19 @@
           <div class="flex items-center">
             <i class="fa-solid fa-calendar mr-3 text-gray-300"></i>
             <div>
-              <p class="font-bold text-gray-100">Mostrar/Ocultar Calendario</p>
+              <p id="toggleText" class="font-bold text-gray-100">Mostrar Calendario</p>
             </div>
           </div>
         </div>
+        <a id="eventDetails" href="" class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700 hidden">
+          <div class="flex items-center">
+            <i id="platformIcon" class="fab fa-youtube mr-3 text-gray-300"></i>
+            <div>
+              <p id="platformName" class="font-bold text-gray-100">PLATAFORMA</p>
+              <p id="eventDescription" class="text-gray-400">DESCRIPCIÓN</p>
+            </div>
+          </div>
+        </a>
         <div id="calendarCard" class="rounded-lg bg-gray-800 p-6 hidden">
           <div id="calendar" class="mt-4"></div>
         </div>
@@ -155,6 +164,5 @@
     </section>
 
     <!-- Sección de scripts -->
-    <script src="/js/calendarSection.js"></script>
-    <script src="/js/contactForm.js"></script>
+    <%- include(`scripts.ejs`) %>
   </main>
