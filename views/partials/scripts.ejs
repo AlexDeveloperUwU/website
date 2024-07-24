@@ -17,12 +17,6 @@
         description: "Directo de programación en Twitch"
       },
       {
-        date: "2024-07-22",
-        time: "09:00",
-        type: "Kick",
-        description: "Directo de programación en Kick"
-      },
-      {
         date: "2024-07-25",
         time: "17:45",
         type: "YouTube",
@@ -40,8 +34,6 @@
       switch (eventType) {
         case "Twitch":
           return "bg-purple-500";
-        case "Kick":
-          return "bg-green-600";
         case "YouTube":
           return "bg-red-600";
         case "Multistream":
@@ -55,8 +47,6 @@
       switch (eventType) {
         case "Twitch":
           return "fab fa-twitch";
-        case "Kick":
-          return "fa-brands fa-kickstarter-k";
         case "YouTube":
           return "fab fa-youtube";
         case "Multistream":
@@ -160,7 +150,7 @@
         toggleCalendarCard.classList.remove("bg-blue-800");
         toggleCalendarCard.classList.add("bg-gray-800");
         toggleText.textContent = "Mostrar Calendario";
-        eventDetails.classList.add("hidden"); 
+        eventDetails.classList.add("hidden");
       } else {
         toggleCalendarCard.classList.remove("bg-gray-800");
         toggleCalendarCard.classList.add("bg-blue-800");
@@ -174,24 +164,21 @@
 <script>
   $(document).ready(function() {
     $("#contactForm").on("submit", function(event) {
-      event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+      event.preventDefault();
 
-      var formData = $(this).serialize(); // Serializa los datos del formulario
-
+      var formData = $(this).serialize();
       $.ajax({
         url: "/contactForm",
         type: "POST",
         data: formData,
         success: function(response) {
-          // Manejar la respuesta exitosa aquí
           alert("Mensaje enviado con éxito!");
-          $("#contactForm")[0].reset(); // Opcional: Limpiar el formulario después del envío
+          $("#contactForm")[0].reset();
         },
         error: function(xhr, status, error) {
-          // Manejar errores aquí
           alert("Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.");
         },
-      });
+      }); 
     });
   });
 </script>
