@@ -8,8 +8,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Instala Python y las herramientas de construcción necesarias
-RUN apk add --no-cache python3 make g++ \
-    && npm install --build-from-source
+RUN apk add --no-cache python3 make g++
+
+# Instala las dependencias de la aplicación
+RUN npm install
 
 # Copia el código de la aplicación
 COPY . .
