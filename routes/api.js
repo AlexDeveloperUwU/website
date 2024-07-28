@@ -21,7 +21,7 @@ const authenticate = (req, res, next) => {
 };
 
 router.post("/contactForm", (req, res) => {
-  formSend(req.body);
+  formSend(req.body, process.env.formWebhook);
   res.status(200).json({ message: "Datos del formulario recibidos correctamente." });
 });
 
