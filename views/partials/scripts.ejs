@@ -165,7 +165,7 @@
 
       var formData = $(this).serialize();
       $.ajax({
-        url: "/contactForm",
+        url: "/api/contactForm",
         type: "POST",
         data: formData,
         success: function(response) {
