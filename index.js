@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 
 // Configuración del servidor Express
@@ -9,6 +10,8 @@ const port = 3000;
 // Configuración del directorio y motor de vistas
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const envFilePath = path.join(__dirname, "env", ".env");
+dotenv.config({ path: envFilePath });
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 

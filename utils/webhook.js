@@ -1,6 +1,4 @@
 import { WebhookClient, EmbedBuilder } from "discord.js";
-import dotenv from "dotenv";
-dotenv.config();
 
 export function formSend(data) {
   const webhook = new WebhookClient({ url: process.env.formWebhook });
