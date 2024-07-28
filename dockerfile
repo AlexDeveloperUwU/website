@@ -1,20 +1,21 @@
-# Usa una imagen base oficial de Node.js versión 22 basada en Alpine Linux
+# Usa una imagen base que tenga Node.js
 FROM node:22-alpine
 
-# Crea un directorio de trabajo
+# Establece el directorio de trabajo en la imagen
 WORKDIR /usr/src/app
 
-# Copia el package.json y el package-lock.json
+# Copia el archivo package.json y package-lock.json
 COPY package*.json ./
 
-# Instala las dependencias de la aplicación
-RUN npm install
+# Instala Python y las herramientas de construcción necesarias
+RUN apk add --no-cache python3 make g++ \
+    && npm install --build-from-source
 
 # Copia el código de la aplicación
 COPY . .
 
-# Expone el puerto 3000 del contenedor
+# Expone el puerto en el que la aplicación escuchará
 EXPOSE 3000
 
-# Define el comando para ejecutar la aplicación
-CMD [ "npm", "start" ]
+# Comando para ejecutar la aplicación
+CMD [ "node", "index.js" ]
