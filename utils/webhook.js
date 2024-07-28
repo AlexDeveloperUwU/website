@@ -2,6 +2,7 @@ import { WebhookClient, EmbedBuilder } from "discord.js";
 
 export function formSend(data) {
   const webhook = new WebhookClient({ url: process.env.formWebhook });
+  console.log(process.env.formWebhook);
   const { name, email, message } = data;
   const description = `**Nombre o nick:** ${name}\n\n**Email:** ${email}\n\n**Mensaje:** ${message}`;
 
