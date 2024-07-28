@@ -16,6 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.disable('x-powered-by');
 
 // Manejador de errores
 app.use((err, req, res, next) => {
@@ -29,7 +30,6 @@ import publicRoutes from "./routes/public.js";
 app.use(publicRoutes);
 
 import apiRoutes from "./routes/api.js";
-import e from "express";
 app.use(apiRoutes);
 
 // Iniciar el servidor
