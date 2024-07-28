@@ -1085,10 +1085,6 @@ select {
   text-align: center;
 }
 
-.font-mono {
-  font-family: "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1200,6 +1196,18 @@ select {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "PP Agrandir";
+
+  src: url("/fonts/PPAgrandir-Regular.ttf") format("truetype");
+
+  font-weight: normal;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
 /* Custom scrollbar styles using Tailwind CSS colors */
 
 body::-webkit-scrollbar {
@@ -1234,7 +1242,6 @@ header {
 }
 
 html {
-  font-family: "JetBrains Mono", monospace;
   user-select: none;
   -webkit-user-select: none;
   /* Safari */
@@ -1280,6 +1287,14 @@ body {
 
 .hidden {
   display: none;
+}
+
+.font-jetbrains {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-agrandir {
+  font-family: "PP Agrandir", monospace;
 }
 
 .hover\:scale-110:hover {

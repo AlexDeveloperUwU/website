@@ -9,6 +9,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "PP Agrandir";
+  src: url("/fonts/PPAgrandir-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --text-50: #eff1f6;
@@ -167,7 +175,6 @@ header {
 }
 
 html {
-  font-family: "JetBrains Mono", monospace;
   user-select: none;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -208,4 +215,12 @@ body {
 
 .hidden {
   display: none;
+}
+
+.font-jetbrains {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-agrandir {
+  font-family: "PP Agrandir", monospace;
 }
