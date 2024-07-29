@@ -1,0 +1,29 @@
+<main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64">
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold">Directos en Twitch</h3>
+    <div class="space-y-6">
+      <a href="https://twitch.tv/alexdevuwu" class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
+        <div class="flex items-center">
+          <i class="fab fa-twitch mr-3 text-gray-300"></i>
+          <div>
+            <p class="font-bold text-gray-100">Twitch</p>
+            <p class="text-gray-400 font-agrandir">Aquí realizo todos mis directos, desde directos de gaming y just chatting hasta directos más específicos para gente que tiene conocimientos de tecnología como de montaje de ordenadores.</p>
+          </div>
+        </div>
+      </a>
+      <div id="twitchCard" class="rounded-lg bg-gray-800 p-6">
+        <div class="twitch" style="display: none;">
+          <div class="twitch-video">
+            <iframe src="" frameborder="0" allowfullscreen="true" scrolling="no" class="responsive-iframe"></iframe>
+          </div>
+          <div class="twitch-chat">
+            <iframe src="" frameborder="0" scrolling="no" class="responsive-iframe"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de scripts -->
+  <%- include(`scripts.ejs`) %>
+</main>

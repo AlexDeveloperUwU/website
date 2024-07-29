@@ -3,8 +3,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   const view = req.query.view || "index";
-  const page = "main"
-  res.render("main", {view: view, page: page});
+  res.render("main", { view: view });
 });
 
 export default router;
