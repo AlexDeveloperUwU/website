@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+<body class="flex min-h-screen flex-col bg-gray-900 text-white font-jetbrains">
+  <header id="main-header" class="bg-gray-800 p-4 flex justify-between items-center">
+    <a href="?view=index">
+      <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
+    </a>
+    <% if (view !== 'index') { %>
+    <a href="?view=index" class="text-white bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded">
+      Volver atrás
+    </a>
+    <% } %>
+  </header>
+
+  <%- include(`partials/${view}.ejs`) %>
+
+  <br><br>
+  <script>
+    function adjustBodyPadding() {
+      const header = document.getElementById('main-header');
+      const headerHeight = header.offsetHeight;
+      document.body.style.paddingTop = headerHeight - 50 + 'px';
+    }
+
+    window.addEventListener('load', adjustBodyPadding);
+    window.addEventListener('resize', adjustBodyPadding);
+  </script>
+</body>
+
+</html>
