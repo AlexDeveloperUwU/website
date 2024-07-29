@@ -6,8 +6,7 @@ const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "e
 dotenv.config({ path: envPath });
 
 export function formSend(data, url) {
-  const webhook = new WebhookClient({ url: url });
-  console.log(process.env.formWebhook);
+  const webhook = new WebhookClient({ url: process.env.formWebhook });
   const { name, email, message } = data;
   const description = `**Nombre o nick:** ${name}\n\n**Email:** ${email}\n\n**Mensaje:** ${message}`;
 
