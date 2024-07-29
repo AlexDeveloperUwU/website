@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import fs from "fs";
 
 // Configuración del servidor Express
 const app = express();
@@ -15,14 +14,6 @@ const envFilePath = path.join(__dirname, "env", ".env");
 dotenv.config({ path: envFilePath });
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-fs.readFile(envFilePath, "utf8", (err, data) => {
-  if (err) {
-    console.error(`Error al leer el archivo .env: ${err}`);
-  } else {
-    console.log(`Contenido del archivo .env:\n${data}`);
-  }
-});
 
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
