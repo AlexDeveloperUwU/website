@@ -3,7 +3,7 @@ import basicAuth from "basic-auth";
 import { formSend } from "../utils/webhook.js";
 import { validationResult } from "express-validator";
 import { validateEvent, validateEventId } from "../utils/validator.js";
-import { addEvent, removeEvent, getAllEvents } from "../utils/db.js";
+import { addEvent, removeEvent, getAllEvents, getAllEventsId } from "../utils/db.js";
 const router = express.Router();
 
 const authenticate = (req, res, next) => {
@@ -53,6 +53,11 @@ router.post("/removeEvent", authenticate, validateEventId, (req, res) => {
 
 router.get("/allEvents", (req, res) => {
   const events = getAllEvents();
+  res.status(200).json(events);
+});
+
+router.get("/manageAllEvents", (req, res) => {
+  const events = getAllEventsId();
   res.status(200).json(events);
 });
 

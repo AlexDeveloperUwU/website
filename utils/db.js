@@ -59,3 +59,15 @@ export function getAllEvents() {
   });
 }
 
+export function getAllEventsId() {
+  const entries = calendarDB.entries();
+  return entries.map(([key, value]) => {
+    return {
+      id: key,
+      date: value.date,
+      time: value.time,
+      type: value.type,
+      description: value.description,
+    };
+  });
+}
