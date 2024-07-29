@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const envFilePath = path.join(__dirname, "env", ".env");
 dotenv.config({ path: envFilePath });
+console.log(process.env);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
