@@ -858,6 +858,10 @@ select {
   margin-right: 0.75rem;
 }
 
+.mr-4 {
+  margin-right: 1rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -896,6 +900,14 @@ select {
 
 .h-24 {
   height: 6rem;
+}
+
+.h-\[600px\] {
+  height: 600px;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .min-h-screen {
@@ -1062,6 +1074,10 @@ select {
   padding: 1.5rem;
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1098,6 +1114,11 @@ select {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -1304,6 +1325,19 @@ body {
   right: 0;
   width: 100%;
   margin: 0.1px;
+}
+
+.latestVideoEmbed {
+  width: 100%;
+  height: 500px;
+  /* Ajusta la altura según sea necesario */
+}
+
+/* Asegúrate de que las clases responsive-iframe tienen un tamaño adecuado */
+
+.responsive-iframe2 {
+  width: 100%;
+  height: 100%;
 }
 
 .twitch .twitch-video {

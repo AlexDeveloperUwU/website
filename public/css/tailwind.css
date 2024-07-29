@@ -232,6 +232,17 @@ body {
   width: 100%;
   margin: 0.1px;
 }
+
+.latestVideoEmbed {
+  width: 100%;
+  height: 500px; /* Ajusta la altura según sea necesario */
+}
+
+/* Asegúrate de que las clases responsive-iframe tienen un tamaño adecuado */
+.responsive-iframe2 {
+  width: 100%;
+  height: 100%;
+}
 .twitch .twitch-video {
   padding-top: 56.25%;
   position: relative;

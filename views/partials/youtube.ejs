@@ -1,0 +1,32 @@
+<main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64">
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold">Mis vídeos de YouTube</h3>
+    <div class="space-y-6">
+      <a href="https://www.youtube.com/channel/UCxcD9py3y1df8CWzT5VsZMw" class="block rounded-lg bg-gray-800 p-8 hover:bg-blue-700">
+        <div class="flex items-center">
+          <i class="fab fa-youtube mr-4 text-gray-300 text-3xl"></i>
+          <div>
+            <p class="font-bold text-gray-100 text-xl">YouTube</p>
+            <p class="text-gray-400 font-agrandir text-lg">Aquí subo contenido más "elaborado", con más trabajo detrás. Suelen ser tutoriales, vídeos de cosas de programación o sistemas. Quizás suba también resubidas de mis directos pero editados.</p>
+          </div>
+        </div>
+      </a>
+      <div id="youtubeCard1" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
+        <h4 class="text-xl font-bold text-gray-100 mb-4">Mira mi último vídeo</h4>
+        <div class="flex-grow">
+          <iframe class="latestVideoEmbed w-full h-full" vnum='0' frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="youtubeCard2" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
+        <h4 class="text-xl font-bold text-gray-100 mb-4">Mira mi penúltimo vídeo</h4>
+        <div class="flex-grow">
+          <iframe class="latestVideoEmbed w-full h-full" vnum='1' frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Sección de scripts -->
+  <%- include(`scripts.ejs`) %>
+</main>
