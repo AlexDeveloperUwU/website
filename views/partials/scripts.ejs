@@ -250,12 +250,15 @@
     });
 
     $('#submitAddEventForm').on('click', function() {
+      var username = $('#userAddEvent').val();
+      var password = $('#passwordAddEvent').val();
       var formData = $('#addEventForm').serialize();
+
       $.ajax({
         url: 'https://alexdevuwu.com/addEvent',
         type: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa('username:password'),
+          'Authorization': 'Basic ' + btoa(username + ':' + password),
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         data: formData,
@@ -269,12 +272,15 @@
     });
 
     $('#submitDeleteEventForm').on('click', function() {
+      var username = $('#userDeleteEvent').val();
+      var password = $('#passwordDeleteEvent').val();
       var formData = $('#deleteEventForm').serialize();
+
       $.ajax({
         url: 'https://alexdevuwu.com/deleteEvent',
         type: 'POST',
         headers: {
-          'Authorization': 'Basic ' + btoa('username:password'),
+          'Authorization': 'Basic ' + btoa(username + ':' + password),
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         data: formData,
