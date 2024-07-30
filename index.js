@@ -13,13 +13,6 @@ const __dirname = path.dirname(__filename);
 const envFilePath = path.join(__dirname, "env", ".env");
 dotenv.config({ path: envFilePath });
 
-export const config = {
-  formWebhookUrl: process.env.formWebhookUrl,
-  apiWebhookUrl: process.env.apiWebhookUrl,
-  authUser: process.env.authUser,
-  authPass: process.env.authPass,
-};
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 

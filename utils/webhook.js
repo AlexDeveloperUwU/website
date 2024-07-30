@@ -1,9 +1,9 @@
 import { WebhookClient, EmbedBuilder } from "discord.js";
-import { config } from "../index.js";
+import { getVariable } from "./envLoader";
 
 export function formSend(data) {
   const webhook = new WebhookClient({
-    url: config.formWebhookUrl,
+    url: getVariable("formWebhookUrl"),
   });
   const { name, email, message } = data;
   const description = `**Nombre o nick:** ${name}\n\n**Email:** ${email}\n\n**Mensaje:** ${message}`;
@@ -35,7 +35,7 @@ export function apiAlert(type, data) {
   }
 
   const webhook = new WebhookClient({
-    url: config.apiWebhookUrl,
+    url: getVariable("logsWebhookUrl"),
   });
 
   const embed = new EmbedBuilder().setTitle(title).setDescription(description).setColor(color);
