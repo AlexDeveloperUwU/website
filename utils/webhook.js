@@ -43,7 +43,7 @@ export function apiAlert(type, data) {
       break;
     case "eventRemoved":
       title = "Evento eliminado";
-      description = `Se ha eliminado el evento con ID ${data.id}, que tenía fecha ${data.date} y hora ${data.time}.`;
+      description = `Se ha eliminado el evento con ID ${data.id}.`;
       color = "#FFB6C1"; // LightPink
       break;
   }
