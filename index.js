@@ -35,6 +35,14 @@ app.use(publicRoutes);
 import apiRoutes from "./routes/api.js";
 app.use(apiRoutes);
 
+// Verificar que las variables de entorno necesarias estén definidas
+const requiredEnvVars = ["formWebhookUrl", "logsWebhookUrl", "authUser", "authPass"];
+requiredEnvVars.forEach((varName) => {
+  if (!process.env[varName]) {
+    throw new Error(`La variable de entorno ${varName} no está definida o no tiene un valor.`);
+  }
+});
+
 // Iniciar el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
