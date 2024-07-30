@@ -1,6 +1,6 @@
 import express from "express";
 import basicAuth from "basic-auth";
-import { formSend } from "../utils/webhook.js";
+import { apiAlert, formSend } from "../utils/webhook.js";
 import { validationResult } from "express-validator";
 import { validateEvent, validateEventId } from "../utils/validator.js";
 import { addEvent, removeEvent, getAllEvents, getAllEventsId } from "../utils/db.js";
@@ -33,6 +33,7 @@ router.post("/addEvent", authenticate, validateEvent, (req, res) => {
 
   const event = req.body;
   const id = addEvent(event);
+  apiAlert("eventAdded", { id, date: event.date, time: event.time });
   res.status(200).json({ message: `Event with ID ${id} added succesfully` });
 });
 
@@ -46,6 +47,7 @@ router.post("/removeEvent", authenticate, validateEventId, (req, res) => {
   const result = removeEvent(event);
   if (result) {
     res.status(200).json({ message: "Event removed successfully" });
+    apiAlert("eventRemoved", { id: event.id, date: event.date, time: event.time });
   } else {
     res.status(404).json({ error: "Event not found" });
   }
