@@ -47,3 +47,10 @@ requiredEnvVars.forEach((varName) => {
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
+
+export const config = {
+  formWebhookUrl: process.env.formWebhookUrl,
+  apiWebhookUrl: process.env.apiWebhookUrl,
+  authUser: process.env.authUser,
+  authPass: process.env.authPass,
+};
