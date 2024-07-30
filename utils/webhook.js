@@ -1,6 +1,5 @@
 import { WebhookClient, EmbedBuilder } from "discord.js";
 import { config } from "../index.js";
-console.log(config);
 
 export function formSend(data) {
   const webhook = new WebhookClient({
