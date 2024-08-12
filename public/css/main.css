@@ -1154,19 +1154,23 @@ select {
 }
 
 @font-face {
-  font-family: "JetBrains Mono";
+  font-family: 'PP Agrandir';
 
-  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  src: local('PP Agrandir Regular'), local('PPAgrandir-Regular'),
+      url('/fonts/PPAgrandir-Regular.woff2') format('woff2');
 
   font-weight: normal;
 
   font-style: normal;
+
+  font-display: swap;
 }
 
 @font-face {
-  font-family: "PP Agrandir";
+  font-family: 'JetBrains Mono';
 
-  src: url("/fonts/PPAgrandir-Regular.ttf") format("truetype");
+  src: local('JetBrains Mono Regular'), local('JetBrainsMono-Regular'),
+      url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
 
   font-weight: normal;
 
@@ -1370,6 +1374,15 @@ body {
     right: 0;
     bottom: 0;
   }
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
 }
 
 .hover\:scale-110:hover {

@@ -1,4 +1,4 @@
-  <main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64">
+  <main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64 hidden">
     <section class="mx-auto mt-10 max-w-4xl text-left">
       <div class="items-left flex flex-col">
         <div class="items-left flex text-left">
@@ -97,15 +97,15 @@
           <form id="contactForm" method="POST" class="space-y-6">
             <div>
               <label for="name" class="block text-sm font-bold text-gray-100">Nombre / Nick</label>
-              <input type="text" id="name" name="name" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white">
+              <input type="text" id="name" name="name" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white">
             </div>
             <div>
               <label for="email" class="block text-sm font-bold text-gray-100">Correo electrónico de contacto</label>
-              <input type="email" id="email" name="email" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white">
+              <input type="email" id="email" name="email" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white">
             </div>
             <div>
               <label for="message" class="block text-sm font-bold text-gray-100">Mensaje</label>
-              <textarea id="message" name="message" rows="4" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" maxlength="3584"></textarea>
+              <textarea id="message" name="message" rows="4" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" maxlength="3584"></textarea>
             </div>
             <div>
               <button id="sendContactForm" type="submit" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Enviar mensaje</button>
