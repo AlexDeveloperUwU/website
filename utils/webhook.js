@@ -39,12 +39,12 @@ export function apiAlert(type, data) {
     case "eventAdded":
       title = "Evento añadido";
       description = `Se ha añadido el evento con ID ${data.id} con fecha ${data.date} y hora ${data.time}.`;
-      color = "#98FB98"; // PaleGreen
+      color = "#98FB98";
       break;
     case "eventRemoved":
       title = "Evento eliminado";
       description = `Se ha eliminado el evento con ID ${data.id}.`;
-      color = "#FFB6C1"; // LightPink
+      color = "#FFB6C1";
       break;
   }
 

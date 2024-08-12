@@ -8,7 +8,6 @@ const router = express.Router();
 
 const authenticate = (req, res, next) => {
   const user = basicAuth(req);
-
   const username = process.env.authUser;
   const password = process.env.authPass;
 
