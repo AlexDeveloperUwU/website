@@ -11,26 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        continue-on-error: true
+    - name: Checkout code
+      uses: actions/checkout@v4.1.7
 
-      - name: Set up Tailscale
-        uses: tailscale/github-action@v2
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:servers
-        continue-on-error: true
+    - name: Set up Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:servers
 
-      - name: Execute deployment script
-        run: |
-          echo "Connecting to remote server..." | tee -a deployment.log
-          ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
-            echo "Starting deployment..." | tee -a deployment.log
-            cd alexdeveloperuwu.github.io
-            echo "Running docker.sh..." | tee -a deployment.log
-            sudo su -c 'bash docker.sh 2>&1 | tee -a /tmp/deployment_script.log'
-            echo "Deployment completed." | tee -a deployment.log
-          EOF
-        continue-on-error: true
+    - name: Execute deployment script
+      run: |
+        echo "Connecting to remote server..."
+        ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
+          set -e  # Exit on error in the script itself
+          cd alexdeveloperuwu.github.io || exit 1
+          if ! sudo su -c 'bash docker.sh'; then
+            echo "Error occurred while running docker.sh" >&2
+          fi
+          exit 0  # Ensure the script exits with status 0
+        EOF
+      continue-on-error: true
