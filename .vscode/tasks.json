@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "css",
+      "problemMatcher": [],
+      "isBackground": true,
+      "label": "CSS",
+      "detail": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "init",
+      "problemMatcher": [],
+      "isBackground": true,
+      "label": "Server",
+      "detail": "nodemon index.js",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}
