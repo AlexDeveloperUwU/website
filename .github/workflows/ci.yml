@@ -1,0 +1,35 @@
+name: Deploy via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        continue-on-error: true
+
+      - name: Set up Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:servers
+        continue-on-error: true
+
+      - name: Execute deployment script
+        run: |
+          echo "Connecting to remote server..." | tee -a deployment.log
+          ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
+            echo "Starting deployment..." | tee -a deployment.log
+            cd alexdeveloperuwu.github.io
+            echo "Running docker.sh..." | tee -a deployment.log
+            sudo su -c 'bash docker.sh 2>&1 | tee -a /tmp/deployment_script.log'
+            echo "Deployment completed." | tee -a deployment.log
+          EOF
+        continue-on-error: true
