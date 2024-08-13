@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import compression from "compression";
+import minify from "express-minify";
 
 // Configuración del servidor Express
 const app = express();
@@ -19,20 +19,17 @@ app.set("views", path.join(__dirname, "views"));
 
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
+// Minificación de archivos JS y CSS
 app.use(
-  compression({
-    level: 6,
-    threshold: 2,
-    filter: (req, res) => {
-      if (req.headers["x-no-compression"]) {
-        return false;
-      }
-      return compression.filter(req, res);
-    },
+  minify({
+    cache: path.join(__dirname, "cache"),
   })
 );
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.disable("x-powered-by");
 
 // Manejador de errores
