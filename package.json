@@ -26,7 +26,8 @@
   "main": "index.js",
   "scripts": {
     "init": "nodemon index.js",
-    "css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch --minify"
+    "css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch --minify",
+    "audit": "psi https://alexdevuwu.com --strategy=mobile --format=cli > reports/mobile_report.txt && psi https://alexdevuwu.com --strategy=desktop --format=cli > reports/desktop_report.txt"
   },
   "repository": {
     "type": "git",
