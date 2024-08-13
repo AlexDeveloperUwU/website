@@ -1,0 +1,1 @@
+$(document).ready((function(){$("#contactForm").on("submit",(function(e){e.preventDefault();var n=$(this).serialize();$.ajax({url:"/contactForm",type:"POST",data:n,success:function(e){alert("Mensaje enviado con éxito!"),$("#contactForm")[0].reset()},error:function(e,n,t){alert("Ocurrió un error al enviar el mensaje. Inténtalo de nuevo.")}})}))}));

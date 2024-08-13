@@ -1,0 +1,1 @@
+window.addEventListener("load",(function(){const e=document.querySelector(".kick"),c=e.querySelector(".kick-video iframe"),t=e.querySelector(".kick-chat iframe");c.src="https://player.kick.com/alexdevuwu",t.src="https://kick.com/alexdevuwu/chatroom",e.style.display="block"}));
