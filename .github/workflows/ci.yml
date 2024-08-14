@@ -27,8 +27,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
             echo "Starting deployment..."  
             cd alexdeveloperuwu.github.io
-            echo "Running docker.sh..."  
-            sudo su -c 'bash docker.sh 2>&1 | tee -a /tmp/deployment_script.log'
+            echo "Running deploy.sh..."  
+            sudo su -c 'bash deploy.sh 2>&1 | tee -a /tmp/deployment_script.log'
             echo "Deployment completed."  
             exit 0
           EOF
