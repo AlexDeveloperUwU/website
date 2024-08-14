@@ -6,6 +6,7 @@ import { fileURLToPath } from "url";
 import minify from "express-minify";
 import helmet from "helmet";
 import morgan from "morgan";
+import compression from "compression";
 import fs from "fs";
 
 // Inicialización del servidor Express
@@ -41,6 +42,9 @@ app.use(express.json());
 // Configuración para manejar proxies
 app.enable("trust proxy");
 
+// Configuración de compresión de respuestas
+app.use(compression());
+
 // Configuración del directorio y archivo de logs
 const logDir = path.join(__dirname, "logs");
 if (!fs.existsSync(logDir)) {
@@ -70,6 +74,10 @@ app.use(
     },
   })
 );
+app.use(helmet.xssFilter());
+app.use(helmet.noSniff());
+app.use(helmet.frameguard({ action: "deny" }));
+app.use(helmet.hsts({ maxAge: 63072000, includeSubDomains: true, preload: true }));
 app.disable("x-powered-by");
 
 // Middleware de manejo de errores
