@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'PP Agrandir';
-  src: local('PP Agrandir Regular'), local('PPAgrandir-Regular'),
-      url('/fonts/PPAgrandir-Regular.woff2') format('woff2');
+  font-family: "PP Agrandir";
+  src: local("PP Agrandir Regular"), local("PPAgrandir-Regular"),
+    url("/fonts/PPAgrandir-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'JetBrains Mono';
-  src: local('JetBrains Mono Regular'), local('JetBrainsMono-Regular'),
-      url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-family: "JetBrains Mono";
+  src: local("JetBrains Mono Regular"), local("JetBrainsMono-Regular"),
+    url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -327,4 +327,9 @@ body {
 
 .fade-in {
   opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
