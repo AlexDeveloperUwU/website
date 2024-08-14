@@ -73,7 +73,14 @@ app.use(
       imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
       connectSrc: ["'self'", "https://api.rss2json.com"],
       fontSrc: ["'self'"],
-      frameSrc: ["'self'", "https://www.youtube.com"],
+      frameSrc: [
+        "'self'",
+        "https://www.youtube.com",
+        "https://www.twitch.tv/",
+        "https://player.twitch.tv/",
+        "https://kick.com/",
+        "https://player.kick.com/",
+      ],
     },
   })
 );

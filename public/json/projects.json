@@ -2,18 +2,21 @@
   {
     "name": "Azirax",
     "url": "https://azirax.site",
+    "github": "https://github.com/alexdeveloperuwu/azirax",
     "icon": "fa-solid fa-code",
     "description": "Un simple pero amplio bot de Discord que ofrece una amplia gama de comandos. También permite a los usuarios interactuar de manera creativa y entretenida con otros miembros de la comunidad."
   },
   {
     "name": "LiberTeis",
     "url": "https://github.com/AlexDeveloperUwU/liberteis",
+    "github": "https://github.com/alexdeveloperuwu/liberteis",
     "icon": "fa-solid fa-code",
     "description": "Una pequeña web que permite la gestión de eventos, material y espacios de la biblioteca del IES de Teis, aunque se puede aplicar en otros ámbitos."
   },
   {
     "name": "Mini Projects",
     "url": "https://github.com/AlexDeveloperUwU/miniprojects",
+    "github": "https://github.com/alexdeveloperuwu/miniprojects",
     "icon": "fa-solid fa-code",
     "description": "Mini proyectos que voy haciendo por distintos motivos y que son tan pequeños que no necesitan un repo para ellos solos."
   }

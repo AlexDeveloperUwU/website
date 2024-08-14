@@ -11,14 +11,19 @@ const titlesPath = path.resolve(__dirname, "../public/json/titles.json");
 router.get("/", async (req, res) => {
   const view = req.query.view || "index";
 
+  const extraQueries = { ...req.query };
+  delete extraQueries.view;
+
   try {
     const data = await fs.readFile(titlesPath, "utf8");
     const titles = JSON.parse(data);
     const pageTitle = titles[view] || "Web Oficial";
-    res.render("main", { view, pageTitle });
+
+    // Pasar view, pageTitle y extraQueries a la vista
+    res.render("main", { view, pageTitle, data: extraQueries });
   } catch (err) {
-    pageTitle = "Web Oficial";
-    res.render("main", { view, pageTitle });
+    const pageTitle = "Web Oficial";
+    res.render("main", { view, pageTitle, data: extraQueries });
   }
 });
 
