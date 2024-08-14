@@ -14,6 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         continue-on-error: false
+    - name: Checkout code
+      uses: actions/checkout@v4.1.7
 
       - name: Set up Tailscale
         uses: tailscale/github-action@v2
@@ -22,6 +24,12 @@ jobs:
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:servers
         continue-on-error: false
+    - name: Set up Tailscale
+      uses: tailscale/github-action@v2
+      with:
+        oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+        oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+        tags: tag:servers
 
       - name: Execute deployment script
         run: |
@@ -34,3 +42,15 @@ jobs:
             echo "Deployment completed." | tee -a deployment.log
           EOF
         continue-on-error: false
+    - name: Execute deployment script
+      run: |
+        echo "Connecting to remote server..."
+        ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
+          set -e  # Exit on error in the script itself
+          cd alexdeveloperuwu.github.io || exit 1
+          if ! sudo su -c 'bash docker.sh'; then
+            echo "Error occurred while running docker.sh" >&2
+          fi
+          exit 0  # Ensure the script exits with status 0
+        EOF
+      continue-on-error: true
