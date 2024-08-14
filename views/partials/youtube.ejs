@@ -14,16 +14,19 @@
       <div id="youtubeCard1" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
         <h4 class="text-xl font-bold text-gray-100 mb-4">Último vídeo</h4>
         <div class="flex-grow">
-          <iframe class="latestVideoEmbed w-full h-full" vnum='0' frameborder="0" allowfullscreen></iframe>
+          <lite-youtube vnum="0" class="w-full h-full">
+            <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=VIDEO_ID_1">Watch on YouTube: "Latest Video"</a>
+          </lite-youtube>
         </div>
       </div>
       <div id="youtubeCard2" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
         <h4 class="text-xl font-bold text-gray-100 mb-4">Penúltimo vídeo</h4>
         <div class="flex-grow">
-          <iframe class="latestVideoEmbed w-full h-full" vnum='1' frameborder="0" allowfullscreen></iframe>
+          <lite-youtube vnum="1" class="w-full h-full">
+            <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=VIDEO_ID_2">Watch on YouTube: "Second Latest Video"</a>
+          </lite-youtube>
         </div>
       </div>
-      
     </div>
   </section>
 

@@ -70,12 +70,14 @@ app.use(
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:"],
-      connectSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
+      connectSrc: ["'self'", "https://api.rss2json.com"],
       fontSrc: ["'self'"],
+      frameSrc: ["'self'", "https://www.youtube.com"],
     },
   })
 );
+
 app.use(helmet.xssFilter());
 app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: "deny" }));
