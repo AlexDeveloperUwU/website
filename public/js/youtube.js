@@ -8,7 +8,6 @@ const loadVideo = (liteYT) => {
   fetch(reqURL)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
       const videoNumber = liteYT.getAttribute("vnum");
       const link = result.items[videoNumber].link;
       const id = link.substr(link.indexOf("=") + 1);
