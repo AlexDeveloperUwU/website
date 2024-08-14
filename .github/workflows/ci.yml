@@ -48,7 +48,7 @@ jobs:
           node-version: '22' 
 
       - name: Install dependencies
-        run: npm install discord.js psi
+        run: npm install discord.js node-fetch
 
       - name: Run audit
         env:
