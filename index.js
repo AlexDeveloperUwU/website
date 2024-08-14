@@ -9,6 +9,9 @@ import morgan from "morgan";
 import compression from "compression";
 import fs from "fs";
 
+// Importación de las utilidades de inicio
+import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./utils/startup.js";
+
 // Inicialización del servidor Express
 const app = express();
 const port = 3000;
@@ -30,9 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Configuración de minificación de archivos JS y CSS
 const cacheDir = path.join(__dirname, "cache");
-if (!fs.existsSync(cacheDir)) {
-  fs.mkdirSync(cacheDir);
-}
+ensureDirExists(cacheDir);
 app.use(minify({ cache: cacheDir }));
 
 // Configuración para el análisis de cuerpos de solicitudes
@@ -47,9 +48,7 @@ app.use(compression());
 
 // Configuración del directorio y archivo de logs
 const logDir = path.join(__dirname, "logs");
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-}
+ensureDirExists(logDir);
 
 // Obtener timestamp en formato humano para el archivo de log
 const now = new Date();
@@ -60,33 +59,6 @@ const timestamp = `${now.getFullYear()}-${formatNumber(now.getMonth() + 1)}-${fo
 const logFileName = `${timestamp}.log`;
 const accessLogStream = fs.createWriteStream(path.join(logDir, logFileName), { flags: "a" });
 app.use(morgan("combined", { stream: accessLogStream }));
-
-// Función para eliminar logs antiguos y conservar solo los últimos 5
-function cleanOldLogs(directory, maxFiles) {
-  fs.readdir(directory, (err, files) => {
-    if (err) {
-      console.error("Error leyendo el directorio de logs:", err);
-      return;
-    }
-
-    // Filtrar solo archivos .log y ordenarlos por fecha de creación
-    const logFiles = files
-      .filter((file) => file.endsWith(".log"))
-      .map((file) => ({
-        name: file,
-        time: fs.statSync(path.join(directory, file)).mtime.getTime(),
-      }))
-      .sort((a, b) => b.time - a.time); // Ordenar de más reciente a más antiguo
-
-    // Eliminar logs antiguos si hay más de `maxFiles`
-    if (logFiles.length > maxFiles) {
-      const filesToDelete = logFiles.slice(maxFiles);
-      filesToDelete.forEach((file) => {
-        fs.unlinkSync(path.join(directory, file.name));
-      });
-    }
-  });
-}
 
 // Llamar a la función para limpiar los logs antiguos
 cleanOldLogs(logDir, 5);
@@ -125,11 +97,7 @@ app.use(apiRoutes);
 
 // Verificación de variables de entorno necesarias
 const requiredEnvVars = ["formWebhookUrl", "logsWebhookUrl", "authUser", "authPass"];
-requiredEnvVars.forEach((varName) => {
-  if (!process.env[varName]) {
-    throw new Error(`La variable de entorno ${varName} no está definida o no tiene un valor.`);
-  }
-});
+verifyEnvVars(requiredEnvVars);
 
 // Inicio del servidor
 app.listen(port, () => {
