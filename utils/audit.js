@@ -39,10 +39,10 @@ const sendResultsToWebhook = async (strategy, scores) => {
     const embed = {
       title: `PageSpeed Insights - ${strategy.charAt(0).toUpperCase() + strategy.slice(1)}`,
       fields: [
-        { name: 'Performance', value: scores.performance !== null ? scores.performance + ' / 100' : 'N/A', inline: true },
-        { name: 'Accessibility', value: scores.accessibility !== null ? scores.accessibility + ' / 100' : 'N/A', inline: true },
-        { name: 'Best Practices', value: scores['best-practices'] !== null ? scores['best-practices'] + ' / 100' : 'N/A', inline: true },
-        { name: 'SEO', value: scores.seo !== null ? scores.seo + ' / 100' : 'N/A', inline: true },
+        { name: 'Performance', value: scores.performance !== null ? scores.performance + ' / 100' : 'N/A', inline: false },
+        { name: 'Accessibility', value: scores.accessibility !== null ? scores.accessibility + ' / 100' : 'N/A', inline: false },
+        { name: 'Best Practices', value: scores['best-practices'] !== null ? scores['best-practices'] + ' / 100' : 'N/A', inline: false },
+        { name: 'SEO', value: scores.seo !== null ? scores.seo + ' / 100' : 'N/A', inline: false },
       ],
       color: 0x0099ff,
     };
