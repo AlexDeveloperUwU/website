@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Set up Tailscale
         uses: tailscale/github-action@v2
@@ -21,7 +21,7 @@ jobs:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
           tags: tag:servers
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Execute deployment script
         run: |
@@ -33,4 +33,4 @@ jobs:
             sudo su -c 'bash docker.sh 2>&1 | tee -a /tmp/deployment_script.log'
             echo "Deployment completed." | tee -a deployment.log
           EOF
-        continue-on-error: true
+        continue-on-error: false
