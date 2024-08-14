@@ -25,12 +25,13 @@ jobs:
 
       - name: Execute deployment script
         run: |
-          echo "Connecting to remote server..." | tee -a deployment.log
+          echo "Connecting to remote server..."  
           ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
-            echo "Starting deployment..." | tee -a deployment.log
+            echo "Starting deployment..."  
             cd alexdeveloperuwu.github.io
-            echo "Running docker.sh..." | tee -a deployment.log
+            echo "Running docker.sh..."  
             sudo su -c 'bash docker.sh 2>&1 | tee -a /tmp/deployment_script.log'
-            echo "Deployment completed." | tee -a deployment.log
+            echo "Deployment completed."  
+            exit 0
           EOF
         continue-on-error: false
