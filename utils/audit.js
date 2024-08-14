@@ -1,32 +1,83 @@
+import fetch from "node-fetch";
 import { WebhookClient, EmbedBuilder } from "discord.js";
-import psi from "psi";
 
-// Lee la URL del webhook desde las variables de entorno
-const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
+const DISCORD_WEBHOOK_URL =
+  "https://discord.com/api/webhooks/1273321658148589660/vNk13mjIiPdzMoHJBKvQ0N1Lx9Hv002EDsmvb6VNYSqPPqnk1xzeRIMWDWwbD68-kcT7";
+const API_KEY = "AIzaSyDGPzB5LGUJGfNKkNc0BpTSWspGCb-Fo6c";
 
-if (!DISCORD_WEBHOOK_URL) {
-  console.error("DISCORD_WEBHOOK_URL is not defined!");
+if (!DISCORD_WEBHOOK_URL || !API_KEY) {
+  console.error("DISCORD_WEBHOOK_URL or API_KEY is not defined!");
   process.exit(1);
 }
 
-// Configura el cliente de Webhook
 const webhookClient = new WebhookClient({ url: DISCORD_WEBHOOK_URL });
 
-// Función para ejecutar PSI y obtener los resultados
-const runPSI = async (strategy) => {
+const getCategoryScores = async (url, strategy) => {
   try {
-    const { data } = await psi("https://alexdevuwu.com", {
-      nokey: "true",
-      strategy: strategy,
+    const apiUrl = `https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(
+      url
+    )}&strategy=${strategy}&key=${API_KEY}`;
+
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch PageSpeed Insights data: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+
+    if (!data || !data.lighthouseResult || !data.lighthouseResult.categories) {
+      throw new Error(`Invalid data structure received for ${strategy}: ${JSON.stringify(data)}`);
+    }
+
+    const scores = {};
+    const categories = ["performance", "accessibility", "best-practices", "seo"];
+    categories.forEach((category) => {
+      const categoryData = data.lighthouseResult.categories[category];
+      if (categoryData) {
+        scores[category] = categoryData.score * 100;
+      } else {
+        console.error(`Missing ${category} category in result data for ${strategy}`);
+        scores[category] = null;
+      }
     });
-    return data;
+
+    return scores;
   } catch (error) {
-    console.error(`Error running PSI for ${strategy}:`, error);
+    console.error(`Error getting PageSpeed Insights scores for ${strategy}:`, error);
     return null;
   }
 };
 
-// Función para enviar un mensaje embed a Discord
+const createEmbed = (strategy, scores) => {
+  if (!scores || Object.values(scores).some((score) => score === null)) {
+    console.error(`Invalid score data for ${strategy}`);
+    return null;
+  }
+
+  return new EmbedBuilder()
+    .setTitle(`PageSpeed Insights - ${strategy}`)
+    .setDescription(`Performance scores for ${strategy} strategy`)
+    .addFields([
+      {
+        name: "Performance Score",
+        value: scores["performance"]?.toFixed(2) || "N/A",
+        inline: false,
+      },
+      {
+        name: "Accessibility Score",
+        value: scores["accessibility"]?.toFixed(2) || "N/A",
+        inline: false,
+      },
+      {
+        name: "Best Practices Score",
+        value: scores["best-practices"]?.toFixed(2) || "N/A",
+        inline: false,
+      },
+      { name: "SEO Score", value: scores["seo"]?.toFixed(2) || "N/A", inline: false },
+    ])
+    .setColor(strategy === "mobile" ? 0x00ff00 : 0x0000ff);
+};
+
 const sendToDiscord = async (embed) => {
   try {
     await webhookClient.send({ embeds: [embed] });
@@ -36,57 +87,15 @@ const sendToDiscord = async (embed) => {
   }
 };
 
-// Función para crear un mensaje embed para Discord
-const createEmbed = (strategy, result) => {
-  if (!result) return null;
-
-  return new EmbedBuilder()
-    .setTitle(`PageSpeed Insights - ${strategy}`)
-    .setDescription(`Results for ${strategy} strategy`)
-    .addFields([
-      {
-        name: "Speed Score",
-        value: (result.lighthouseResult.categories.performance.score * 100).toFixed(2) + "%",
-        inline: true,
-      },
-      {
-        name: "Accessibility",
-        value: (result.lighthouseResult.categories.accessibility.score * 100).toFixed(2) + "%",
-        inline: true,
-      },
-      {
-        name: "Best Practices",
-        value: (result.lighthouseResult.categories["best-practices"].score * 100).toFixed(2) + "%",
-        inline: true,
-      },
-      {
-        name: "SEO",
-        value: (result.lighthouseResult.categories.seo.score * 100).toFixed(2) + "%",
-        inline: true,
-      },
-      { name: "URL", value: result.id, inline: false },
-    ])
-    .setColor(strategy === "mobile" ? 0x00ff00 : 0x0000ff); // Verde para móvil, azul para escritorio
-};
-
-// Función principal
 const main = async () => {
-  try {
-    // Ejecutar auditorías para móvil y escritorio
-    const mobileResult = await runPSI("mobile");
-    const desktopResult = await runPSI("desktop");
+  const url = "https://alexdevuwu.com";
+  const strategies = ["mobile", "desktop"];
 
-    // Crear embebidos para cada estrategia
-    const mobileEmbed = createEmbed("Mobile", mobileResult);
-    const desktopEmbed = createEmbed("Desktop", desktopResult);
-
-    // Enviar informes a Discord si existen
-    if (mobileEmbed) await sendToDiscord(mobileEmbed);
-    if (desktopEmbed) await sendToDiscord(desktopEmbed);
-  } catch (error) {
-    console.error("Error in audit process:", error);
+  for (const strategy of strategies) {
+    const scores = await getCategoryScores(url, strategy);
+    const embed = createEmbed(strategy, scores);
+    if (embed) await sendToDiscord(embed);
   }
 };
 
-// Ejecutar la función principal
 main();
