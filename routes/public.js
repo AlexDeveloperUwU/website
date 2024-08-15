@@ -2,12 +2,14 @@ import express from "express";
 import { promises as fs } from "fs"; // Usando `promises` para trabajar con promesas en lugar de callbacks
 import path from "path";
 import { fileURLToPath } from "url";
+import { getLinkData } from "../utils/db.js"; // Importa la función para obtener datos del enlace
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const titlesPath = path.resolve(__dirname, "../public/json/titles.json");
 
+// Ruta principal que maneja la visualización de páginas según el parámetro `view`
 router.get("/", async (req, res) => {
   const view = req.query.view || "index";
 
@@ -30,6 +32,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Ruta para manejar los errores
 router.get("/error", async (req, res) => {
   const view = req.query.code || "404";
 
@@ -49,7 +52,28 @@ router.get("/error", async (req, res) => {
   }
 });
 
-// Ruta universal, si por lo que sea el user no escribe el ?view=nombreView, entonces hacemos redirect || Mejora de la experiencia del usuario
+// Ruta para manejar redirecciones desde `/l?id=id`
+router.get("/l", async (req, res) => {
+  const id = req.query.id;
+
+  if (!id) {
+    return res.redirect("/error?code=400");
+  }
+
+  try {
+    const linkData = getLinkData(id);
+
+    if (linkData) {
+      res.redirect(linkData.url);
+    } else {
+      res.redirect("/error?code=404");
+    }
+  } catch (err) {
+    res.redirect("/error?code=500");
+  }
+});
+
+// Ruta universal para redirigir cuando no se proporciona un `view` válido
 router.get("/:viewName", async (req, res) => {
   const viewName = req.params.viewName;
 
@@ -63,7 +87,8 @@ router.get("/:viewName", async (req, res) => {
       res.redirect("/error?code=404");
     }
   } catch (err) {
-    res.redirect('/error?code=500');  }
+    res.redirect("/error?code=500");
+  }
 });
 
 export default router;

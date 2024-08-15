@@ -3,7 +3,7 @@ import Enmap from "enmap";
 export const calendarDB = new Enmap({ name: "calendar" });
 export const linkDB = new Enmap({ name: "linkCutter" });
 
-//* Funciones para generar las ID de los eventos, que también se puede aplicar a los links
+//* Funciones para generar las ID de los eventos o enlaces
 function shuffleString(str) {
   const arr = str.split("");
   for (let i = arr.length - 1; i > 0; i--) {
@@ -50,7 +50,7 @@ export function removeEvent(event) {
 }
 
 export function getAllEvents(style) {
-  const entries = calendarDB.entries();
+  const entries = Array.from(calendarDB.entries());
   if (style === "full") {
     return entries.map(([key, value]) => {
       return {
@@ -73,4 +73,59 @@ export function getAllEvents(style) {
       };
     });
   }
+}
+
+//* Funciones para manejar los enlaces acortados
+
+export function addLink(linkData) {
+  let newId = linkData.id;
+
+  if (newId) {
+    if (linkDB.has(newId)) {
+      throw new Error(`ID ${newId} already exists.`);
+    }
+  } else {
+    do {
+      newId = generateId();
+    } while (linkDB.has(newId));
+  }
+
+  linkDB.set(newId, linkData);
+  return newId;
+}
+
+export function updateLink(linkData) {
+  if (linkDB.has(linkData.id)) {
+    linkDB.set(linkData.id, linkData);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function removeLink(id) {
+  if (linkDB.has(id)) {
+    linkDB.delete(id);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function getLinkData(id) {
+  if (linkDB.has(id)) {
+    return linkDB.get(id);
+  } else {
+    return null;
+  }
+}
+
+export function getAllLinks() {
+  const entries = Array.from(linkDB.entries());
+  return entries.map(([key, value]) => {
+    return {
+      id: key,
+      url: value.url,
+    };
+  });
 }

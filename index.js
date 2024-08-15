@@ -103,8 +103,8 @@ app.use((err, req, res, next) => {
 // Importación y configuración de rutas
 import publicRoutes from "./routes/public.js";
 import apiRoutes from "./routes/api.js";
-app.use(publicRoutes);
 app.use(apiRoutes);
+app.use(publicRoutes);
 
 // Verificación de variables de entorno necesarias
 const requiredEnvVars = ["formWebhookUrl", "logsWebhookUrl", "authUser", "authPass"];
