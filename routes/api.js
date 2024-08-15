@@ -3,7 +3,7 @@ import basicAuth from "basic-auth";
 import { apiAlert, formSend } from "../utils/webhook.js";
 import { validationResult } from "express-validator";
 import { validateEvent, validateEventId } from "../utils/validator.js";
-import { addEvent, removeEvent, getAllEvents, getAllEventsId } from "../utils/db.js";
+import { addEvent, removeEvent, getAllEvents } from "../utils/db.js";
 const router = express.Router();
 
 const authenticate = (req, res, next) => {
