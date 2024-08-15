@@ -64,6 +64,8 @@ router.get("/l", async (req, res) => {
     const linkData = getLinkData(id);
 
     if (linkData) {
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+      res.setHeader("Referrer-Policy", "no-referrer");
       res.redirect(linkData.url);
     } else {
       res.redirect("/error?code=404");
