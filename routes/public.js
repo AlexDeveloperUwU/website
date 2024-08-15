@@ -17,14 +17,53 @@ router.get("/", async (req, res) => {
   try {
     const data = await fs.readFile(titlesPath, "utf8");
     const titles = JSON.parse(data);
-    const pageTitle = titles[view] || "Web Oficial";
 
-    // Pasar view, pageTitle y extraQueries a la vista
-    res.render("main", { view, pageTitle, data: extraQueries });
+    if (titles[view]) {
+      const pageTitle = titles[view];
+      res.render("main", { view, pageTitle, data: extraQueries });
+    } else {
+      res.redirect("/error?code=404");
+    }
   } catch (err) {
     const pageTitle = "Web Oficial";
-    res.render("main", { view, pageTitle, data: extraQueries });
+    res.render("main", { view: "index", pageTitle, data: extraQueries });
   }
+});
+
+router.get("/error", async (req, res) => {
+  const view = req.query.code || "404";
+
+  try {
+    const data = await fs.readFile(titlesPath, "utf8");
+    const titles = JSON.parse(data);
+
+    if (titles[view]) {
+      const pageTitle = titles[view];
+      res.render("errors", { view, pageTitle });
+    } else {
+      res.redirect("/error?code=404");
+    }
+  } catch (err) {
+    const pageTitle = "Web Oficial";
+    res.render("errors", { view: "index", pageTitle });
+  }
+});
+
+// Ruta universal, si por lo que sea el user no escribe el ?view=nombreView, entonces hacemos redirect || Mejora de la experiencia del usuario
+router.get("/:viewName", async (req, res) => {
+  const viewName = req.params.viewName;
+
+  try {
+    const data = await fs.readFile(titlesPath, "utf8");
+    const titles = JSON.parse(data);
+
+    if (titles[viewName]) {
+      res.redirect(`/?view=${viewName}`);
+    } else {
+      res.redirect("/error?code=404");
+    }
+  } catch (err) {
+    res.redirect('/error?code=500');  }
 });
 
 export default router;

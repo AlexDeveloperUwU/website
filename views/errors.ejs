@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+
+<body class="flex min-h-screen flex-col bg-gray-900 text-white font-jetbrains">
+  <header id="main-header" class="bg-gray-800 p-4 flex justify-between items-center">
+    <a href="?view=index">
+      <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
+    </a>
+    <a href="?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+      Volver al inicio
+    </a>
+  </header>
+
+  <%- include(`partials/errors/${view}.ejs`) %>
+
+  <br><br>
+  <script>
+    function adjustBodyPadding() {
+      const header = document.getElementById('main-header');
+      const headerHeight = header.offsetHeight;
+      document.body.style.paddingTop = headerHeight - 50 + 'px';
+    }
+
+    window.addEventListener('load', adjustBodyPadding);
+    window.addEventListener('resize', adjustBodyPadding);
+  </script>
+</body>
+
+</html>

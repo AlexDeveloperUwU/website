@@ -13,7 +13,7 @@ const authenticate = (req, res, next) => {
 
   if (!user || user.name !== username || user.pass !== password) {
     res.set("WWW-Authenticate", 'Basic realm="401"');
-    return res.status(401).json({ error: "Unauthorized" });
+    res.redirect("/error?code=401");
   }
 
   next();
