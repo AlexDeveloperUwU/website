@@ -4,6 +4,8 @@ $(document).ready(function () {
     $("#addEventFormContainer").removeClass("hidden");
     $("#deleteEventFormContainer").addClass("hidden");
     $("#allEventsContainer").addClass("hidden");
+    var eventsGrid = $("#eventsGrid");
+    eventsGrid.empty();
   });
 
   // Mostrar el formulario de eliminar evento
@@ -11,6 +13,8 @@ $(document).ready(function () {
     $("#deleteEventFormContainer").removeClass("hidden");
     $("#addEventFormContainer").addClass("hidden");
     $("#allEventsContainer").addClass("hidden");
+    var eventsGrid = $("#eventsGrid");
+    eventsGrid.empty();
   });
 
   // Mostrar todos los eventos
@@ -18,6 +22,8 @@ $(document).ready(function () {
     $("#addEventFormContainer").addClass("hidden");
     $("#deleteEventFormContainer").addClass("hidden");
     $("#allEventsContainer").removeClass("hidden");
+    var eventsGrid = $("#eventsGrid");
+    eventsGrid.empty();
     fetchAllEvents();
   });
 
@@ -76,7 +82,7 @@ $(document).ready(function () {
       type: "GET",
       success: function (events) {
         var eventsGrid = $("#eventsGrid");
-        eventsGrid.empty(); 
+        eventsGrid.empty();
 
         events.forEach(function (event) {
           var card = createEventCard(event);
@@ -93,13 +99,13 @@ $(document).ready(function () {
   function createEventCard(event) {
     var iconClass = getEventIconClass(event.type);
     return `
-      <a href="#" class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
+      <a class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
         <div class="flex items-center">
           <i class="${iconClass} mr-3 text-gray-300"></i>
           <div>
             <p class="font-bold text-gray-100">${event.type}</p>
             <p class="text-gray-400">${event.description}</p>
-            <p class="text-gray-500 text-sm">${event.date} - ${event.time} - ID: ${event.id}</p>
+            <p class="text-gray-400 text-sm">${event.date} - ${event.time} - ID: ${event.id}</p>
           </div>
         </div>
       </a>

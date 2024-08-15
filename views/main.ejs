@@ -12,8 +12,13 @@
       Volver al inicio
     </a>
     <% } %>
-    <% if (view === 'manager') { %>
-    <a href="?view=manager" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+    <% if (view !== 'index' && !data.type) { %>
+    <a href="?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
+      Volver al inicio
+    </a>
+    <% } %>
+    <% if (view === 'manager' && data.type) { %>
+    <a href="?view=manager" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
       Volver al manager
     </a>
     <% } %>
