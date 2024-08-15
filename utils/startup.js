@@ -16,16 +16,14 @@ export function cleanOldLogs(directory, maxFiles) {
       return;
     }
 
-    // Filtrar solo archivos .log y ordenarlos por fecha de creación
     const logFiles = files
       .filter((file) => file.endsWith(".log"))
       .map((file) => ({
         name: file,
         time: fs.statSync(path.join(directory, file)).mtime.getTime(),
       }))
-      .sort((a, b) => b.time - a.time); // Ordenar de más reciente a más antiguo
+      .sort((a, b) => b.time - a.time); 
 
-    // Eliminar logs antiguos si hay más de `maxFiles`
     if (logFiles.length > maxFiles) {
       const filesToDelete = logFiles.slice(maxFiles);
       filesToDelete.forEach((file) => {

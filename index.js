@@ -58,6 +58,8 @@ const timestamp = `${now.getFullYear()}-${formatNumber(now.getMonth() + 1)}-${fo
 )}_${formatNumber(now.getHours())}-${formatNumber(now.getMinutes())}`;
 const logFileName = `${timestamp}.log`;
 const accessLogStream = fs.createWriteStream(path.join(logDir, logFileName), { flags: "a" });
+
+// Configuración de los logs de acceso
 app.use(morgan("combined", { stream: accessLogStream }));
 
 // Llamar a la función para limpiar los logs antiguos
@@ -71,7 +73,7 @@ app.use(
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
-      connectSrc: ["'self'", "https://api.rss2json.com"],
+      connectSrc: ["'self'", "https://api.rss2json.com", "https://alexdevuwu.com"],
       fontSrc: ["'self'"],
       frameSrc: [
         "'self'",
