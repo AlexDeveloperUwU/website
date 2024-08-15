@@ -53,12 +53,12 @@ router.post("/removeEvent", authenticate, validateEventId, (req, res) => {
 });
 
 router.get("/allEvents", (req, res) => {
-  const events = getAllEvents();
+  const events = getAllEvents("simple");
   res.status(200).json(events);
 });
 
 router.get("/manageAllEvents", (req, res) => {
-  const events = getAllEventsId();
+  const events = getAllEvents("full");
   res.status(200).json(events);
 });
 

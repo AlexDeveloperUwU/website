@@ -1,8 +1,9 @@
 import Enmap from "enmap";
 
 export const calendarDB = new Enmap({ name: "calendar" });
+export const linkDB = new Enmap({ name: "linkCutter" });
 
-//* Funciones para generar las ID de los eventos
+//* Funciones para generar las ID de los eventos, que también se puede aplicar a los links
 function shuffleString(str) {
   const arr = str.split("");
   for (let i = arr.length - 1; i > 0; i--) {
@@ -28,6 +29,7 @@ function generateId() {
   return idGenerada;
 }
 
+//* Funciones para manejar los eventos
 export function addEvent(event) {
   let newId;
   do {
@@ -47,27 +49,28 @@ export function removeEvent(event) {
   }
 }
 
-export function getAllEvents() {
+export function getAllEvents(style) {
   const entries = calendarDB.entries();
-  return entries.map(([key, value]) => {
-    return {
-      date: value.date,
-      time: value.time,
-      type: value.type,
-      description: value.description,
-    };
-  });
-}
+  if (style === "full") {
+    return entries.map(([key, value]) => {
+      return {
+        id: key,
+        date: value.date,
+        time: value.time,
+        type: value.type,
+        description: value.description,
+      };
+    });
+  }
 
-export function getAllEventsId() {
-  const entries = calendarDB.entries();
-  return entries.map(([key, value]) => {
-    return {
-      id: key,
-      date: value.date,
-      time: value.time,
-      type: value.type,
-      description: value.description,
-    };
-  });
+  if (style === "simple") {
+    return entries.map(([key, value]) => {
+      return {
+        date: value.date,
+        time: value.time,
+        type: value.type,
+        description: value.description,
+      };
+    });
+  }
 }
