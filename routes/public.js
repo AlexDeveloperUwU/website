@@ -86,6 +86,11 @@ router.get("/l/:id?", async (req, res) => {
   }
 });
 
+// Ruta para el archivo robots.txt
+router.get("/robots.txt", (req, res) => {
+  res.status(404).end();
+});
+
 // Ruta universal para redirigir cuando no se proporciona un `view` válido
 router.get("/:viewName", async (req, res) => {
   const viewName = req.params.viewName;
