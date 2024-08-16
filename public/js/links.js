@@ -5,7 +5,6 @@ $(document).ready(function () {
     $("#editLinkFormContainer").addClass("hidden");
     $("#deleteLinkFormContainer").addClass("hidden");
     $("#allLinksContainer").addClass("hidden");
-    $("#linksGrid").empty();
   });
 
   // Mostrar el formulario de editar enlace
@@ -14,7 +13,6 @@ $(document).ready(function () {
     $("#editLinkFormContainer").removeClass("hidden");
     $("#deleteLinkFormContainer").addClass("hidden");
     $("#allLinksContainer").addClass("hidden");
-    $("#linksGrid").empty();
   });
 
   // Mostrar el formulario de eliminar enlace
@@ -23,7 +21,6 @@ $(document).ready(function () {
     $("#editLinkFormContainer").addClass("hidden");
     $("#deleteLinkFormContainer").removeClass("hidden");
     $("#allLinksContainer").addClass("hidden");
-    $("#linksGrid").empty();
   });
 
   // Mostrar todos los enlaces
@@ -32,7 +29,6 @@ $(document).ready(function () {
     $("#editLinkFormContainer").addClass("hidden");
     $("#deleteLinkFormContainer").addClass("hidden");
     $("#allLinksContainer").removeClass("hidden");
-    $("#linksGrid").empty();
     fetchAllLinks();
   });
 
@@ -43,7 +39,7 @@ $(document).ready(function () {
     var formData = $("#createLinkForm").serialize();
 
     $.ajax({
-      url: "/createLink",
+      url: "/addLink",
       type: "POST",
       headers: {
         Authorization: "Basic " + btoa(username + ":" + password),
@@ -51,11 +47,13 @@ $(document).ready(function () {
       },
       data: formData,
       success: function (response) {
-        console.log("Enlace creado exitosamente:", response);
-        // Puedes actualizar la lista de enlaces si es necesario
+        console.log("Enlace creado exitosamente:", response.message);
+        alert(response.message);
+        $("#createLinkForm")[0].reset(); // Limpia el formulario
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error al crear el enlace:", textStatus, errorThrown);
+        alert("Error al crear el enlace: " + jqXHR.responseJSON.message);
       },
     });
   });
@@ -75,11 +73,13 @@ $(document).ready(function () {
       },
       data: formData,
       success: function (response) {
-        console.log("Enlace editado exitosamente:", response);
-        // Puedes actualizar la lista de enlaces si es necesario
+        console.log("Enlace editado exitosamente:", response.message);
+        alert(response.message);
+        $("#editLinkForm")[0].reset(); // Limpia el formulario
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error al editar el enlace:", textStatus, errorThrown);
+        alert("Error al editar el enlace: " + jqXHR.responseJSON.message);
       },
     });
   });
@@ -91,7 +91,7 @@ $(document).ready(function () {
     var formData = $("#deleteLinkForm").serialize();
 
     $.ajax({
-      url: "/deleteLink",
+      url: "/removeLink",
       type: "POST",
       headers: {
         Authorization: "Basic " + btoa(username + ":" + password),
@@ -99,11 +99,13 @@ $(document).ready(function () {
       },
       data: formData,
       success: function (response) {
-        console.log("Enlace eliminado exitosamente:", response);
-        // Puedes actualizar la lista de enlaces si es necesario
+        console.log("Enlace eliminado exitosamente:", response.message);
+        alert(response.message);
+        $("#deleteLinkForm")[0].reset(); // Limpia el formulario
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error al eliminar el enlace:", textStatus, errorThrown);
+        alert("Error al eliminar el enlace: " + jqXHR.responseJSON.message);
       },
     });
   });
@@ -111,17 +113,25 @@ $(document).ready(function () {
   // Función para obtener y mostrar todos los enlaces
   function fetchAllLinks() {
     $.ajax({
-      url: "/manageAllLinks",
+      url: "/allLinks",
       type: "GET",
       success: function (links) {
         console.log(links);
         var linksGrid = $("#linksGrid");
         linksGrid.empty();
 
-        links.forEach(function (link) {
-          var card = createLinkCard(link);
-          linksGrid.append(card);
-        });
+        // Comprobar si links tiene datos
+        if (Array.isArray(links) && links.length > 0) {
+          links.forEach(function (link) {
+            // link es un array: [id, url]
+            var id = link[0];
+            var url = link[1];
+            var card = createLinkCard(id, url);
+            linksGrid.append(card);
+          });
+        } else {
+          linksGrid.html("<p class='text-gray-400'>No hay enlaces disponibles.</p>");
+        }
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error al obtener los enlaces:", textStatus, errorThrown);
@@ -130,19 +140,12 @@ $(document).ready(function () {
   }
 
   // Función para crear una tarjeta de enlace
-  function createLinkCard(link) {
+  function createLinkCard(id, url) {
     return `
-          <a class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
-            <div class="flex items-center">
-              <div>
-                <p class="font-bold text-gray-100">ID: ${link.id}</p>
-                <p class="text-gray-400">Descripción: ${link.description || "N/A"}</p>
-                <p class="text-gray-400">URL: <a href="${
-                  link.url
-                }" target="_blank" class="text-blue-400">${link.url}</a></p>
-              </div>
-            </div>
-          </a>
-        `;
+      <div class="bg-gray-700 rounded-lg p-4 mb-4 shadow-md">
+        <h4 class="text-xl font-semibold text-gray-100">ID: ${id}</h4>
+        <p class="text-gray-300">URL: <a href="${url}" target="_blank" class="text-blue-400">${url}</a></p>
+      </div>
+    `;
   }
 });

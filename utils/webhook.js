@@ -1,5 +1,4 @@
 import { WebhookClient, EmbedBuilder } from "discord.js";
-
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
@@ -38,12 +37,30 @@ export function apiAlert(type, data) {
   switch (type) {
     case "eventAdded":
       title = "Evento añadido";
-      description = `Se ha añadido el evento con ID ${data.id} con fecha ${data.date} y hora ${data.time}.`;
+      description = `Se añadió el evento con ID ${data.id} con fecha ${data.date} y hora ${data.time}.`;
       color = "#98FB98";
       break;
     case "eventRemoved":
       title = "Evento eliminado";
-      description = `Se ha eliminado el evento con ID ${data.id}.`;
+      description = `Se eliminó el evento con ID ${data.id}.`;
+      color = "#FFB6C1";
+      break;
+    case "linkAdded":
+      title = "Enlace acortado";
+      const shortUrl = `[${data.url.replace(/(^\w+:|^)\/\//, "")}](${data.url})`;
+      description = `Se acortó el enlace con ID: ${data.id} y URL: ${shortUrl}.`;
+      color = "#98FB98";
+      break;
+    case "linkEdited":
+      title = "Enlace editado";
+      const editedUrl = `[${data.url.replace(/(^\w+:|^)\/\//, "")}](${data.url})`;
+      description = `Se editó el enlace con ID: ${data.id} y URL: ${editedUrl}.`;
+      color = "#FFD700";
+      break;
+    case "linkRemoved":
+      title = "Enlace eliminado";
+      const removedUrl = `[${data.url.replace(/(^\w+:|^)\/\//, "")}](${data.url})`;
+      description = `Se eliminó el enlace con ID: ${data.id} y URL: ${removedUrl}.`;
       color = "#FFB6C1";
       break;
   }

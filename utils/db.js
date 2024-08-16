@@ -75,28 +75,29 @@ export function getAllEvents(style) {
   }
 }
 
-//* Funciones para manejar los enlaces acortados
-
-export function addLink(linkData) {
-  let newId = linkData.id;
-
-  if (newId) {
-    if (linkDB.has(newId)) {
-      throw new Error(`ID ${newId} already exists.`);
+//* Funciones para manejar los enlaces
+export function addLink(id, url) {
+  if (id) {
+    if (linkDB.has(id)) {
+      return false;
+    } else {
+      linkDB.set(id, url);
+      return true;
     }
   } else {
+    let newId;
     do {
       newId = generateId();
     } while (linkDB.has(newId));
-  }
 
-  linkDB.set(newId, linkData);
-  return newId;
+    linkDB.set(newId, url);
+    return newId;
+  }
 }
 
-export function updateLink(linkData) {
-  if (linkDB.has(linkData.id)) {
-    linkDB.set(linkData.id, linkData);
+export function editLink(id, url) {
+  if (linkDB.has(id)) {
+    linkDB.set(id, url);
     return true;
   } else {
     return false;
@@ -105,27 +106,18 @@ export function updateLink(linkData) {
 
 export function removeLink(id) {
   if (linkDB.has(id)) {
+    const url = linkDB.get(id);
     linkDB.delete(id);
-    return true;
+    return url;
   } else {
     return false;
   }
 }
 
-export function getLinkData(id) {
-  if (linkDB.has(id)) {
-    return linkDB.get(id);
-  } else {
-    return null;
-  }
+export function getLink(id) {
+  return linkDB.get(id);
 }
 
 export function getAllLinks() {
-  const entries = Array.from(linkDB.entries());
-  return entries.map(([key, value]) => {
-    return {
-      id: key,
-      url: value.url,
-    };
-  });
+  return Array.from(linkDB.entries());
 }

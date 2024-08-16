@@ -2,7 +2,7 @@ import express from "express";
 import { promises as fs } from "fs"; // Usando `promises` para trabajar con promesas en lugar de callbacks
 import path from "path";
 import { fileURLToPath } from "url";
-import { getLinkData } from "../utils/db.js"; // Importa la función para obtener datos del enlace
+import { getLink } from "../utils/db.js";
 
 const router = express.Router();
 const __filename = fileURLToPath(import.meta.url);
@@ -52,21 +52,32 @@ router.get("/error", async (req, res) => {
   }
 });
 
-// Ruta para manejar redirecciones desde `/l?id=id`
-router.get("/l", async (req, res) => {
-  const id = req.query.id;
+// Ruta para manejar redirecciones
+router.get("/l/:id?", async (req, res) => {
+  const id = req.params.id || req.query.id;
 
   if (!id) {
     return res.redirect("/error?code=400");
   }
 
   try {
-    const linkData = getLinkData(id);
+    let linkData = getLink(id);
 
     if (linkData) {
-      res.setHeader("X-Robots-Tag", "noindex, nofollow");
-      res.setHeader("Referrer-Policy", "no-referrer");
-      res.redirect(linkData.url);
+      const destinationUrl = new URL(linkData);
+      destinationUrl.searchParams.set("referrer", "alexdevuwu.com");
+
+      if (
+        destinationUrl.hostname === "www.youtube.com" ||
+        destinationUrl.hostname === "youtube.com"
+      ) {
+        res.setHeader("X-Robots-Tag", "noindex, nofollow");
+        res.setHeader("Referrer-Policy", "no-referrer");
+      } else {
+        res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+      }
+
+      res.redirect(destinationUrl.toString());
     } else {
       res.redirect("/error?code=404");
     }
