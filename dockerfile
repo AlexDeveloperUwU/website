@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD [ "node", "cluster.js" ]
+CMD [ "node", "index.js" ]
