@@ -19,23 +19,23 @@
         <form id="addEventForm" class="space-y-6">
           <div>
             <label for="user" class="block text-sm font-bold text-gray-100">Usuario</label>
-            <input type="text" id="userAddEvent" name="user" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="text" id="userAddEvent" name="user" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <label for="password" class="block text-sm font-bold text-gray-100">Contraseña</label>
-            <input type="password" id="passwordAddEvent" name="password" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="password" id="passwordAddEvent" name="password" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <label for="date" class="block text-sm font-bold text-gray-100">Fecha</label>
-            <input type="date" id="dateAddEvent" name="date" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="date" id="dateAddEvent" name="date" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <label for="time" class="block text-sm font-bold text-gray-100">Hora</label>
-            <input type="text" id="timeAddEvent" name="time" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="HH:MM" required>
+            <input type="text" id="timeAddEvent" name="time" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="HH:MM" required>
           </div>
           <div>
             <label for="type" class="block text-sm font-bold text-gray-100">Tipo</label>
-            <select id="typeAddEvent" name="type" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <select id="typeAddEvent" name="type" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
               <option value="" disabled selected>Selecciona un tipo</option>
               <option value="Twitch">Twitch</option>
               <option value="YouTube">YouTube</option>
@@ -44,7 +44,7 @@
           </div>
           <div>
             <label for="description" class="block text-sm font-bold text-gray-100">Descripción</label>
-            <textarea id="descriptionAddEvent" name="description" rows="4" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required></textarea>
+            <textarea id="descriptionAddEvent" name="description" rows="4" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required></textarea>
           </div>
           <div>
             <button type="button" id="submitAddEventForm" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Añadir Evento</button>
@@ -59,15 +59,15 @@
         <form id="deleteEventForm" class="space-y-6">
           <div>
             <label for="user" class="block text-sm font-bold text-gray-100">Usuario</label>
-            <input type="text" autocomplete="username" id="userDeleteEvent" name="user" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="text" autocomplete="username" id="userDeleteEvent" name="user" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <label for="password" class="block text-sm font-bold text-gray-100">Contraseña</label>
-            <input type="password" autocomplete="current-password" id="passwordDeleteEvent" name="password" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="password" autocomplete="current-password" id="passwordDeleteEvent" name="password" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <label for="id" class="block text-sm font-bold text-gray-100">ID Evento</label>
-            <input type="text" id="id" name="id" class="mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
+            <input type="text" id="id" name="id" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
             <button type="button" id="submitDeleteEventForm" class="inline-block px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Eliminar Evento</button>

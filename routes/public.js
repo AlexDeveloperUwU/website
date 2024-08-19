@@ -9,29 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const titlesPath = path.resolve(__dirname, "../public/json/titles.json");
 
-// Ruta principal que maneja la visualización de páginas según el parámetro `view`
-router.get("/", async (req, res) => {
-  const view = req.query.view || "index";
-
-  const extraQueries = { ...req.query };
-  delete extraQueries.view;
-
-  try {
-    const data = await fs.readFile(titlesPath, "utf8");
-    const titles = JSON.parse(data);
-
-    if (titles[view]) {
-      const pageTitle = titles[view];
-      res.render("main", { view, pageTitle, data: extraQueries });
-    } else {
-      res.redirect("/error?code=404");
-    }
-  } catch (err) {
-    const pageTitle = "Web Oficial";
-    res.render("main", { view: "index", pageTitle, data: extraQueries });
-  }
-});
-
 // Ruta para manejar los errores
 router.get("/error", async (req, res) => {
   const view = req.query.code || "404";
@@ -92,15 +69,23 @@ router.get("/robots.txt", (req, res) => {
 });
 
 // Ruta universal para redirigir cuando no se proporciona un `view` válido
-router.get("/:viewName", async (req, res) => {
-  const viewName = req.params.viewName;
+router.get(["/:viewName", "/"], async (req, res) => {
+  const viewName = req.params.viewName || req.query.view || "index";
+
+  const extraQueries = { ...req.query };
+  delete extraQueries.view;
 
   try {
     const data = await fs.readFile(titlesPath, "utf8");
     const titles = JSON.parse(data);
 
     if (titles[viewName]) {
-      res.redirect(`/?view=${viewName}`);
+      if (req.params.viewName) {
+        res.redirect(`/?view=${viewName}`);
+      } else {
+        const pageTitle = titles[viewName];
+        res.render("main", { view: viewName, pageTitle, data: extraQueries });
+      }
     } else {
       res.redirect("/error?code=404");
     }

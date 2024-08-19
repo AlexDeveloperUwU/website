@@ -4,21 +4,21 @@
 
 <body class="flex min-h-screen flex-col bg-gray-900 text-white font-jetbrains">
   <header id="main-header" class="bg-gray-800 p-4 flex justify-between items-center">
-    <a href="?view=index">
+    <a href="/?view=index">
       <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
     </a>
     <% if (view !== 'index' && view !== 'manager') { %>
-    <a href="?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
       Volver al inicio
     </a>
     <% } %>
     <% if (view !== 'index' && !data.type) { %>
-    <a href="?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
+    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
       Volver al inicio
     </a>
     <% } %>
     <% if (view === 'manager' && data.type) { %>
-    <a href="?view=manager" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
+    <a href="/?view=manager" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
       Volver al manager
     </a>
     <% } %>
