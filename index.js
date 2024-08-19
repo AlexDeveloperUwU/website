@@ -1,4 +1,3 @@
-// Importación de módulos necesarios
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
@@ -8,8 +7,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import fs from "fs";
-
-// Importación de las utilidades de inicio
+import rateLimiter from "./utils/ratelimiter.js";
 import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./utils/startup.js";
 
 // Inicialización del servidor Express
@@ -92,6 +90,9 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(helmet.hsts({ maxAge: 63072000, includeSubDomains: true, preload: true }));
 app.disable("x-powered-by");
+
+// Middleware de rate limiting
+app.use(rateLimiter);
 
 // Middleware de manejo de errores
 app.use((err, req, res, next) => {
