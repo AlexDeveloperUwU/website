@@ -22,7 +22,7 @@ export function cleanOldLogs(directory, maxFiles) {
         name: file,
         time: fs.statSync(path.join(directory, file)).mtime.getTime(),
       }))
-      .sort((a, b) => b.time - a.time); 
+      .sort((a, b) => b.time - a.time);
 
     if (logFiles.length > maxFiles) {
       const filesToDelete = logFiles.slice(maxFiles);
@@ -30,6 +30,23 @@ export function cleanOldLogs(directory, maxFiles) {
         fs.unlinkSync(path.join(directory, file.name));
       });
     }
+  });
+
+  // Llamar a la función para vaciar la carpeta de caché
+  clearCacheDirectory(path.join(directory, "..", "cache"));
+}
+
+// Función para vaciar la carpeta de caché
+export function clearCacheDirectory(cacheDir) {
+  fs.readdir(cacheDir, (err, files) => {
+    if (err) {
+      console.error("Error leyendo la carpeta de caché:", err);
+      return;
+    }
+
+    files.forEach((file) => {
+      fs.unlinkSync(path.join(cacheDir, file));
+    });
   });
 }
 

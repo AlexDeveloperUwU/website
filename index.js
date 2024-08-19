@@ -38,9 +38,6 @@ app.use(minify({ cache: cacheDir }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Configuración para manejar proxies
-app.enable("trust proxy");
-
 // Configuración de compresión de respuestas
 app.use(compression());
 
