@@ -1,3 +1,5 @@
+// El script de clustering no se usa en producciín por motivos de que por el momento, no lo veo necesario ya que la carga de la web no es suficiente como para necesitarlo. Pero si se llegara a necesitar, se puede usar el siguiente script:
+
 import cluster from "cluster";
 import os from "os";
 
