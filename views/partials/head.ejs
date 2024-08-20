@@ -16,8 +16,10 @@
 
   <!-- Scripts -->
   <script src="/js/thirdparty/jquery.min.js"></script>
-  <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
-
+  <% if (view == 'youtube') { %>
+    <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
+  <% } %>
+  
   <!-- Título de la página -->
   <title><%= pageTitle %> | AlexDevUwU</title>
 </head>
