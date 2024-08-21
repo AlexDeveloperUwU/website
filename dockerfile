@@ -4,14 +4,13 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN apk add --no-cache python3 make g++
-
-RUN npm install
-
-RUN apk del python3 make g++
+# Instala las dependencias necesarias para compilar, instala npm y luego las elimina en la misma capa
+RUN apk add --no-cache python3 make g++ &&
+    npm install &&
+    apk del python3 make g++
 
 COPY . .
 
 EXPOSE 3000
 
-CMD [ "node", "index.js" ]
+CMD ["node", "index.js"]
