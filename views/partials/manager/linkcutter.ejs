@@ -91,9 +91,19 @@
 
     <div id="allLinksContainer" class="hidden mt-6">
       <h3 class="mb-4 text-2xl font-bold text-white">Listado de Enlaces</h3>
-      <div id="linksGrid" class="grid grid-cols-1 gap-2">
-      </div>
+      <div id="linksGrid" class="grid grid-cols-1 gap-2"></div>
     </div>
+
+    <style>
+      .link-card p {
+        word-wrap: break-word;
+      }
+
+      .link-card a {
+        word-wrap: break-word;
+        white-space: normal;
+      }
+    </style>
   </section>
   <%- include(`../scripts.ejs`) %>
 </main>

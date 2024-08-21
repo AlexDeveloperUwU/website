@@ -142,9 +142,9 @@ $(document).ready(function () {
   // Función para crear una tarjeta de enlace
   function createLinkCard(id, url) {
     return `
-      <div class="bg-gray-700 rounded-lg p-4 mb-4 shadow-md">
-        <h4 class="text-xl font-semibold text-gray-100">ID: ${id}</h4>
-        <p class="text-gray-300">URL: <a href="${url}" target="_blank" class="text-blue-400">${url}</a></p>
+      <div class="link-card bg-gray-700 rounded-lg p-4 mb-4 shadow">
+        <h4 class="text-xl font-semibold text-gray-300">ID: ${id}</h4>
+        <p class="text-gray-400"><a href="${url}" target="_blank" class="text-blue-400 hover:underline" title="${url}">${url}</a></p>
       </div>
     `;
   }
