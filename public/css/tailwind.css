@@ -1,7 +1,3 @@
-html {
-  scroll-behavior: smooth;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -149,6 +145,10 @@ html {
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom scrollbar styles using Tailwind CSS colors */
 body::-webkit-scrollbar {
   width: 0px;
@@ -183,9 +183,16 @@ header {
 
 html {
   user-select: none;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.content-selectable {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 body {

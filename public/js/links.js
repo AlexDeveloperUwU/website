@@ -143,8 +143,8 @@ $(document).ready(function () {
   function createLinkCard(id, url) {
     return `
       <div class="link-card bg-gray-700 rounded-lg p-4 mb-4 shadow">
-        <h4 class="text-xl font-semibold text-gray-300">ID: ${id}</h4>
-        <p class="text-gray-400"><a href="${url}" target="_blank" class="text-blue-400 hover:underline" title="${url}">${url}</a></p>
+        <h4 class="text-xl font-semibold text-gray-300 content-selectable">ID: ${id}</h4>
+        <p class="text-gray-400"><a href="${url}" target="_blank" class="content-selectable text-blue-400 hover:underline" title="${url}">${url}</a></p>
       </div>
     `;
   }
