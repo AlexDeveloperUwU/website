@@ -26,7 +26,7 @@ jobs:
           echo "Connecting to remote server..."  
           ssh -o StrictHostKeyChecking=no ubuntu@codenexis << 'EOF'
             echo "Starting deployment..."  
-            cd alexdeveloperuwu.github.io
+            cd website
             echo "Running deploy.sh..."  
             sudo su -c 'bash deploy.sh 2>&1 | tee -a /tmp/deployment_script.log'
             echo "Deployment completed."  
