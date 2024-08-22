@@ -1,28 +1,3 @@
-<% if (view === 'index') { %>
-<script src="/js//minified/calendar.js"></script>
-<script src="/js/minified/form.js"></script>
-<script src="/js/minified/loadProjects.js"></script>
-<% } %>
-
-<% if (view === 'twitch') { %>
-<script src="/js/minified/twitch.js"></script>
-<% } %>
-
-<% if (view === 'kick') { %>
-<script src="/js/minified/kick.js"></script>
-<% } %>
-
-<% if (view === 'youtube') { %>
-<script src="/js/minified/youtube.js"></script>
-<% } %>
-
-<% if (view === 'manager' && data.type == 'calendar') { %>
-<script src="/js/minified/calmanager.js"></script>
-<% } %>
-<% if (view === 'manager' && data.type == 'linkcutter') { %>
-<script src="/js/minified/links.js"></script>
-<% } %>
-
 <script>
   function showMainContent() {
     const mainContent = document.querySelector('main');

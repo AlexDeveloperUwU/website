@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./partials/head') %>
+
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="preload" href="/css/main.css" as="style">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preload" href="/css/thirdparty/fawesome/css/all.min.css" as="style">
+  <link rel="stylesheet" href="/css/thirdparty/fawesome/css/all.min.css">
+
+  <!-- Scripts -->
+  <script src="/js/thirdparty/jquery.min.js"></script>
+  <% if (view == 'youtube') { %>
+  <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
+  <% } %>
+
+  <!-- Título de la página -->
+  <title><%= title %> | AlexDevUwU</title>
+</head>
 
 <body class="flex min-h-screen flex-col bg-gray-900 text-white font-jetbrains">
   <header id="main-header" class="bg-gray-800 p-4 flex justify-between items-center">
     <a href="/?view=index">
       <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
     </a>
-    <% if (view !== 'index' && view !== 'manager') { %>
+    <% if (type == "content" && view !== "index") { %>
     <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
       Volver al inicio
     </a>
     <% } %>
-    <% if (view !== 'index' && !data.type) { %>
-    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
-      Volver al inicio
+    <% if (type == "admin" && view !== "index") { %>
+    <a href="/admin?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+      Volver al panel
     </a>
     <% } %>
-    <% if (view === 'manager' && data.type) { %>
-    <a href="/?view=manager" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
-      Volver al manager
+    <% if (type == "error" ) { %>
+    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+      Volver al inicio
     </a>
     <% } %>
   </header>
 
-  <%- include(`partials/${view}.ejs`) %>
+  <%- include(`${route}.ejs`) %>
 
   <br><br>
   <script>

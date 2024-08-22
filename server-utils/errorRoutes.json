@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "view": "401",
+      "title": "Error 401",
+      "folder": "errors/401"
+    },
+    {
+      "view": "403",
+      "title": "Error 403",
+      "folder": "errors/403"
+    },
+    {
+      "view": "404",
+      "title": "Error 404",
+      "folder": "errors/404"
+    },
+    {
+      "view": "500",
+      "title": "Error 500",
+      "folder": "errors/500"
+    },
+    {
+      "view": "502",
+      "title": "Error 502",
+      "folder": "errors/502"
+    },
+    {
+      "view": "503",
+      "title": "Error 503",
+      "folder": "errors/503"
+    }
+  ]
+}

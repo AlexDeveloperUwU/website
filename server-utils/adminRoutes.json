@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "view": "index",
+      "title": "Admin Zone",
+      "folder": "admin/index"
+    },
+    {
+      "view": "linkcutter",
+      "title": "Link Cutter",
+      "folder": "admin/linkcutter"
+    },
+    {
+      "view": "calendar",
+      "title": "Calendar Manager",
+      "folder": "admin/calendar"
+    }
+  ]
+}
