@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.14",
     "autoprefixer": "^10.4.20",
     "basic-auth": "^2.0.1",
     "compression": "^1.7.4",
@@ -31,7 +27,8 @@
   "scripts": {
     "init": "nodemon index.js",
     "css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch --minify",
-    "minify": "node ./utils/minify.js"
+    "minify": "node ./utils/minify.js",
+    "autominify": "nodemon --watch public/js --ignore public/js/**/ --exec \"npm run minify\""
   },
   "repository": {
     "type": "git",
