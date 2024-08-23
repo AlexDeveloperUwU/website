@@ -15,6 +15,12 @@ const contentRoutesPath = path.join(__dirname, "..", "server-utils", "contentRou
 const adminRoutesPath = path.join(__dirname, "..", "server-utils", "adminRoutes.json");
 const errorRoutesPath = path.join(__dirname, "..", "server-utils", "errorRoutes.json");
 
+// Ruta para el archivo robots.txt
+router.get("/robots.txt", (req, res) => {
+  res.status(404).end();
+});
+
+// Ruta para el apartado de administración
 router.get(["/admin/:viewName", "/admin"], async (req, res) => {
   const viewName = req.params.viewName || req.query.view || "index";
 
@@ -31,6 +37,7 @@ router.get(["/admin/:viewName", "/admin"], async (req, res) => {
       res.redirect("/error?code=404");
     }
   } catch (err) {
+    console.error("Error reading or parsing adminRoutes.json:", err);
     res.redirect("/error?code=500");
   }
 });
@@ -65,15 +72,12 @@ router.get("/l/:id?", async (req, res) => {
       res.redirect("/error?code=404");
     }
   } catch (err) {
+    console.error("Error handling redirection:", err);
     res.redirect("/error?code=500");
   }
 });
 
-// Ruta para el archivo robots.txt
-router.get("/robots.txt", (req, res) => {
-  res.status(404).end();
-});
-
+// Ruta para mostrar errores
 router.get(["/error/:viewName", "/error"], async (req, res) => {
   const code = req.params.code || req.query.code;
 
@@ -96,6 +100,7 @@ router.get(["/error/:viewName", "/error"], async (req, res) => {
 });
 
 //! ESTA RUTA SIEMPRE DEBE IR AL FINAL
+// Ruta para el contenido público
 router.get(["/:viewName", "/"], async (req, res) => {
   const viewName = req.params.viewName || req.query.view || "index";
 
@@ -112,7 +117,8 @@ router.get(["/:viewName", "/"], async (req, res) => {
       res.redirect("/error?code=404");
     }
   } catch (err) {
-    res.redirect("/error?code=404");
+    console.error("Error reading or parsing contentRoutes.json:", err);
+    res.redirect("/error?code=500");
   }
 });
 

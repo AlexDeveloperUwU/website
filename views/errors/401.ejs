@@ -1,20 +1,22 @@
 <main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64 hidden">
-    <section class="mx-auto mt-10 max-w-4xl text-left">
-      <h3 class="mb-4 text-2xl font-bold">Error 401 - No autorizado</h3>
-      <div class="space-y-6">
-        <div class="block rounded-lg bg-gray-800 p-6">
-          <div class="flex items-center">
-            <i class="fa-solid fa-user-lock mr-3 text-gray-300"></i>
-            <div>
-              <p class="font-bold text-gray-100">Necesitas autenticación para acceder a esta página.</p>
-              <p class="text-gray-400 font-agrandir">Por favor, asegúrate de estar autenticado e inténtalo de nuevo.</p>
-            </div>
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold text-red-500 flex items-center">
+      <i class="fa-solid fa-exclamation-triangle mr-3 text-red-400"></i>
+      Error 401 - No autorizado
+    </h3>
+    <div class="space-y-6">
+      <div class="block rounded-lg bg-gray-800 p-6">
+        <div class="flex items-center">
+          <i class="fa-solid fa-user-lock mr-3 text-gray-300"></i>
+          <div>
+            <p class="font-bold text-gray-100">Necesitas autenticación para acceder a esta página.</p>
+            <p class="text-gray-400 font-agrandir">Por favor, asegúrate de estar autenticado e inténtalo de nuevo.</p>
           </div>
         </div>
       </div>
-    </section>
-  
-    <!-- Sección de scripts -->
-    <%- include(`../scripts.ejs`) %>
-  </main>
-  
+    </div>
+  </section>
+
+  <!-- Sección de scripts -->
+  <%- include(`../scripts.ejs`) %>
+</main>
