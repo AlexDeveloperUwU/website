@@ -45,7 +45,7 @@
       <i class="fab fa-github mr-3 text-gray-300"></i>
       Proyectos
     </h3>
-    <div id="projects-container" class="space-y-6">
+    <div id="projects-container" class="space-y-4">
     </div>
   </section>
   <section class="mx-auto mt-10 max-w-4xl text-left">
@@ -53,7 +53,7 @@
       <i class="fas fa-share-alt mr-3 text-gray-300"></i>
       Plataformas de contenido
     </h3>
-    <div class="space-y-6">
+    <div class="space-y-4">
       <a href="/?view=twitch" class="block rounded-lg bg-gray-800 p-6 hover:bg-blue-700">
         <div class="flex items-center">
           <i class="fab fa-twitch mr-3 text-gray-300"></i>
@@ -88,7 +88,7 @@
       <i class="fas fa-calendar mr-3 text-gray-300"></i>
       Calendario
     </h3>
-    <div class="space-y-6">
+    <div class="space-y-4">
       <div id="toggleCalendarCard" class="block rounded-lg bg-gray-800 p-6 cursor-pointer transition-colors duration-200">
         <div class="flex items-center">
           <i class="fa-solid fa-calendar mr-3 text-gray-300"></i>
@@ -114,32 +114,57 @@
   <section class="mx-auto mt-10 max-w-4xl text-left">
     <h3 class="mb-4 text-2xl font-bold text-white flex items-center">
       <i class="fas fa-envelope mr-3 text-gray-300"></i>
-      Formulario de contacto
+      Contacta conmigo
     </h3>
-    <div id="formContainerDiv" class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-      <div class="p-6">
-        <form id="contactForm" method="POST" class="space-y-6">
+    <div class="space-y-4">
+      <a href="#" id="copyEmail" class="block rounded-lg border border-gray-800 bg-gray-800 p-6 hover:bg-blue-700 cursor-pointer transition-all duration-300 ease-in-out">
+        <div class="flex items-center">
+          <i class="fas fa-envelope mr-3 text-gray-300"></i>
           <div>
-            <label for="name" class="block text-sm font-bold text-gray-100">Nombre / Nick</label>
-            <input type="text" id="name" name="name" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="¿Cómo te gustaría que te llame?" required>
+            <p class="font-bold text-gray-100">Contactarme por correo electrónico</p>
+            <p class="text-gray-400 font-agrandir">Haz clic aquí para copiar mi e-mail de contacto!</p>
           </div>
+        </div>
+      </a>
+      <a href="#" id="copyDiscord" class="block rounded-lg border border-gray-800 bg-gray-800 p-6 hover:bg-blue-700 cursor-pointer transition-all duration-300 ease-in-out">
+        <div class="flex items-center">
+          <i class="fab fa-discord mr-3 text-gray-300"></i>
           <div>
-            <label for="email" class="block text-sm font-bold text-gray-100">Correo electrónico de contacto</label>
-            <input type="email" id="email" name="email" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="Introduce tu correo electrónico para que pueda responderte" required>
+            <p class="font-bold text-gray-100">Contactarme por Discord</p>
+            <p class="text-gray-400 font-agrandir">Haz clic aquí para copiar mi nombre de usuario!</p>
           </div>
-          <div>
-            <label for="message" class="block text-sm font-bold text-gray-100">Mensaje</label>
-            <textarea id="message" name="message" rows="4" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" maxlength="3584" placeholder="Escribe aquí el mensaje que deseas enviarme" required></textarea>
-          </div>
-          <div>
-            <button id="sendContactForm" type="submit" class="inline-block px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600">Enviar mensaje</button>
-          </div>
-        </form>
+        </div>
+      </a>
+      <div id="formContainerDiv" class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+        <div class="p-6">
+          <h4 class="mb-4 text-xl font-bold text-white flex items-center">
+            <i class="fas fa-envelope mr-3 text-gray-300"></i>
+            Formulario de contacto
+          </h4>
+          <form id="contactForm" method="POST" class="space-y-4">
+            <div>
+              <label for="name" class="block text-sm font-bold text-gray-100">Nombre / Nick</label>
+              <input type="text" id="name" name="name" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="¿Cómo te gustaría que te llame?" required>
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-bold text-gray-100">Correo electrónico de contacto</label>
+              <input type="email" id="email" name="email" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" placeholder="Introduce tu correo electrónico para que pueda responderte" required>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-bold text-gray-100">Mensaje</label>
+              <textarea id="message" name="message" rows="4" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" maxlength="3584" placeholder="Escribe aquí el mensaje que deseas enviarme" required></textarea>
+            </div>
+            <div>
+              <button id="sendContactForm" type="submit" class="inline-block px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600">Enviar mensaje</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
   <script src="/js/minified/calendar.js"></script>
   <script src="/js/minified/form.js" defer></script>
   <script src="/js/minified/loadProjects.js"></script>
+  <script src="/js/minified/copyContact.js"></script>
   <%- include(`../scripts.ejs`) %>
 </main>

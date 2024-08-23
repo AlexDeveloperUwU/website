@@ -17,5 +17,5 @@ if (cluster.isPrimary) {
   });
 } else {
   // Importar y ejecutar el servidor en cada worker
-  await import("./index.js");
+  await import("../index.js");
 }
