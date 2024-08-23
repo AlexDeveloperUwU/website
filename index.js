@@ -68,7 +68,7 @@ app.use(
       scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com/"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
-      connectSrc: ["'self'", "https://api.rss2json.com", "https://alexdevuwu.com"],
+      connectSrc: ["'self'", "https://api.rss2json.com", "https://alexdevuwu.com", "https://api.lanyard.rest"],
       fontSrc: ["'self'"],
       frameSrc: [
         "'self'",

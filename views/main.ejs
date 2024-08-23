@@ -6,23 +6,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
-
   <!-- Favicon -->
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-
   <!-- CSS -->
   <link rel="preload" href="/css/main.css" as="style">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="preload" href="/css/thirdparty/fawesome/css/all.min.css" as="style">
   <link rel="stylesheet" href="/css/thirdparty/fawesome/css/all.min.css">
-
   <!-- Scripts -->
-  <script src="/js/thirdparty/jquery.min.js"></script>
+  <script src="/js/thirdparty/jquery.min.js" defer></script>
   <% if (view == 'youtube') { %>
   <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
   <% } %>
-
   <!-- Título de la página -->
   <title><%= title %> | AlexDevUwU</title>
 </head>
