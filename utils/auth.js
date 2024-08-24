@@ -8,6 +8,8 @@ import path from "path";
 const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "env", ".env");
 dotenv.config({ path: envPath });
 
+const allowedUserIds = ["419176939497193472", "326957915099627530"];
+
 passport.use(
   new DiscordStrategy(
     {
@@ -17,7 +19,11 @@ passport.use(
       scope: ["identify", "email"],
     },
     (accessToken, refreshToken, profile, done) => {
-      return done(null, profile);
+      if (allowedUserIds.includes(profile.id)) {
+        return done(null, profile);
+      } else {
+        return done(null, false, { message: "Unauthorized" });
+      }
     }
   )
 );
@@ -54,6 +60,7 @@ const setupAuth = (app) => {
       res.redirect("/");
     });
   });
+
 };
 
 export default setupAuth;
