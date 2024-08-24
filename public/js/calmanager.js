@@ -29,15 +29,12 @@ $(document).ready(function () {
 
   // Enviar el formulario de añadir evento
   $("#submitAddEventForm").on("click", function () {
-    var username = $("#userAddEvent").val();
-    var password = $("#passwordAddEvent").val();
     var formData = $("#addEventForm").serialize();
 
     $.ajax({
       url: "/addEvent",
       type: "POST",
       headers: {
-        Authorization: "Basic " + btoa(username + ":" + password),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: formData,
@@ -53,15 +50,12 @@ $(document).ready(function () {
 
   // Enviar el formulario de eliminar evento
   $("#submitDeleteEventForm").on("click", function () {
-    var username = $("#userDeleteEvent").val();
-    var password = $("#passwordDeleteEvent").val();
     var formData = $("#deleteEventForm").serialize();
 
     $.ajax({
       url: "/removeEvent",
       type: "POST",
       headers: {
-        Authorization: "Basic " + btoa(username + ":" + password),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: formData,

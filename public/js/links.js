@@ -34,15 +34,12 @@ $(document).ready(function () {
 
   // Enviar el formulario de crear enlace
   $("#submitCreateLinkForm").on("click", function () {
-    var username = $("#userCreateLink").val();
-    var password = $("#passwordCreateLink").val();
     var formData = $("#createLinkForm").serialize();
 
     $.ajax({
       url: "/addLink",
       type: "POST",
       headers: {
-        Authorization: "Basic " + btoa(username + ":" + password),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: formData,
@@ -60,15 +57,12 @@ $(document).ready(function () {
 
   // Enviar el formulario de editar enlace
   $("#submitEditLinkForm").on("click", function () {
-    var username = $("#userEditLink").val();
-    var password = $("#passwordEditLink").val();
     var formData = $("#editLinkForm").serialize();
 
     $.ajax({
       url: "/editLink",
       type: "POST",
       headers: {
-        Authorization: "Basic " + btoa(username + ":" + password),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: formData,
@@ -86,15 +80,12 @@ $(document).ready(function () {
 
   // Enviar el formulario de eliminar enlace
   $("#submitDeleteLinkForm").on("click", function () {
-    var username = $("#userDeleteLink").val();
-    var password = $("#passwordDeleteLink").val();
     var formData = $("#deleteLinkForm").serialize();
 
     $.ajax({
       url: "/removeLink",
       type: "POST",
       headers: {
-        Authorization: "Basic " + btoa(username + ":" + password),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: formData,
