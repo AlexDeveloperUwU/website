@@ -1,4 +1,4 @@
-<main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64 hidden">
+<main class="container mx-auto mt-10 flex-grow px-8 sm:px-16 lg:px-24 hidden">
   <section class="mx-auto mt-10 max-w-4xl text-left">
     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
       <div class="p-6">
@@ -6,18 +6,18 @@
           <i class="fa-solid fa-link mr-3 text-gray-300"></i>
           Selecciona la acción
         </h3>
-        <div class="flex space-x-4">
-          <button id="showCreateLinkForm" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center">
+        <div class="flex flex-wrap gap-4">
+          <button id="showCreateLinkForm" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center w-full sm:w-auto">
             <i class="fa-solid fa-plus mr-2"></i>Crear Enlace
           </button>
-          <button id="showEditLinkForm" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 flex items-center">
+          <button id="showEditLinkForm" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 flex items-center w-full sm:w-auto">
             <i class="fa-solid fa-edit mr-2"></i>Editar Enlace
           </button>
-          <button id="showDeleteLinkForm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center">
+          <button id="showDeleteLinkForm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center w-full sm:w-auto">
             <i class="fa-solid fa-trash mr-2"></i>Eliminar Enlace
           </button>
-          <button id="showAllLinks" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 flex items-center">
-            <i class="fa-solid fa-eye mr-2"></i>Mostrar Todos los Enlaces
+          <button id="showAllLinks" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 flex items-center w-full sm:w-auto">
+            <i class="fa-solid fa-eye mr-2"></i>Mostrar Enlaces
           </button>
         </div>
       </div>
@@ -47,7 +47,7 @@
             <input type="password" id="passwordCreateLink" name="password" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
-            <button type="button" id="submitCreateLinkForm" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center">
+            <button type="button" id="submitCreateLinkForm" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 flex items-center w-full">
               <i class="fa-solid fa-check mr-2"></i>Crear Enlace
             </button>
           </div>
@@ -79,7 +79,7 @@
             <input type="password" id="passwordEditLink" name="password" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-yellow-400 focus:ring focus:ring-yellow-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
-            <button type="button" id="submitEditLinkForm" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 flex items-center">
+            <button type="button" id="submitEditLinkForm" class="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 flex items-center w-full">
               <i class="fa-solid fa-check mr-2"></i>Editar Enlace
             </button>
           </div>
@@ -107,7 +107,7 @@
             <input type="password" id="passwordDeleteLink" name="password" class="font-agrandir mt-1 block w-full bg-gray-700 border-gray-600 rounded-md shadow-sm focus:border-red-400 focus:ring focus:ring-red-400 focus:ring-opacity-50 text-white" required>
           </div>
           <div>
-            <button type="button" id="submitDeleteLinkForm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center">
+            <button type="button" id="submitDeleteLinkForm" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 flex items-center w-full">
               <i class="fa-solid fa-check mr-2"></i>Eliminar Enlace
             </button>
           </div>
