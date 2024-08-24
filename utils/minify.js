@@ -2,6 +2,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import { minify } from "terser";
+import chokidar from "chokidar";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -44,4 +45,17 @@ async function minifyFiles() {
   }
 }
 
-minifyFiles();
+const watcher = chokidar.watch(inputDir, {
+  persistent: true,
+  ignoreInitial: true,
+  depth: 0, 
+  awaitWriteFinish: {
+    stabilityThreshold: 2000,
+    pollInterval: 100,
+  },
+});
+
+watcher.on("add", minifyFiles);
+watcher.on("change", minifyFiles);
+
+console.log(`Watching for changes in ${inputDir}...`);

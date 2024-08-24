@@ -1,1 +1,0 @@
-window.addEventListener("load",(function(){const t=document.querySelector(".twitch"),e=t.querySelector(".twitch-video iframe"),c=t.querySelector(".twitch-chat iframe"),a=window.location.hostname;e.src=`https://player.twitch.tv/?channel=alexdevuwu&parent=${a}&autoplay=true`,c.src=`https://www.twitch.tv/embed/alexdevuwu/chat?parent=${a}`,t.style.display="block"}));

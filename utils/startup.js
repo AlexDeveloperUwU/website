@@ -1,14 +1,12 @@
 import fs from "fs";
 import path from "path";
 
-// Función para asegurarse de que un directorio exista
 export function ensureDirExists(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
 }
 
-// Función para eliminar logs antiguos y conservar solo los últimos `maxFiles`
 export function cleanOldLogs(directory, maxFiles) {
   fs.readdir(directory, (err, files) => {
     if (err) {
@@ -32,11 +30,9 @@ export function cleanOldLogs(directory, maxFiles) {
     }
   });
 
-  // Llamar a la función para vaciar la carpeta de caché
   clearCacheDirectory(path.join(directory, "..", "cache"));
 }
 
-// Función para vaciar la carpeta de caché
 export function clearCacheDirectory(cacheDir) {
   fs.readdir(cacheDir, (err, files) => {
     if (err) {
@@ -50,7 +46,6 @@ export function clearCacheDirectory(cacheDir) {
   });
 }
 
-// Función para verificar variables de entorno necesarias
 export function verifyEnvVars(requiredVars) {
   requiredVars.forEach((varName) => {
     if (!process.env[varName]) {
