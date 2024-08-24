@@ -9,6 +9,7 @@ import compression from "compression";
 import fs from "fs";
 import rateLimiter from "./utils/ratelimiter.js";
 import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./utils/startup.js";
+import setupAuth from "./utils/auth.js";
 
 // Inicialización del servidor Express
 const app = express();
@@ -41,6 +42,9 @@ app.use(express.json());
 // Configuración de compresión de respuestas
 app.use(compression());
 
+// Configuración de autenticación con Passport
+setupAuth(app);
+
 // Configuración del directorio y archivo de logs
 const logDir = path.join(__dirname, "logs");
 ensureDirExists(logDir);
@@ -68,7 +72,12 @@ app.use(
       scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com/"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
-      connectSrc: ["'self'", "https://api.rss2json.com", "https://alexdevuwu.com", "https://api.lanyard.rest"],
+      connectSrc: [
+        "'self'",
+        "https://api.rss2json.com",
+        "https://alexdevuwu.com",
+        "https://api.lanyard.rest",
+      ],
       fontSrc: ["'self'"],
       frameSrc: [
         "'self'",
@@ -105,7 +114,15 @@ app.use(apiRoutes);
 app.use(publicRoutes);
 
 // Verificación de variables de entorno necesarias
-const requiredEnvVars = ["formWebhookUrl", "logsWebhookUrl", "authUser", "authPass"];
+const requiredEnvVars = [
+  "formWebhookUrl",
+  "logsWebhookUrl",
+  "discordClientId",
+  "discordClientSecret",
+  "discordCallbackUrl",
+  "sessionSecret",
+];
+
 verifyEnvVars(requiredEnvVars);
 
 // Inicio del servidor

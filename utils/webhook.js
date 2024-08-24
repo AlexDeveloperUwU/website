@@ -2,22 +2,15 @@ import { WebhookClient, EmbedBuilder } from "discord.js";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
-import { readFileSync } from "fs";
-import { parse } from "dotenv";
 
 const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "env", ".env");
 dotenv.config({ path: envPath });
 
-function getVariable(key) {
-  const envFileContent = readFileSync(envPath, "utf8");
-  const envConfig = parse(envFileContent);
-  return envConfig[key];
-}
-
 export function formSend(data) {
   const webhook = new WebhookClient({
-    url: getVariable("formWebhookUrl"),
+    url: process.env.formWebhookUrl,
   });
+
   const { name, email, message } = data;
   const description = `**Nombre o nick:** ${name}\n\n**Email:** ${email}\n\n**Mensaje:** ${message}`;
 
@@ -63,10 +56,12 @@ export function apiAlert(type, data) {
       description = `Se eliminó el enlace con ID: ${data.id} y URL: ${removedUrl}.`;
       color = "#FFB6C1";
       break;
+    default:
+      return; 
   }
 
   const webhook = new WebhookClient({
-    url: getVariable("logsWebhookUrl"),
+    url: process.env.logsWebhookUrl,
   });
 
   const embed = new EmbedBuilder().setTitle(title).setDescription(description).setColor(color);

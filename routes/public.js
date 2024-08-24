@@ -15,13 +15,20 @@ const contentRoutesPath = path.join(__dirname, "..", "server-utils", "contentRou
 const adminRoutesPath = path.join(__dirname, "..", "server-utils", "adminRoutes.json");
 const errorRoutesPath = path.join(__dirname, "..", "server-utils", "errorRoutes.json");
 
+const authenticateDiscord = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/auth/discord");
+};
+
 // Ruta para el archivo robots.txt
 router.get("/robots.txt", (req, res) => {
   res.status(404).end();
 });
 
 // Ruta para el apartado de administración
-router.get(["/admin/:viewName", "/admin"], async (req, res) => {
+router.get(["/admin/:viewName", "/admin"], authenticateDiscord, async (req, res) => {
   const viewName = req.params.viewName || req.query.view || "index";
 
   try {

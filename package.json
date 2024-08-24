@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "autoprefixer": "^10.4.20",
-    "basic-auth": "^2.0.1",
     "compression": "^1.7.4",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
@@ -10,8 +9,11 @@
     "express": "^4.19.2",
     "express-minify": "^1.0.0",
     "express-rate-limit": "^7.4.0",
+    "express-session": "^1.18.0",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-discord": "^0.1.4",
     "postcss": "^8.4.41"
   },
   "devDependencies": {
