@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const showCopySuccess = (element) => {
     element.classList.remove("border-gray-800");
-    element.classList.add("border-green-400"); 
+    element.classList.add("border-green-400");
     setTimeout(() => {
       element.classList.remove("border-green-400");
-      element.classList.add("border-gray-800"); 
+      element.classList.add("border-gray-800");
     }, 2000);
   };
 

@@ -6,19 +6,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
+  <meta name="theme-color" content="#111827">
   <!-- Favicon -->
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-  <!-- CSS -->
+  <!-- Preload CSS -->
   <link rel="preload" href="/css/main.css" as="style">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="preload" href="/css/thirdparty/fawesome/css/all.min.css" as="style">
   <link rel="stylesheet" href="/css/thirdparty/fawesome/css/all.min.css">
   <!-- Scripts -->
   <script src="/js/thirdparty/jquery.min.js" defer></script>
-  <% if (view == 'youtube') { %>
+  <% if (type == "content" && view == 'youtube') { %>
   <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
   <% } %>
+  <% if (type == "content" && view == 'index') { %>
+  <link rel="preconnect" href="https://api.lanyard.rest">
+  <% } %>
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%= title %> | AlexDevUwU">
+  <meta property="og:description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
+  <meta property="og:type" content="website">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= title %> | AlexDevUwU">
+  <meta name="twitter:description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
+  <meta name="twitter:site" content="@AlexDevUwU">
   <!-- Título de la página -->
   <title><%= title %> | AlexDevUwU</title>
 </head>
@@ -48,16 +61,7 @@
   <%- include(`${route}.ejs`) %>
 
   <br><br>
-  <script>
-    function adjustBodyPadding() {
-      const header = document.getElementById('main-header');
-      const headerHeight = header.offsetHeight;
-      document.body.style.paddingTop = headerHeight - 50 + 'px';
-    }
-
-    window.addEventListener('load', adjustBodyPadding);
-    window.addEventListener('resize', adjustBodyPadding);
-  </script>
+  <script src="/js/minified/adjustBodyPadding.js"></script>
 </body>
 
 </html>
