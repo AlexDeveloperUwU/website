@@ -62,6 +62,37 @@
     </div>
   </section>
 
+  <!-- Sección idiomas -->
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold flex items-center">
+      <i class="fas fa-language mr-3 text-gray-300"></i>
+      Idiomas
+    </h3>
+    <div class="space-y-4">
+      <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
+        <i class="fas fa-language mr-4 text-gray-300 text-xl"></i>
+        <div>
+          <h4 class="font-bold text-gray-100">Español</h4>
+          <p class="text-gray-400 font-agrandir">Nivel: Nativo - Nací y vivo en España</p>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
+        <i class="fas fa-language mr-4 text-gray-300 text-xl"></i>
+        <div>
+          <h4 class="font-bold text-gray-100">Gallego</h4>
+          <p class="text-gray-400 font-agrandir">Nivel: Nativo - Nací y vivo en Galicia</p>
+        </div>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
+        <i class="fas fa-language mr-4 text-gray-300 text-xl"></i>
+        <div>
+          <h4 class="font-bold text-gray-100">Inglés</h4>
+          <p class="text-gray-400 font-agrandir">Nivel: B1 - Nivel obtenido en Bachillerato y por cuenta propia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Sección Certificados y Reconocimientos -->
   <section class="mx-auto mt-10 max-w-4xl text-left">
     <h3 class="mb-4 text-2xl font-bold flex items-center">
@@ -99,19 +130,37 @@
       <i class="fas fa-tools mr-3 text-gray-300"></i>
       Mi Tech Stack
     </h3>
+    <div class="mb-6">
+      <label for="projectType" class="block text-gray-400 font-bold mb-2">Selecciona el tipo de proyecto:</label>
+      <select id="projectType" class="p-2 bg-gray-700 text-gray-200 rounded-md w-full">
+        <option value="noUI">Proyecto general sin interfaz web</option>
+        <option value="webUI">Página web / Proyecto con interfaz web</option>
+        <option value="java">Proyecto desarrollado con Java</option>
+      </select>
+    </div>
+    <div id="stackInfo" class="space-y-4">
+    </div>
+  </section>
+
+  <!-- Sección Mis conocimientos -->
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold flex items-center">
+      <i class="fas fa-tools mr-3 text-gray-300"></i>
+      Conocimientos
+    </h3>
     <div class="space-y-4">
       <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
         <i class="fas fa-code mr-4 text-gray-300 text-xl"></i>
         <div>
           <h4 class="font-bold text-gray-100">Lenguajes de Programación</h4>
-          <p class="text-gray-400 font-agrandir">HTML, CSS, JavaScript, Python, SQL, Java (en aprendizaje)</p>
+          <p class="text-gray-400 font-agrandir">HTML, CSS, JavaScript, Python, SQL (📚), Java (📚)</p>
         </div>
       </div>
       <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
         <i class="fas fa-desktop mr-4 text-gray-300 text-xl"></i>
         <div>
           <h4 class="font-bold text-gray-100">Entornos de Desarrollo</h4>
-          <p class="text-gray-400 font-agrandir">Visual Studio Code, IntelliJ IDEA, NetBeans</p>
+          <p class="text-gray-400 font-agrandir">Visual Studio Code, IntelliJ IDEA, NetBeans (📚)</p>
         </div>
       </div>
       <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
@@ -125,14 +174,14 @@
         <i class="fas fa-database mr-4 text-gray-300 text-xl"></i>
         <div>
           <h4 class="font-bold text-gray-100">Bases de Datos</h4>
-          <p class="text-gray-400 font-agrandir">SQLite, MySQL</p>
+          <p class="text-gray-400 font-agrandir">SQLite, MySQL (📚)</p>
         </div>
       </div>
       <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
         <i class="fas fa-box mr-4 text-gray-300 text-xl"></i>
         <div>
           <h4 class="font-bold text-gray-100">Herramientas de Containerización y Virtualización</h4>
-          <p class="text-gray-400 font-agrandir">Docker, WSL</p>
+          <p class="text-gray-400 font-agrandir">Docker, WSL (📚)</p>
         </div>
       </div>
       <div class="p-6 bg-gray-800 rounded-lg shadow-lg flex items-center">
@@ -146,5 +195,6 @@
   </section>
 
   <!-- Sección de scripts -->
+  <script src="/js/minified/techStack.js"></script>
   <%- include(`../scripts.ejs`) %>
 </main>
