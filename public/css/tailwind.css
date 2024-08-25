@@ -338,3 +338,8 @@ body {
 .relative {
   position: relative;
 }
+
+select {
+  overflow: visible;
+  text-overflow: ellipsis;
+}
