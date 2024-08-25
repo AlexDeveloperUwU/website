@@ -1,0 +1,88 @@
+{
+  "noUI": [
+    {
+      "icon": "fas fa-cogs",
+      "title": "Motor",
+      "description": "NodeJS"
+    },
+    {
+      "icon": "fas fa-desktop",
+      "title": "Entorno de Desarrollo",
+      "description": "Visual Studio Code"
+    },
+    {
+      "icon": "fas fa-database",
+      "title": "Bases de Datos",
+      "description": "SQLite (Enmap)"
+    },
+    {
+      "icon": "fas fa-box",
+      "title": "Herramientas de Containerización",
+      "description": "Docker"
+    },
+    {
+      "icon": "fas fa-laptop",
+      "title": "Sistemas Operativos",
+      "description": "Windows / Linux"
+    }
+  ],
+  "webUI": [
+    {
+      "icon": "fas fa-cogs",
+      "title": "Motor",
+      "description": "NodeJS"
+    },
+    {
+      "icon": "fas fa-desktop",
+      "title": "Entorno de Desarrollo",
+      "description": "Visual Studio Code"
+    },
+    {
+      "icon": "fas fa-code",
+      "title": "Frontend",
+      "description": "HTML, CSS, JavaScript"
+    },
+    {
+      "icon": "fas fa-cogs",
+      "title": "Frameworks",
+      "description": "TailwindCSS, Express, EJS"
+    },
+    {
+      "icon": "fas fa-database",
+      "title": "Bases de Datos",
+      "description": "SQLite (Enmap)"
+    },
+    {
+      "icon": "fas fa-box",
+      "title": "Herramientas de Containerización",
+      "description": "Docker"
+    },
+    {
+      "icon": "fas fa-laptop",
+      "title": "Sistemas Operativos",
+      "description": "Windows / Linux"
+    }
+  ],
+  "java": [
+    {
+      "icon": "fas fa-cogs",
+      "title": "Motor",
+      "description": "Java (Versión 21)"
+    },
+    {
+      "icon": "fas fa-desktop",
+      "title": "Entorno de Desarrollo",
+      "description": "JetBrains IntelliJ"
+    },
+    {
+      "icon": "fas fa-database",
+      "title": "Bases de Datos",
+      "description": "MySQL (si necesita)"
+    },
+    {
+      "icon": "fas fa-laptop",
+      "title": "Sistemas Operativos",
+      "description": "Windows / Linux"
+    }
+  ]
+}
