@@ -10,52 +10,62 @@ const __dirname = path.dirname(__filename);
 const inputDir = path.resolve(__dirname, "../public/js");
 const outputDir = path.resolve(__dirname, "../public/js/minified");
 
-async function minifyFiles() {
+async function minifyFiles(filePath) {
   try {
-    await fs.mkdir(outputDir, { recursive: true });
+    const relativePath = path.relative(inputDir, filePath);
+    const outputFilePath = path.join(outputDir, relativePath);
 
-    const files = await fs.readdir(inputDir);
-
-    for (const file of files) {
-      if (path.extname(file) === ".js") {
-        const filePath = path.join(inputDir, file);
-        const outputFilePath = path.join(outputDir, file);
-
-        try {
-          const data = await fs.readFile(filePath, "utf8");
-
-          const result = await minify(data);
-
-          if (result.error) {
-            console.error(`Error minifying ${file}:`, result.error);
-            continue;
-          }
-
-          const minifiedCode = result.code || data;
-
-          await fs.writeFile(outputFilePath, minifiedCode);
-          console.log(`Minified ${file} -> ${outputFilePath}`);
-        } catch (err) {
-          console.error(`Error processing ${file}:`, err);
-        }
-      }
+    if (relativePath.startsWith("minified")) {
+      return;
     }
+
+    await fs.mkdir(path.dirname(outputFilePath), { recursive: true });
+
+    const data = await fs.readFile(filePath, "utf8");
+    const result = await minify(data);
+
+    if (result.error) {
+      console.error(`Error minifying ${filePath}:`, result.error);
+      return;
+    }
+
+    const minifiedCode = result.code || data;
+    await fs.writeFile(outputFilePath, minifiedCode);
+    console.log(`Minified ${filePath} -> ${outputFilePath}`);
   } catch (err) {
-    console.error("Error during minification process:", err);
+    console.error(`Error processing ${filePath}:`, err);
   }
 }
 
-const watcher = chokidar.watch(inputDir, {
-  persistent: true,
-  ignoreInitial: true,
-  depth: 0, 
-  awaitWriteFinish: {
-    stabilityThreshold: 2000,
-    pollInterval: 100,
-  },
-});
+async function minifyAllFiles(dir) {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory() && entry.name !== "minified") {
+      await minifyAllFiles(fullPath);
+    } else if (entry.isFile()) {
+      await minifyFiles(fullPath);
+    }
+  }
+}
 
-watcher.on("add", minifyFiles);
-watcher.on("change", minifyFiles);
+(async () => {
+  await minifyAllFiles(inputDir);
 
-console.log(`Watching for changes in ${inputDir}...`);
+  const watcher = chokidar.watch(inputDir, {
+    persistent: true,
+    ignoreInitial: true,
+    ignored: /minified/,
+    depth: 99,
+    awaitWriteFinish: {
+      stabilityThreshold: 2000,
+      pollInterval: 100,
+    },
+  });
+
+  watcher.on("add", minifyFiles);
+  watcher.on("change", minifyFiles);
+
+  console.log(`All files minified. Now watching for changes in ${inputDir}...`);
+  console.log(`Watching for changes in ${inputDir}...`);
+})();
