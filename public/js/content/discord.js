@@ -68,6 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateProfileBorderColor();
   updateDiscordStatusCard();
-  setInterval(updateProfileBorderColor, 60000);
-  setInterval(updateDiscordStatusCard, 60000);
+  setInterval(updateProfileBorderColor, 30000);
+  setInterval(updateDiscordStatusCard, 30000);
 });
