@@ -7,6 +7,21 @@
   {
     "name": "LiberTeis",
     "url": "https://actividades.biblio.iesteis.gal",
-    "statusElement": "libertei-sstatus"
+    "statusElement": "liberteis-status"
+  },
+  {
+    "name": "Elite Estilistas",
+    "url": "https://elitestilistas.com",
+    "statusElement": "elite-status"
+  },
+  {
+    "name": "Centro de documentacion",
+    "url": "https://docs.alexdevuwu.com",
+    "statusElement": "docs-status"
+  },
+  {
+    "name": "Azirax",
+    "url": "https://azirax.site",
+    "statusElement": "azirax-status"
   }
 ]
