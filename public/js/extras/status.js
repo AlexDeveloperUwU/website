@@ -5,8 +5,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const statusContainer = document.getElementById("status-container");
     const maxRetries = 3;
     let failedWebsitesCount = 0;
-    const totalWebsites = websites.length;
-
     const statusPromises = websites.map((site) => {
       const card = document.createElement("div");
       card.className = "block rounded-lg bg-gray-800 p-6 hover:bg-blue-700";
@@ -28,12 +26,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     await Promise.all(statusPromises);
 
-    if (failedWebsitesCount === totalWebsites) {
-      window.location.href = "/errors?code=500";
-    }
   } catch (error) {
     console.error("Error loading the sites:", error);
-    window.location.href = "/errors?code=500";
+    window.location.href = "/error?code=500";
   }
 
   async function checkWebsiteStatus(site, retries) {
