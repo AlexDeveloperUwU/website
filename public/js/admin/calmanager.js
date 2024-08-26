@@ -98,8 +98,8 @@ $(document).ready(function () {
           <i class="${iconClass} mr-3 text-gray-300"></i>
           <div>
             <p class="font-bold text-gray-100">${event.type}</p>
-            <p class="text-gray-400">${event.description}</p>
-            <p class="text-gray-400 text-sm">${event.date} - ${event.time} - ID: ${event.id}</p>
+            <p class="text-gray-300">${event.description}</p>
+            <p class="text-gray-300 text-sm">${event.date} - ${event.time} - ID: ${event.id}</p>
           </div>
         </div>
       </a>

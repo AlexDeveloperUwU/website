@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "view": "index",
+      "title": "Extras",
+      "folder": "extras/index"
+    },
+    {
+      "view": "status",
+      "title": "Status Page",
+      "folder": "extras/status"
+    }
+  ]
+}

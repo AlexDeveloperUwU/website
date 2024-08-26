@@ -7,9 +7,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import fs from "fs";
-import rateLimiter from "./utils/ratelimiter.js";
-import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./utils/startup.js";
-import setupAuth from "./utils/auth.js";
+import rateLimiter from "./serverUtils/js/ratelimiter.js";
+import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./serverUtils/js/startup.js";
+import setupAuth from "./serverUtils/js/auth.js";
 
 // Inicialización del servidor Express
 const app = express();
@@ -19,6 +19,7 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const envFilePath = path.join(__dirname, "env", ".env");
+const sitesFilePath = path.join(__dirname, "public", "json", "sites.json");
 
 // Cargar variables de entorno
 dotenv.config({ path: envFilePath });
@@ -64,6 +65,16 @@ app.use(morgan("combined", { stream: accessLogStream }));
 // Llamar a la función para limpiar los logs antiguos
 cleanOldLogs(logDir, 5);
 
+// Lectura de sitios para usar en Helmet
+let additionalConnectSrc = [];
+try {
+  const data = fs.readFileSync(sitesFilePath, "utf8");
+  const sites = JSON.parse(data);
+  additionalConnectSrc = sites.map((site) => site.url);
+} catch (err) {
+  console.error("Error al leer o parsear el archivo JSON:", err);
+}
+
 // Configuración de seguridad con Helmet
 app.use(
   helmet.contentSecurityPolicy({
@@ -77,6 +88,7 @@ app.use(
         "https://api.rss2json.com",
         "https://alexdevuwu.com",
         "https://api.lanyard.rest",
+        ...additionalConnectSrc,
       ],
       fontSrc: ["'self'"],
       frameSrc: [
@@ -96,6 +108,7 @@ app.use(helmet.noSniff());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(helmet.hsts({ maxAge: 63072000, includeSubDomains: true, preload: true }));
 app.disable("x-powered-by");
+app.set("trust proxy", 1);
 
 // Middleware de rate limiting
 app.use(rateLimiter);

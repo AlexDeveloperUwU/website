@@ -41,7 +41,7 @@
     <a href="/?view=index">
       <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
     </a>
-    <% if (type == "content" && view !== "index") { %>
+    <% if (type == "content" && view !== "index" || type == "extras" || type == "error") { %>
     <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
       Volver al inicio
     </a>
@@ -49,11 +49,6 @@
     <% if (type == "admin" && view !== "index") { %>
     <a href="/admin?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
       Volver al panel
-    </a>
-    <% } %>
-    <% if (type == "error" ) { %>
-    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
-      Volver al inicio
     </a>
     <% } %>
   </header>

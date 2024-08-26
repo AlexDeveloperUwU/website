@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
 
-const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "env", ".env");
+const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "env", ".env");
 dotenv.config({ path: envPath });
 
 export function formSend(data) {
@@ -57,7 +57,7 @@ export function apiAlert(type, data) {
       color = "#FFB6C1";
       break;
     default:
-      return; 
+      return;
   }
 
   const webhook = new WebhookClient({

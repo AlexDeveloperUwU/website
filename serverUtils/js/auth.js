@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
 
-const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "env", ".env");
+const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "env", ".env");
 dotenv.config({ path: envPath });
 
 const allowedUserIds = ["419176939497193472", "326957915099627530"];

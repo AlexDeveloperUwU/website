@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import express from "express";
 import { fileURLToPath } from "url";
-import { getLink } from "../utils/db.js";
+import { getLink } from "../serverUtils/js/db.js";
 
 const router = express.Router();
 
@@ -11,9 +11,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Usa __dirname para construir rutas
-const contentRoutesPath = path.join(__dirname, "..", "server-utils", "contentRoutes.json");
-const adminRoutesPath = path.join(__dirname, "..", "server-utils", "adminRoutes.json");
-const errorRoutesPath = path.join(__dirname, "..", "server-utils", "errorRoutes.json");
+const contentRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "contentRoutes.json");
+const adminRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "adminRoutes.json");
+const errorRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "errorRoutes.json");
+const extrasRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "extrasRoutes.json");
 
 const authenticateDiscord = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -45,6 +46,28 @@ router.get(["/admin/:viewName", "/admin"], authenticateDiscord, async (req, res)
     }
   } catch (err) {
     console.error("Error reading or parsing adminRoutes.json:", err);
+    res.redirect("/error?code=500");
+  }
+});
+
+// Ruta para contenido extra
+router.get(["/extras/:viewName", "/extras"], async (req, res) => {
+  const viewName = req.params.viewName || req.query.view || "index";
+
+  try {
+    const extrasRoutesData = await fs.readFile(extrasRoutesPath, "utf8");
+    const extrasRoutes = JSON.parse(extrasRoutesData);
+
+    const routeData = extrasRoutes.routes.find((route) => route.view === viewName);
+
+    if (routeData) {
+      const { title, folder } = routeData;
+      res.render("main", { route: folder, view: viewName, title, type: "extras" });
+    } else {
+      res.redirect("/error?code=404");
+    }
+  } catch (err) {
+    console.error("Error reading or parsing extrasRoutes.json:", err);
     res.redirect("/error?code=500");
   }
 });

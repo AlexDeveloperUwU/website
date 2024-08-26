@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <i class="${project.icon} mr-3 text-gray-300"></i>
               <div>
                 <p class="font-bold text-gray-100">${project.name}</p>
-                <p class="text-gray-400 font-agrandir">${project.description}</p>
+                <p class="text-gray-300 font-agrandir">${project.description}</p>
               </div>
             </div>
           `;
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <i class="fab fa-github mr-3 text-gray-300"></i>
             <div>
               <p class="font-bold text-gray-100">Otros proyectos</p>
-              <p class="text-gray-400 font-agrandir">Quieres ver otros proyectos que tengo? Si es así, pásate por mi GitHub! Tiene otros tantos proyectos no tan destacables pero que pueden llegar a ser de tu interés :D</p>
+              <p class="text-gray-300 font-agrandir">Quieres ver otros proyectos que tengo? Si es así, pásate por mi GitHub! Tiene otros tantos proyectos no tan destacables pero que pueden llegar a ser de tu interés :D</p>
             </div>
           </div>
         `;

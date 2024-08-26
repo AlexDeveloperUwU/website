@@ -1,5 +1,5 @@
 import express from "express";
-import { apiAlert, formSend } from "../utils/webhook.js";
+import { apiAlert, formSend } from "../serverUtils/js/webhook.js";
 import {
   addEvent,
   removeEvent,
@@ -9,7 +9,7 @@ import {
   removeLink,
   getAllLinks,
   getLink,
-} from "../utils/db.js";
+} from "../serverUtils/js/db.js";
 
 const router = express.Router();
 

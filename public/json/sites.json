@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Docker Host",
+    "url": "https://docker.alexdevuwu.com",
+    "statusElement": "docker-status"
+  },
+  {
+    "name": "LiberTeis",
+    "url": "https://actividades.biblio.iesteis.gal",
+    "statusElement": "libertei-sstatus"
+  }
+]

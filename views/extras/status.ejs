@@ -1,0 +1,15 @@
+<main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64 hidden">
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold flex items-center">
+      <i class="fas fa-tachometer-alt mr-3 text-gray-300"></i>
+      Status Page
+    </h3>
+    <div class="space-y-4">
+      <p class="text-left font-agrandir">Aquí puedes consultar el estado de mis proyectos, servicios y servidores, y verificar si alguno de ellos ha experimentado alguna interrupción o problema.</p>
+      <p class="text-left font-agrandir">Aquellos proyectos o páginas web que estén bajo la categoría de "Producción" son páginas web o servicios que se encuentran desplegados en mi servidor de producción (CodeNexis)</p>
+        <p class="text-left font-agrandir">Aquellos proyectos o páginas web que estén bajo la categoría de "Desarrollo" son páginas web o servicios que se encuentran en fase de pruebas que se encuentran desplegados en mi servidor de testeo (LoadRunner)</p>
+    </div>
+  </section>
+  <%- include(`../scripts.ejs`) %>
+  <script src="/js/minified/extras/status.js"></script>
+</main>

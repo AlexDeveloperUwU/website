@@ -14,7 +14,7 @@ $(document).ready(function () {
                 <i class="${item.icon} mr-4 text-gray-300 text-xl"></i>
                 <div>
                   <h4 class="font-bold text-gray-100">${item.title}</h4>
-                  <p class="text-gray-400 font-agrandir">${item.description}</p>
+                  <p class="text-gray-300 font-agrandir">${item.description}</p>
                 </div>
               </div>`;
           });
