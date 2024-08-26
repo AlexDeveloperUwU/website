@@ -38,7 +38,7 @@ function fadeOutMainContent(callback) {
 
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
-    const link = event.target.closest('a[href*="/?view="]');
+    const link = event.target.closest('a[href*="?view="]');
 
     if (link) {
       event.preventDefault();
