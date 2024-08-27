@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const maxRetries = 3;
-  const refreshInterval = 30000; 
+  const refreshInterval = 60000;
 
   async function loadWebsiteStatuses() {
     try {
@@ -15,14 +15,14 @@ document.addEventListener("DOMContentLoaded", function () {
           const card = document.createElement("div");
           card.className = "block rounded-lg bg-gray-800 p-6";
           card.innerHTML = `
-                  <div class="flex items-center">
-                    <i class="fas fa-globe mr-3 text-gray-300"></i>
-                    <div>
-                      <p class="font-bold text-gray-100">${site.name}</p>
-                      <p id="${site.statusElement}" class="text-gray-300 font-agrandir">Verificando estado...</p>
-                    </div>
-                  </div>
-                `;
+                      <div class="flex items-center">
+                        <i class="fas fa-globe mr-3 text-gray-300"></i>
+                        <div>
+                          <p class="font-bold text-gray-100">${site.name}</p>
+                          <p id="${site.statusElement}" class="text-gray-300 font-agrandir">Verificando estado...</p>
+                        </div>
+                      </div>
+                    `;
           statusContainer.appendChild(card);
           statusElement = document.getElementById(site.statusElement);
         }
@@ -64,7 +64,48 @@ document.addEventListener("DOMContentLoaded", function () {
     statusElement.classList.remove("text-green-500");
   }
 
-  loadWebsiteStatuses(); 
+  async function loadServerStatuses() {
+    try {
+      const response = await fetch("/serverStats");
+      const servers = await response.json();
+      const serverContainer = document.getElementById("server-status-container");
 
-  setInterval(loadWebsiteStatuses, refreshInterval); 
+      for (const [serverName, stats] of Object.entries(servers)) {
+        let serverElement = document.getElementById(serverName);
+
+        const serverInfo = `
+            <span class="text-green-500">CPU: ${stats.CPU}%</span> |
+            <span class="text-green-500">RAM: ${stats.RAM}%</span> |
+            <span class="text-green-500">Disco: ${stats.Disk}%</span>
+          `;
+
+        if (!serverElement) {
+          const card = document.createElement("div");
+          card.className = "block rounded-lg bg-gray-800 p-6";
+          card.innerHTML = `
+              <div class="flex items-center">
+                <i class="fas fa-server mr-3 text-gray-300"></i>
+                <div>
+                  <p class="font-bold text-gray-100">${serverName}</p>
+                  <p id="${serverName}" class="font-agrandir">
+                    ${serverInfo}
+                  </p>
+                </div>
+              </div>
+            `;
+          serverContainer.appendChild(card);
+        } else {
+          serverElement.innerHTML = serverInfo;
+        }
+      }
+    } catch (error) {
+      console.error("Error loading server stats:", error);
+    }
+  }
+
+  loadServerStatuses();
+  loadWebsiteStatuses();
+
+  setInterval(loadWebsiteStatuses, refreshInterval);
+  setInterval(loadServerStatuses, refreshInterval);
 });

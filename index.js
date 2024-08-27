@@ -134,6 +134,10 @@ const requiredEnvVars = [
   "discordClientSecret",
   "discordCallbackUrl",
   "sessionSecret",
+  "hetrixApiToken",
+  "homecoreId",
+  "codenexisId",
+  "loadrunnerId",
 ];
 
 verifyEnvVars(requiredEnvVars);

@@ -10,6 +10,13 @@ import {
   getAllLinks,
   getLink,
 } from "../serverUtils/js/db.js";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import path from "path";
+import axios from "axios";
+
+const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "env", ".env");
+dotenv.config({ path: envPath });
 
 const router = express.Router();
 
@@ -107,6 +114,43 @@ router.post("/removeLink", authenticateDiscord, (req, res) => {
   } else {
     res.status(200).json({ message: `Link with ID ${id} removed successfully` });
     apiAlert("linkRemoved", { id, url });
+  }
+});
+
+router.get("/serverStats", async (req, res) => {
+  try {
+    const urls = {
+      homecore: `https://api.hetrixtools.com/v1/${process.env.hetrixApiToken}/server/stats/${process.env.homecoreId}/`,
+      codenexis: `https://api.hetrixtools.com/v1/${process.env.hetrixApiToken}/server/stats/${process.env.codenexisId}/`,
+      loadrunner: `https://api.hetrixtools.com/v1/${process.env.hetrixApiToken}/server/stats/${process.env.loadrunnerId}/`,
+    };
+
+    const [homecoreResponse, codenexisResponse, loadrunnerResponse] = await Promise.all([
+      axios.get(urls.homecore),
+      axios.get(urls.codenexis),
+      axios.get(urls.loadrunner),
+    ]);
+
+    const filterStats = (stats) => {
+      const { Minute, IOWait, Swap, NetIn, NetOut, ...filteredStats } = stats;
+      return filteredStats;
+    };
+
+    const combinedStats = {
+      HomeCore: filterStats(homecoreResponse.data.Stats[0]),
+      CodeNexis: filterStats(codenexisResponse.data.Stats[0]),
+      LoadRunner: filterStats(loadrunnerResponse.data.Stats[0]),
+    };
+
+    res.json(combinedStats);
+  } catch (error) {
+    console.error("Error fetching server stats:", error);
+
+    if (error.response) {
+      res.status(error.response.status).send(error.response.data);
+    } else {
+      res.status(500).send("Error fetching server stats");
+    }
   }
 });
 
