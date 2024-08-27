@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const maxRetries = 3;
-  const refreshInterval = 60000; // Intervalo de actualización en milisegundos
+  const refreshInterval = 60000;
 
   let websiteStatusInterval;
   let serverStatusInterval;

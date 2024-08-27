@@ -1,92 +1,96 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
   // Mostrar el formulario de agregar evento
-  $("#showAddEventForm").on("click", function () {
-    $("#addEventFormContainer").removeClass("hidden");
-    $("#deleteEventFormContainer").addClass("hidden");
-    $("#allEventsContainer").addClass("hidden");
-    var eventsGrid = $("#eventsGrid");
-    eventsGrid.empty();
+  document.getElementById("showAddEventForm").addEventListener("click", function () {
+    document.getElementById("addEventFormContainer").classList.remove("hidden");
+    document.getElementById("deleteEventFormContainer").classList.add("hidden");
+    document.getElementById("allEventsContainer").classList.add("hidden");
+    var eventsGrid = document.getElementById("eventsGrid");
+    eventsGrid.innerHTML = "";
   });
 
   // Mostrar el formulario de eliminar evento
-  $("#showDeleteEventForm").on("click", function () {
-    $("#deleteEventFormContainer").removeClass("hidden");
-    $("#addEventFormContainer").addClass("hidden");
-    $("#allEventsContainer").addClass("hidden");
-    var eventsGrid = $("#eventsGrid");
-    eventsGrid.empty();
+  document.getElementById("showDeleteEventForm").addEventListener("click", function () {
+    document.getElementById("deleteEventFormContainer").classList.remove("hidden");
+    document.getElementById("addEventFormContainer").classList.add("hidden");
+    document.getElementById("allEventsContainer").classList.add("hidden");
+    var eventsGrid = document.getElementById("eventsGrid");
+    eventsGrid.innerHTML = "";
   });
 
   // Mostrar todos los eventos
-  $("#showAllEvents").on("click", function () {
-    $("#addEventFormContainer").addClass("hidden");
-    $("#deleteEventFormContainer").addClass("hidden");
-    $("#allEventsContainer").removeClass("hidden");
-    var eventsGrid = $("#eventsGrid");
-    eventsGrid.empty();
+  document.getElementById("showAllEvents").addEventListener("click", function () {
+    document.getElementById("addEventFormContainer").classList.add("hidden");
+    document.getElementById("deleteEventFormContainer").classList.add("hidden");
+    document.getElementById("allEventsContainer").classList.remove("hidden");
+    var eventsGrid = document.getElementById("eventsGrid");
+    eventsGrid.innerHTML = "";
     fetchAllEvents();
   });
 
   // Enviar el formulario de añadir evento
-  $("#submitAddEventForm").on("click", function () {
-    var formData = $("#addEventForm").serialize();
+  document.getElementById("submitAddEventForm").addEventListener("click", function () {
+    var formData = new URLSearchParams(
+      new FormData(document.getElementById("addEventForm"))
+    ).toString();
 
-    $.ajax({
-      url: "/addEvent",
-      type: "POST",
+    fetch("/addEvent", {
+      method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      data: formData,
-      success: function (response) {
-        console.log("Evento añadido exitosamente:", response);
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Evento añadido exitosamente:", data);
         // Puedes actualizar la lista de eventos si es necesario
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.error("Error al añadir el evento:", textStatus, errorThrown);
-      },
-    });
+      })
+      .catch((error) => {
+        console.error("Error al añadir el evento:", error);
+      });
   });
 
   // Enviar el formulario de eliminar evento
-  $("#submitDeleteEventForm").on("click", function () {
-    var formData = $("#deleteEventForm").serialize();
+  document.getElementById("submitDeleteEventForm").addEventListener("click", function () {
+    var formData = new URLSearchParams(
+      new FormData(document.getElementById("deleteEventForm"))
+    ).toString();
 
-    $.ajax({
-      url: "/removeEvent",
-      type: "POST",
+    fetch("/removeEvent", {
+      method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      data: formData,
-      success: function (response) {
-        console.log("Evento eliminado exitosamente:", response);
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Evento eliminado exitosamente:", data);
         // Puedes actualizar la lista de eventos si es necesario
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.error("Error al eliminar el evento:", textStatus, errorThrown);
-      },
-    });
+      })
+      .catch((error) => {
+        console.error("Error al eliminar el evento:", error);
+      });
   });
 
   // Función para obtener y mostrar todos los eventos
   function fetchAllEvents() {
-    $.ajax({
-      url: "/manageAllEvents",
-      type: "GET",
-      success: function (events) {
-        var eventsGrid = $("#eventsGrid");
-        eventsGrid.empty();
+    fetch("/manageAllEvents", {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((events) => {
+        var eventsGrid = document.getElementById("eventsGrid");
+        eventsGrid.innerHTML = "";
 
         events.forEach(function (event) {
           var card = createEventCard(event);
-          eventsGrid.append(card);
+          eventsGrid.insertAdjacentHTML("beforeend", card);
         });
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.error("Error al obtener los eventos:", textStatus, errorThrown);
-      },
-    });
+      })
+      .catch((error) => {
+        console.error("Error al obtener los eventos:", error);
+      });
   }
 
   // Función para crear una tarjeta de evento

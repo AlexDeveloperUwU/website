@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Fetch projects from the JSON file
   fetch("/json/projects.json")
     .then((response) => response.json())
     .then((data) => {
       const projectsContainer = document.getElementById("projects-container");
 
-      // Add each project card to the container
       data.forEach((project) => {
         const projectCard = document.createElement("a");
         projectCard.href = project.url;
@@ -22,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
         projectsContainer.appendChild(projectCard);
       });
 
-      // Add the GitHub card at the end
       const githubCard = document.createElement("a");
       githubCard.href = "https://github.com/AlexDeveloperUwU";
       githubCard.className = "block rounded-lg bg-gray-800 p-6 hover:bg-blue-700";
