@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const maxRetries = 3;
-  const refreshInterval = 60000;
+  const refreshInterval = 60000; // Intervalo de actualización en milisegundos
+
+  let websiteStatusInterval;
+  let serverStatusInterval;
 
   async function loadWebsiteStatuses() {
     try {
@@ -103,9 +106,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function startIntervals() {
+    websiteStatusInterval = setInterval(loadWebsiteStatuses, refreshInterval);
+    serverStatusInterval = setInterval(loadServerStatuses, refreshInterval);
+  }
+
+  function stopIntervals() {
+    clearInterval(websiteStatusInterval);
+    clearInterval(serverStatusInterval);
+  }
+
+  function handleVisibilityChange() {
+    if (document.hidden) {
+      stopIntervals();
+    } else {
+      startIntervals();
+    }
+  }
+
+  document.addEventListener("visibilitychange", handleVisibilityChange);
+  window.addEventListener("pagehide", stopIntervals);
+  window.addEventListener("pageshow", startIntervals);
+
   loadServerStatuses();
   loadWebsiteStatuses();
 
-  setInterval(loadWebsiteStatuses, refreshInterval);
-  setInterval(loadServerStatuses, refreshInterval);
+  startIntervals();
 });
