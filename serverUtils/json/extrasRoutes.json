@@ -9,6 +9,11 @@
       "view": "status",
       "title": "Status Page",
       "folder": "extras/status"
+    },
+    {
+      "view": "timeline",
+      "title": "TimeLine",
+      "folder": "extras/timeline"
     }
   ]
 }

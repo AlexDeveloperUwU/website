@@ -1,0 +1,34 @@
+<main class="container mx-auto mt-10 flex-grow px-8 sm:px-24 lg:px-64 hidden">
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold flex items-center">
+      <i class="fas fa-briefcase mr-3 text-gray-300"></i>
+      Mi timeline de trabajo
+    </h3>
+    <div class="space-y-4">
+      <div class="mt-0 p-6 bg-gray-800 rounded-lg shadow-lg">
+        <p class="font-agrandir text-gray-300 text-left">
+          Te doy la bienvenida a mi resumen de actividades y proyectos a lo largo del tiempo.<br>
+          Aquí podrás descubrir en qué he estado trabajando mes a mes a partir de Noviembre de 2023, con detalles sobre las áreas en las que me he centrado.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto mt-10 max-w-4xl text-left">
+    <h3 class="mb-4 text-2xl font-bold flex items-center">
+      <i class="fas fa-calendar-week mr-3 text-gray-300"></i>
+      Consulta del timeline
+    </h3>
+    <select id="yearSelect" class="p-2 mb-4 bg-gray-700 text-gray-200 rounded-md w-full">
+      <option value="">Selecciona el año</option>
+    </select>
+    <select id="monthSelect" class="p-2 mb-4 bg-gray-700 text-gray-200 rounded-md w-full" disabled>
+      <option value="">Selecciona el mes</option>
+    </select>
+    <div class="space-y-4" id="timeline">
+    </div>
+  </section>
+
+  <%- include(`../scripts.ejs`) %>
+  <script src="/js/minified/extras/timeline.js"></script>
+</main>

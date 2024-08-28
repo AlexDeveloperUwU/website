@@ -1,0 +1,130 @@
+{
+  "2023": {
+    "Noviembre": [
+      {
+        "title": "Página web de ZyFeronix",
+        "description": "Diseño y prototipo de la página web oficial de ZyFeronix."
+      },
+      {
+        "title": "Panel de administración de ZyFeronix",
+        "description": "Diseño y prototipo del panel de administración de ZyFeronix."
+      }
+    ],
+    "Diciembre": [
+      {
+        "title": "LiberTeis",
+        "description": "Brainstorm, organización y diseño de la idea base. Creación del proyecto y diseño de una API básica."
+      },
+      {
+        "title": "Página web personal",
+        "description": "Actualizaciones y mejoras en mi página web personal."
+      }
+    ]
+  },
+  "2024": {
+    "Enero": [
+      {
+        "title": "Azirax",
+        "description": "Mejorías en los comandos y en el codebase."
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo de la API y la base de datos."
+      }
+    ],
+    "Febrero": [
+      {
+        "title": "Azirax",
+        "description": "Mejorías en los comandos y en el codebase."
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo de las rutas de autenticación e incorporación de AdminLTE como dashboard."
+      }
+    ],
+    "Marzo": [
+      {
+        "title": "Azirax",
+        "description": "Mejorías en los comandos y en el codebase."
+      },
+      {
+        "title": "Centro de documentación personal",
+        "description": "Creación de mi centro de documentación para los proyectos que lleve a cabo."
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo del panel de control (página de eventos y calendario)."
+      }
+    ],
+    "Abril": [
+      {
+        "title": "Centro de documentación de ZyFeronix",
+        "description": "Creación del centro de documentación para ZyFeronix y sus proyectos, además de documentarlos."
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo de la página de eventos y calendario."
+      },
+      {
+        "title": "PHP CDN File Uploader",
+        "description": "Creación, diseño y desarrollo de un uploader para una CDN privada en PHP."
+      },
+      {
+        "title": "Página web de RaxielVT",
+        "description": "Creación, diseño y desarrollo de la página web de RaxielVT."
+      }
+    ],
+    "Mayo": [
+      {
+        "title": "Centro de documentación de ZyFeronix",
+        "description": "Documentación de los proyectos de ZyFeronix."
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo del backend y frontend para la interfaz web de las pantallas de información."
+      },
+      {
+        "title": "Página web de RaxielVT",
+        "description": "Mejorías en la página web de RaxielVT."
+      },
+      {
+        "title": "PHP CDN File Uploader",
+        "description": "Mejorías en el uploader de la CDN privada en PHP."
+      }
+    ],
+    "Junio": [
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo del sistema de tablas de información de usuario y eventos."
+      },
+      {
+        "title": "Página web de Esferita",
+        "description": "Creación, diseño y desarrollo de la página web de EsferitaVT."
+      },
+      {
+        "title": "Página web personal",
+        "description": "Actualizaciones y mejoras en mi página web personal."
+      }
+    ],
+    "Julio": [
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo del sistema multilenguajes."
+      },
+      {
+        "title": "Página web personal",
+        "description": "Rediseño completo de mi página web."
+      }
+    ],
+    "Agosto": [
+      {
+        "title": "LiberTeis",
+        "description": "Traducciones, mejoras de los sistemas de validación y mejora de detalles menores."
+      },
+      {
+        "title": "Página web personal",
+        "description": "Mejorías en la página web personal, creación de las secciones y diseño de las mismas."
+      }
+    ]
+  }
+}

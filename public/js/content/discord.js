@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         statusSpanish = "desconectado";
         break;
       default:
-        statusSpanish = "Desconocido";
+        statusSpanish = "desconocido";
     }
 
     const statusElement = document.getElementById("myDiscordStatus");
