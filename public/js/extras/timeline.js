@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       timelineData = data;
       populateYearSelect(data);
-      showTimelineContainer(); 
+      showTimelineContainer();
     })
     .catch((error) => console.error("Error fetching timeline data:", error));
 
@@ -77,20 +77,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const projects = timelineData[year][month];
 
     projects.forEach((project) => {
-      const projectDiv = document.createElement("div");
-      projectDiv.classList.add("p-4", "bg-gray-800", "rounded-lg", "shadow-lg", "mb-4");
+      let projectCard;
 
-      const projectTitle = document.createElement("h5");
-      projectTitle.classList.add("text-lg", "font-bold", "text-gray-200");
+      if (project.url) {
+        projectCard = document.createElement("a");
+        projectCard.href = project.url;
+        projectCard.classList.add(
+          "block",
+          "rounded-lg",
+          "bg-gray-800",
+          "p-4",
+          "hover:bg-blue-700",
+          "mb-4",
+          "transition-colors",
+          "duration-300"
+        );
+      } else {
+        projectCard = document.createElement("div");
+        projectCard.classList.add("block", "rounded-lg", "bg-gray-800", "p-4", "mb-4");
+      }
+
+      const icon = document.createElement("i");
+      icon.classList.add("fas", "fa-code", "mr-3", "text-gray-300");
+
+      const projectTitle = document.createElement("p");
+      projectTitle.classList.add("font-bold", "text-gray-100");
       projectTitle.textContent = project.title;
-      projectDiv.appendChild(projectTitle);
 
       const projectDescription = document.createElement("p");
-      projectDescription.classList.add("text-sm", "text-gray-300", "mt-2");
+      projectDescription.classList.add("text-sm", "text-gray-300", "font-agrandir");
       projectDescription.textContent = project.description;
-      projectDiv.appendChild(projectDescription);
 
-      timelineContainer.appendChild(projectDiv);
+      const contentDiv = document.createElement("div");
+      contentDiv.appendChild(projectTitle);
+      contentDiv.appendChild(projectDescription);
+
+      const flexDiv = document.createElement("div");
+      flexDiv.classList.add("flex", "items-center");
+      flexDiv.appendChild(icon);
+      flexDiv.appendChild(contentDiv);
+
+      projectCard.appendChild(flexDiv);
+      timelineContainer.appendChild(projectCard);
     });
   }
 

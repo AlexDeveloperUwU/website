@@ -13,11 +13,13 @@
     "Diciembre": [
       {
         "title": "LiberTeis",
-        "description": "Brainstorm, organización y diseño de la idea base. Creación del proyecto y diseño de una API básica."
+        "description": "Brainstorm, organización y diseño de la idea base. Creación del proyecto y diseño de una API básica.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "Página web personal",
-        "description": "Actualizaciones y mejoras en mi página web personal."
+        "description": "Actualizaciones y mejoras en mi página web personal.",
+        "url": "https://alexdevuwu.com"
       }
     ]
   },
@@ -25,35 +27,42 @@
     "Enero": [
       {
         "title": "Azirax",
-        "description": "Mejorías en los comandos y en el codebase."
+        "description": "Mejorías en los comandos y en el codebase.",
+        "url": "https://azirax.site"
       },
       {
         "title": "LiberTeis",
-        "description": "Desarrollo de la API y la base de datos."
+        "description": "Desarrollo de la API y la base de datos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       }
     ],
     "Febrero": [
       {
         "title": "Azirax",
-        "description": "Mejorías en los comandos y en el codebase."
+        "description": "Mejorías en los comandos y en el codebase.",
+        "url": "https://azirax.site"
       },
       {
         "title": "LiberTeis",
-        "description": "Desarrollo de las rutas de autenticación e incorporación de AdminLTE como dashboard."
+        "description": "Desarrollo de las rutas de autenticación e incorporación de AdminLTE como dashboard.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       }
     ],
     "Marzo": [
       {
         "title": "Azirax",
-        "description": "Mejorías en los comandos y en el codebase."
+        "description": "Mejorías en los comandos y en el codebase.",
+        "url": "https://azirax.site"
       },
       {
         "title": "Centro de documentación personal",
-        "description": "Creación de mi centro de documentación para los proyectos que lleve a cabo."
+        "description": "Creación de mi centro de documentación para los proyectos que lleve a cabo.",
+        "url": "https://docs.alexdevuwu.com"
       },
       {
         "title": "LiberTeis",
-        "description": "Desarrollo del panel de control (página de eventos y calendario)."
+        "description": "Desarrollo del panel de control (página de eventos y calendario).",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       }
     ],
     "Abril": [
@@ -63,7 +72,8 @@
       },
       {
         "title": "LiberTeis",
-        "description": "Desarrollo de la página de eventos y calendario."
+        "description": "Desarrollo de la página de eventos y calendario.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "PHP CDN File Uploader",
@@ -71,7 +81,8 @@
       },
       {
         "title": "Página web de RaxielVT",
-        "description": "Creación, diseño y desarrollo de la página web de RaxielVT."
+        "description": "Creación, diseño y desarrollo de la página web de RaxielVT.",
+        "url": "https://raxielvt.is-cool.dev"
       }
     ],
     "Mayo": [
@@ -81,11 +92,13 @@
       },
       {
         "title": "LiberTeis",
-        "description": "Desarrollo del backend y frontend para la interfaz web de las pantallas de información."
+        "description": "Desarrollo del backend y frontend para la interfaz web de las pantallas de información.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "Página web de RaxielVT",
-        "description": "Mejorías en la página web de RaxielVT."
+        "description": "Mejorías en la página web de RaxielVT.",
+        "url": "https://raxielvt.is-cool.dev"
       },
       {
         "title": "PHP CDN File Uploader",
@@ -95,35 +108,47 @@
     "Junio": [
       {
         "title": "LiberTeis",
-        "description": "Desarrollo del sistema de tablas de información de usuario y eventos."
+        "description": "Desarrollo del sistema de tablas de información de usuario y eventos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "Página web de Esferita",
-        "description": "Creación, diseño y desarrollo de la página web de EsferitaVT."
+        "description": "Creación, diseño y desarrollo de la página web de EsferitaVT.",
+        "url": "https://esferita.pages.dev"
       },
       {
         "title": "Página web personal",
-        "description": "Actualizaciones y mejoras en mi página web personal."
+        "description": "Actualizaciones y mejoras en mi página web personal.",
+        "url": "https://alexdevuwu.com"
+      },
+      {
+        "title": "Azirax",
+        "description": "Publicación del bot en la App Store de Discord, verificación del bot y mejoras en los comandos.",
+        "url": "https://azirax.site"
       }
     ],
     "Julio": [
       {
         "title": "LiberTeis",
-        "description": "Desarrollo del sistema multilenguajes."
+        "description": "Desarrollo del sistema multilenguajes.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "Página web personal",
-        "description": "Rediseño completo de mi página web."
+        "description": "Rediseño completo de mi página web.",
+        "url": "https://alexdevuwu.com"
       }
     ],
     "Agosto": [
       {
         "title": "LiberTeis",
-        "description": "Traducciones, mejoras de los sistemas de validación y mejora de detalles menores."
+        "description": "Traducciones, mejoras de los sistemas de validación y mejora de detalles menores.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
         "title": "Página web personal",
-        "description": "Mejorías en la página web personal, creación de las secciones y diseño de las mismas."
+        "description": "Mejorías en la página web personal, creación de las secciones y diseño de las mismas.",
+        "url": "https://alexdevuwu.com"
       }
     ]
   }
