@@ -2,8 +2,10 @@ function showMainContent() {
   const mainContent = document.querySelector("main");
   const backButton = document.getElementById("back-button");
 
-  mainContent.classList.remove("hidden");
-  mainContent.classList.add("fade-in");
+  if (mainContent) {
+    mainContent.classList.remove("hidden");
+    mainContent.classList.add("fade-in");
+  }
 
   if (backButton) {
     backButton.classList.remove("hidden");
@@ -12,15 +14,19 @@ function showMainContent() {
 }
 
 window.addEventListener("load", function () {
-  setTimeout(showMainContent, 600);
+  setTimeout(function () {
+    showMainContent();
+  }, 600);
 });
 
 function fadeOutMainContent(callback) {
   const mainContent = document.querySelector("main");
   const backButton = document.getElementById("back-button");
 
-  mainContent.classList.remove("fade-in");
-  mainContent.classList.add("fade-out");
+  if (mainContent) {
+    mainContent.classList.remove("fade-in");
+    mainContent.classList.add("fade-out");
+  }
 
   if (backButton) {
     backButton.classList.remove("fade-in");
@@ -28,10 +34,15 @@ function fadeOutMainContent(callback) {
   }
 
   setTimeout(function () {
-    mainContent.classList.add("hidden");
+    if (mainContent) {
+      mainContent.classList.add("hidden");
+      mainContent.classList.remove("fade-out");
+    }
     if (backButton) {
       backButton.classList.add("hidden");
+      backButton.classList.remove("fade-out");
     }
+
     callback();
   }, 605);
 }
@@ -49,4 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+});
+
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    console.log("pageshow event: La página se ha cargado desde la caché.");
+    showMainContent();
+  } else {
+    console.log("pageshow event: La página se ha cargado normalmente.");
+  }
 });
