@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthdayMessage = document.getElementById("birthday-message");
 
     if (today.toDateString() === birthdayDate.toDateString()) {
-      birthdayMessage.textContent = "¡Cumplo años hoy! 🎂";
+      birthdayMessage.textContent = "¡Feliz cumple! 🎂";
     } else {
       const timeDiff = birthdayDate - today;
       const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
