@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const birthdayMessage = document.getElementById("birthday-message");
 
     if (today.toDateString() === birthdayDate.toDateString()) {
-      birthdayMessage.textContent = "🎉🎂 ¡Cumple hoy!";
+      birthdayMessage.textContent = "¡Cumplo años hoy! 🎂";
     } else {
       const timeDiff = birthdayDate - today;
       const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-      birthdayMessage.textContent = `¡${daysRemaining} días restantes! 🎉🎂`;
+      birthdayMessage.textContent = `¡Faltan ${daysRemaining} días! 🎂`;
     }
   }
 
