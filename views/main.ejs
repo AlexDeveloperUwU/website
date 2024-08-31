@@ -27,6 +27,16 @@
   <% } %>
   <% if (type == "content" && view == 'index') { %>
   <link rel="preconnect" href="https://api.lanyard.rest">
+  <% 
+    const today = new Date();
+    const birthday = new Date(today.getFullYear(), 8, 11);
+    const twoWeeksBeforeBirthday = new Date(birthday);
+    twoWeeksBeforeBirthday.setDate(birthday.getDate() - 14);
+
+    if (today >= twoWeeksBeforeBirthday && today <= birthday) { 
+  %>
+  <script src="/js/thirdparty/confetti.js"></script>
+  <% } %>
   <% } %>
   <!-- Open Graph -->
   <meta property="og:title" content="<%= title %> | AlexDevUwU">

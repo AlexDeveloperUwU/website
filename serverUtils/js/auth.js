@@ -1,14 +1,14 @@
 import passport from "passport";
 import { Strategy as DiscordStrategy } from "passport-discord";
 import session from "express-session";
+import FileStore from "session-file-store";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import path from "path";
 
+const allowedUserIds = ["419176939497193472", "326957915099627530"];
 const envPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "env", ".env");
 dotenv.config({ path: envPath });
-
-const allowedUserIds = ["419176939497193472", "326957915099627530"];
 
 passport.use(
   new DiscordStrategy(
@@ -31,18 +31,33 @@ passport.use(
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((obj, done) => done(null, obj));
 
+const FileStoreSession = FileStore(session);
+
 const setupAuth = (app) => {
+  const sessionPath = path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "..",
+    "..",
+    "data",
+    "sessions"
+  );
+
   app.use(
     session({
       secret: process.env.sessionSecret,
       resave: false,
       saveUninitialized: false,
+      store: new FileStoreSession({
+        path: sessionPath,
+        ttl: 86400,
+      }),
     })
   );
 
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // Rutas de autenticación
   app.get("/auth/discord", passport.authenticate("discord"));
 
   app.get(
@@ -60,7 +75,6 @@ const setupAuth = (app) => {
       res.redirect("/");
     });
   });
-
 };
 
 export default setupAuth;
