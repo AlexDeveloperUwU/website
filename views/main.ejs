@@ -29,9 +29,9 @@
   <link rel="preconnect" href="https://api.lanyard.rest">
   <% 
     const today = new Date();
-    const birthday = new Date(today.getFullYear(), 8, 11);
+    const birthday = new Date(today.getFullYear(), 8, 12);
     const twoWeeksBeforeBirthday = new Date(birthday);
-    twoWeeksBeforeBirthday.setDate(birthday.getDate() - 14);
+    twoWeeksBeforeBirthday.setDate(birthday.getDate() - 15);
 
     if (today >= twoWeeksBeforeBirthday && today <= birthday) { 
   %>
