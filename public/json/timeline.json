@@ -150,6 +150,25 @@
         "description": "Mejorías en la página web personal, creación de las secciones y diseño de las mismas.",
         "url": "https://alexdevuwu.com"
       }
+    ],
+    "Septiembre": [
+      {
+        "title": "LiberTeis",
+        "description": "Nueva interfaz gráfica para las pantallas de visualización de datos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      }
+    ],
+    "Octubre": [
+      {
+        "title": "LiberTeis",
+        "description": "Nuevas páginas públicas para el listado y la información de eventos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
+        "title": "BonfireLounge",
+        "description": "Gestión y compra del dominio, puesta en marcha de la web y mantenimiento de la misma.",
+        "url": "https://bonfirelounge.com"
+      }
     ]
   }
 }
