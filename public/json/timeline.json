@@ -165,9 +165,19 @@
         "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
       },
       {
+        "title": "LiberTeis",
+        "description": "Reestructuración de la base de datos y reescritura de la API completa.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
         "title": "BonfireLounge",
         "description": "Gestión y compra del dominio, puesta en marcha de la web y mantenimiento de la misma.",
         "url": "https://bonfirelounge.com"
+      },
+      {
+        "title": "BlueSky - Feed VTuber Hispano",
+        "description": "Creación y programación de un feed de vtubers hispanos en BlueSky.",
+        "url": "https://alexdevuwu.com/l/vt-feed"
       }
     ]
   }
