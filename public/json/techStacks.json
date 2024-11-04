@@ -13,7 +13,7 @@
     {
       "icon": "fas fa-database",
       "title": "Bases de Datos",
-      "description": "SQLite (Enmap)"
+      "description": "SQLite (Enmap / Kysely)"
     },
     {
       "icon": "fas fa-box",
@@ -23,7 +23,7 @@
     {
       "icon": "fas fa-laptop",
       "title": "Sistemas Operativos",
-      "description": "Windows / Linux"
+      "description": "Windows / Linux / WSL"
     }
   ],
   "webUI": [
@@ -50,7 +50,7 @@
     {
       "icon": "fas fa-database",
       "title": "Bases de Datos",
-      "description": "SQLite (Enmap)"
+      "description": "SQLite (Enmap / Kysely)"
     },
     {
       "icon": "fas fa-box",
@@ -60,7 +60,7 @@
     {
       "icon": "fas fa-laptop",
       "title": "Sistemas Operativos",
-      "description": "Windows / Linux"
+      "description": "Windows / Linux / WSL"
     }
   ],
   "java": [
