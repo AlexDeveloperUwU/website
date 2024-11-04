@@ -34,13 +34,7 @@ passport.deserializeUser((obj, done) => done(null, obj));
 const FileStoreSession = FileStore(session);
 
 const setupAuth = (app) => {
-  const sessionPath = path.join(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "..",
-    "data",
-    "sessions"
-  );
+  const sessionPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "data", "sessions");
 
   app.use(
     session({

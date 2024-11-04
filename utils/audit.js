@@ -24,12 +24,8 @@ const fetchAndSaveScores = async (url, key, strategy) => {
     const categories = data.lighthouseResult.categories;
     const scores = {
       performance: categories.performance ? Math.round(categories.performance.score * 100) : null,
-      accessibility: categories.accessibility
-        ? Math.round(categories.accessibility.score * 100)
-        : null,
-      "best-practices": categories["best-practices"]
-        ? Math.round(categories["best-practices"].score * 100)
-        : null,
+      accessibility: categories.accessibility ? Math.round(categories.accessibility.score * 100) : null,
+      "best-practices": categories["best-practices"] ? Math.round(categories["best-practices"].score * 100) : null,
       seo: categories.seo ? Math.round(categories.seo.score * 100) : null,
     };
 

@@ -87,10 +87,7 @@ router.get("/l/:id?", async (req, res) => {
       const destinationUrl = new URL(linkData);
       destinationUrl.searchParams.set("referrer", "alexdevuwu.com");
 
-      if (
-        destinationUrl.hostname === "www.youtube.com" ||
-        destinationUrl.hostname === "youtube.com"
-      ) {
+      if (destinationUrl.hostname === "www.youtube.com" || destinationUrl.hostname === "youtube.com") {
         res.setHeader("X-Robots-Tag", "noindex, nofollow");
         res.setHeader("Referrer-Policy", "no-referrer");
       } else {

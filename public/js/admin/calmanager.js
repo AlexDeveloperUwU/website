@@ -29,9 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enviar el formulario de añadir evento
   document.getElementById("submitAddEventForm").addEventListener("click", function () {
-    var formData = new URLSearchParams(
-      new FormData(document.getElementById("addEventForm"))
-    ).toString();
+    var formData = new URLSearchParams(new FormData(document.getElementById("addEventForm"))).toString();
 
     fetch("/addEvent", {
       method: "POST",
@@ -52,9 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enviar el formulario de eliminar evento
   document.getElementById("submitDeleteEventForm").addEventListener("click", function () {
-    var formData = new URLSearchParams(
-      new FormData(document.getElementById("deleteEventForm"))
-    ).toString();
+    var formData = new URLSearchParams(new FormData(document.getElementById("deleteEventForm"))).toString();
 
     fetch("/removeEvent", {
       method: "POST",

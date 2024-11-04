@@ -24,6 +24,11 @@
       "view": "youtube",
       "title": "YouTube",
       "folder": "content/youtube"
+    },
+    {
+      "view": "links",
+      "title": "Enlaces",
+      "folder": "content/links"
     }
   ]
 }

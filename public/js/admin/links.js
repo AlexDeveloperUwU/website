@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enviar el formulario de crear enlace
   document.getElementById("submitCreateLinkForm").addEventListener("click", function () {
-    var formData = new URLSearchParams(
-      new FormData(document.getElementById("createLinkForm"))
-    ).toString();
+    var formData = new URLSearchParams(new FormData(document.getElementById("createLinkForm"))).toString();
 
     fetch("/addLink", {
       method: "POST",
@@ -59,9 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enviar el formulario de editar enlace
   document.getElementById("submitEditLinkForm").addEventListener("click", function () {
-    var formData = new URLSearchParams(
-      new FormData(document.getElementById("editLinkForm"))
-    ).toString();
+    var formData = new URLSearchParams(new FormData(document.getElementById("editLinkForm"))).toString();
 
     fetch("/editLink", {
       method: "POST",
@@ -84,9 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Enviar el formulario de eliminar enlace
   document.getElementById("submitDeleteLinkForm").addEventListener("click", function () {
-    var formData = new URLSearchParams(
-      new FormData(document.getElementById("deleteLinkForm"))
-    ).toString();
+    var formData = new URLSearchParams(new FormData(document.getElementById("deleteLinkForm"))).toString();
 
     fetch("/removeLink", {
       method: "POST",

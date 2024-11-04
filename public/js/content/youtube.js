@@ -1,8 +1,6 @@
 const loadVideo = (liteYT) => {
   const cid = "UCxcD9py3y1df8CWzT5VsZMw";
-  const channelURL = encodeURIComponent(
-    `https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`
-  );
+  const channelURL = encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`);
   const reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`;
 
   fetch(reqURL)

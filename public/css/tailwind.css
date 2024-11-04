@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "PP Agrandir";
-  src: local("PP Agrandir Regular"), local("PPAgrandir-Regular"),
-    url("/fonts/PPAgrandir-Regular.woff2") format("woff2");
+  src: local("PP Agrandir Regular"), local("PPAgrandir-Regular"), url("/fonts/PPAgrandir-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -168,8 +167,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 a {
-  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out,
-    color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 
 header {

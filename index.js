@@ -79,7 +79,7 @@ try {
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"],
+      defaultSrc: ["'self'", "https://static.cloudflareinsights.com/"],
       scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com/"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https://i.ytimg.com"],

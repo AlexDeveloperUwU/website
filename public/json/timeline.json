@@ -179,6 +179,13 @@
         "description": "Creación y programación de un feed de vtubers hispanos en BlueSky.",
         "url": "https://alexdevuwu.com/l/vt-feed"
       }
+    ],
+    "Noviembre": [
+      {
+        "title": "LiberTeis",
+        "description": "Reestructuración de la base de datos y reescritura de la API y backend completo.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      }
     ]
   }
 }

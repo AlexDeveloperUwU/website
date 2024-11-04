@@ -1,19 +1,11 @@
 import rateLimit from "express-rate-limit";
 
-const EXCLUDED_IPS = new Set([
-  "91.116.216.221",
-  "144.24.196.201",
-  "144.24.204.85",
-  "127.0.0.1",
-  "::1",
-]);
+const EXCLUDED_IPS = new Set(["91.116.216.221", "144.24.196.201", "144.24.204.85", "127.0.0.1", "::1"]);
 
 const EXCLUDED_USER_AGENTS = new Set(["HetrixTools Uptime Monitoring Bot"]);
 
 const isExcluded = (ip, userAgent) => {
-  return (
-    EXCLUDED_IPS.has(ip) || Array.from(EXCLUDED_USER_AGENTS).some((ua) => userAgent.includes(ua))
-  );
+  return EXCLUDED_IPS.has(ip) || Array.from(EXCLUDED_USER_AGENTS).some((ua) => userAgent.includes(ua));
 };
 
 const rateLimiter = rateLimit({

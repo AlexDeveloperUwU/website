@@ -165,9 +165,14 @@ router.get("/latestLog", authenticateDiscord, async (req, res) => {
     const latestLogFile = logFiles[0];
     const latestLogFilePath = path.join(logsDirectory, latestLogFile);
 
-    const logContent = fs.readFileSync(latestLogFilePath, "utf-8");
+    let logContent = fs.readFileSync(latestLogFilePath, "utf-8");
 
-    res.setHeader('Content-Type', 'text/plain');
+    logContent = logContent
+      .split("\n")
+      .filter(line => !line.includes("HetrixTools Uptime Monitoring Bot. https://hetrix.tools/uptime-monitoring-bot.html"))
+      .join("\n");
+
+    res.setHeader("Content-Type", "text/plain");
     res.status(200).send(logContent);
   } catch (error) {
     console.error("Error fetching latest log file:", error);

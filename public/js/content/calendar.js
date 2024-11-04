@@ -92,16 +92,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       </div>
       <div class="grid grid-cols-7 gap-4 text-center">
         ${[...Array(firstDayIndex).keys()]
-          .map(
-            (i) => `<div class="text-gray-500 py-2">${prevLastDay - firstDayIndex + 1 + i}</div>`
-          )
+          .map((i) => `<div class="text-gray-500 py-2">${prevLastDay - firstDayIndex + 1 + i}</div>`)
           .join("")}
         ${[...Array(lastDay).keys()]
           .map((i) => {
             const day = i + 1;
-            const dateString = `${year}-${month + 1 < 10 ? "0" : ""}${month + 1}-${
-              day < 10 ? "0" : ""
-            }${day}`;
+            const dateString = `${year}-${month + 1 < 10 ? "0" : ""}${month + 1}-${day < 10 ? "0" : ""}${day}`;
             const isToday =
               dateString ===
               `${currentDate.getFullYear()}-${currentDate.getMonth() + 1 < 10 ? "0" : ""}${
@@ -118,9 +114,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             `;
           })
           .join("")}
-        ${[...Array(nextDays).keys()]
-          .map((i) => `<div class="text-gray-500 py-2">${i + 1}</div>`)
-          .join("")}
+        ${[...Array(nextDays).keys()].map((i) => `<div class="text-gray-500 py-2">${i + 1}</div>`).join("")}
       </div>
     `;
 
@@ -147,9 +141,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           eventDetails.classList.remove("hidden");
           platformIcon.className = getEventIcon(event.type) + " mr-3 text-gray-300";
           platformName.textContent = event.type;
-          eventDescription.textContent = `${event.description} el ${formatDate(event.date)} a las ${
-            event.time
-          }`;
+          eventDescription.textContent = `${event.description} el ${formatDate(event.date)} a las ${event.time}`;
         }
       });
     });
