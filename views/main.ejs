@@ -7,48 +7,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
   <meta name="theme-color" content="#111827">
+
   <!-- Favicon -->
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
   <!-- Preload CSS -->
   <link rel="preload" href="/css/main.css" as="style">
   <link rel="stylesheet" href="/css/main.css">
+
   <!-- Preload Font Awesome CSS -->
   <link rel="preload" href="/css/thirdparty/fawesome/css/fontawesome.min.css" as="style">
   <link rel="preload" href="/css/thirdparty/fawesome/css/brands.min.css" as="style">
   <link rel="preload" href="/css/thirdparty/fawesome/css/solid.min.css" as="style">
+
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="/css/thirdparty/fawesome/css/fontawesome.min.css">
   <link rel="stylesheet" href="/css/thirdparty/fawesome/css/brands.min.css">
   <link rel="stylesheet" href="/css/thirdparty/fawesome/css/solid.min.css">
+
   <!-- Scripts -->
   <% if (type == "content" && view == 'youtube') { %>
   <script type="module" src="/js/thirdparty/lite-youtube.js"></script>
   <% } %>
-  <% if (type == "content" && view == 'index') { %>
-  <link rel="preconnect" href="https://api.lanyard.rest">
-  <% 
-    const today = new Date();
-    const birthday = new Date(today.getFullYear(), 8, 12);
-    const twoWeeksBeforeBirthday = new Date(birthday);
-    twoWeeksBeforeBirthday.setDate(birthday.getDate() - 15);
 
-    if (today >= twoWeeksBeforeBirthday && today <= birthday) { 
+  <% 
+      const today = new Date();
+      const birthday = new Date(today.getFullYear(), 8, 11);  // Cumpleaños el 11 de septiembre
+      const twoWeeksBeforeBirthday = new Date(birthday);
+      twoWeeksBeforeBirthday.setDate(birthday.getDate() - 15);
+
+      const christmasStart = new Date(today.getFullYear(), 11, 1); // 1 de diciembre
+      const christmasEnd = new Date(today.getFullYear() + 1, 0, 7); // 7 de enero del siguiente año
+
+      // Comprobamos si estamos en dos semanas antes del cumpleaños o en el periodo navideño
+      if ((today >= twoWeeksBeforeBirthday && today <= birthday) || (today >= christmasStart && today <= christmasEnd)) { 
   %>
   <script src="/js/thirdparty/confetti.js"></script>
   <% } %>
-  <% } %>
+
   <!-- Open Graph -->
   <meta property="og:title" content="<%= title %> | AlexDevUwU">
   <meta property="og:description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
   <meta property="og:type" content="website">
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<%= title %> | AlexDevUwU">
   <meta name="twitter:description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
   <meta name="twitter:site" content="@AlexDevUwU">
+
   <!-- Título de la página -->
   <title><%= title %> | AlexDevUwU</title>
+
 </head>
 
 <body class="flex min-h-screen flex-col bg-gray-900 text-white font-jetbrains">
@@ -56,13 +67,15 @@
     <a href="/?view=index">
       <h1 class="text-left text-2xl font-bold text-blue-400">AlexDevUwU</h1>
     </a>
+
     <% if (type == "content" && view !== "index" || type == "extras" || type == "error") { %>
-    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+    <a href="/?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
       Volver al inicio
     </a>
     <% } %>
+
     <% if (type == "admin" && view !== "index") { %>
-    <a href="/admin?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded  hidden">
+    <a href="/admin?view=index" id="back-button" class="text-white bg-blue-700 hover:bg-blue-800 font-bold py-1 px-2 rounded hidden">
       Volver al panel
     </a>
     <% } %>
@@ -71,6 +84,7 @@
   <%- include(`${route}.ejs`) %>
 
   <br><br>
+
   <script src="/js/minified/common/adjustBodyPadding.js"></script>
 </body>
 

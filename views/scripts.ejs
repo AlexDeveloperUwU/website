@@ -4,3 +4,13 @@
 <% } else { %>
 <script src="/js/minified/common/mainOthers.js"></script>
 <% } %>
+<% 
+  const today = new Date();
+  const christmasStart = new Date(today.getFullYear(), 11, 1); // 1 de diciembre
+  const christmasEnd = new Date(today.getFullYear() + 1, 0, 7); // 7 de enero del siguiente año
+
+  // Comprobamos si estamos en el periodo navideño
+  if (today >= christmasStart && today <= christmasEnd) { 
+%>
+<script src="/js/minified/extras/snow.js"></script>
+<% } %>

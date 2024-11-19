@@ -2,6 +2,14 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Use Node.js 22",
+      "type": "shell",
+      "command": "nvm use 22",
+      "problemMatcher": [],
+      "detail": "Use Node.js 22",
+      "isBackground": true
+    },
+    {
       "type": "npm",
       "script": "css",
       "problemMatcher": [],
