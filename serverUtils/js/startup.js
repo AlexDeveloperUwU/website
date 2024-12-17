@@ -45,11 +45,3 @@ export function clearCacheDirectory(cacheDir) {
     });
   });
 }
-
-export function verifyEnvVars(requiredVars) {
-  requiredVars.forEach((varName) => {
-    if (!process.env[varName]) {
-      throw new Error(`La variable de entorno ${varName} no está definida o no tiene un valor.`);
-    }
-  });
-}

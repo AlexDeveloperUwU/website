@@ -16,7 +16,7 @@ function showMainContent() {
 window.addEventListener("load", function () {
   setTimeout(function () {
     showMainContent();
-  }, 600);
+  }, 500);
 });
 
 function fadeOutMainContent(callback) {
@@ -44,12 +44,12 @@ function fadeOutMainContent(callback) {
     }
 
     callback();
-  }, 605);
+  }, 400);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
-    const link = event.target.closest('a[href*="?view="]');
+    const link = event.target.closest('a[href*="?view="], a[href^="/"]');
 
     if (link) {
       event.preventDefault();

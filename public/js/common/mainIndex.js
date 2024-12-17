@@ -2,12 +2,16 @@ function showMainContent() {
   const mainContent = document.querySelector("main");
   mainContent.classList.remove("hidden");
   mainContent.classList.add("fade-in");
+
+  setTimeout(function () {
+    mainContent.classList.remove("fade-in");
+  }, 500); 
 }
 
 window.addEventListener("load", function () {
   setTimeout(function () {
     showMainContent();
-  }, 600);
+  }, 500);
 });
 
 function fadeOutMainContent(callback) {
@@ -19,16 +23,17 @@ function fadeOutMainContent(callback) {
     mainContent.classList.add("hidden");
     mainContent.classList.remove("fade-out");
     callback();
-  }, 605);
+  }, 400);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
-    const link = event.target.closest('a[href*="?view="]');
+    const link = event.target.closest('a[href*="?view="], a[href^="/"]');
 
     if (link) {
       event.preventDefault();
       const url = link.href;
+
       fadeOutMainContent(function () {
         window.location.href = url;
       });

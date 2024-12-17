@@ -221,7 +221,7 @@ body {
 }
 
 .fade-out {
-  animation: fadeOut 0.5s forwards;
+  animation: fadeOut 0.4s forwards; // Tiene que ser un segundo menos bc god knows why :D
 }
 
 .hidden {
@@ -246,10 +246,9 @@ body {
 
 .latestVideoEmbed {
   width: 100%;
-  height: 500px; /* Ajusta la altura según sea necesario */
+  height: 500px;
 }
 
-/* Asegúrate de que las clases responsive-iframe tienen un tamaño adecuado */
 .responsive-iframe2 {
   width: 100%;
   height: 100%;

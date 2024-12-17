@@ -32,7 +32,7 @@
   "description": "Mi página web oficial, hecha de forma que sea más interactiva y dinámica",
   "main": "index.js",
   "scripts": {
-    "init": "nodemon --ignore data/* index.js",
+    "init": "nodemon --ignore data/* --ignore public/* index.js",
     "css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/main.css --watch --minify",
     "minify": "node ./utils/minify.js",
     "autominify": "npm run minify"

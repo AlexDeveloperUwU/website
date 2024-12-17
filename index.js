@@ -8,7 +8,7 @@ import morgan from "morgan";
 import compression from "compression";
 import fs from "fs";
 import rateLimiter from "./serverUtils/js/ratelimiter.js";
-import { ensureDirExists, cleanOldLogs, verifyEnvVars } from "./serverUtils/js/startup.js";
+import { ensureDirExists, cleanOldLogs} from "./serverUtils/js/startup.js";
 import setupAuth from "./serverUtils/js/auth.js";
 
 // Inicialización del servidor Express
@@ -125,22 +125,6 @@ import publicRoutes from "./routes/public.js";
 import apiRoutes from "./routes/api.js";
 app.use(apiRoutes);
 app.use(publicRoutes);
-
-// Verificación de variables de entorno necesarias
-const requiredEnvVars = [
-  "formWebhookUrl",
-  "logsWebhookUrl",
-  "discordClientId",
-  "discordClientSecret",
-  "discordCallbackUrl",
-  "sessionSecret",
-  "hetrixApiToken",
-  "homecoreId",
-  "codenexisId",
-  "loadrunnerId",
-];
-
-verifyEnvVars(requiredEnvVars);
 
 // Inicio del servidor
 app.listen(port, () => {
