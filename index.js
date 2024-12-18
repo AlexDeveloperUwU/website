@@ -3,13 +3,12 @@ import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import minify from "express-minify";
-import helmet from "helmet";
-import morgan from "morgan";
 import compression from "compression";
-import fs from "fs";
 import rateLimiter from "./utils/js/ratelimiter.js";
-import { ensureDirExists, cleanOldLogs} from "./utils/js/startup.js";
+import { ensureDirExists} from "./utils/js/startup.js";
 import setupAuth from "./utils/js/auth.js";
+import { setupLogging } from "./utils/js/logging.js";
+import setupHelmet from "./utils/js/helmet.js";
 
 // Inicialización del servidor Express
 const app = express();
@@ -47,68 +46,10 @@ app.use(compression());
 setupAuth(app);
 
 // Configuración del directorio y archivo de logs
-const logDir = path.join(__dirname, "logs");
-ensureDirExists(logDir);
-
-// Obtener timestamp en formato humano para el archivo de log
-const now = new Date();
-const formatNumber = (num) => num.toString().padStart(2, "0");
-const timestamp = `${now.getFullYear()}-${formatNumber(now.getMonth() + 1)}-${formatNumber(
-  now.getDate()
-)}_${formatNumber(now.getHours())}-${formatNumber(now.getMinutes())}`;
-const logFileName = `${timestamp}.log`;
-const accessLogStream = fs.createWriteStream(path.join(logDir, logFileName), { flags: "a" });
-
-// Configuración de los logs de acceso
-app.use(morgan("combined", { stream: accessLogStream }));
-
-// Llamar a la función para limpiar los logs antiguos
-cleanOldLogs(logDir, 5);
-
-// Lectura de sitios para usar en Helmet
-let additionalConnectSrc = [];
-try {
-  const data = fs.readFileSync(sitesFilePath, "utf8");
-  const sites = JSON.parse(data);
-  additionalConnectSrc = sites.map((site) => site.url);
-} catch (err) {
-  console.error("Error al leer o parsear el archivo JSON:", err);
-}
+setupLogging(app, __dirname);
 
 // Configuración de seguridad con Helmet
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", "https://static.cloudflareinsights.com/"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com/"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https://i.ytimg.com"],
-      connectSrc: [
-        "'self'",
-        "https://api.rss2json.com",
-        "https://alexdevuwu.com",
-        "https://api.lanyard.rest",
-        ...additionalConnectSrc,
-      ],
-      fontSrc: ["'self'"],
-      frameSrc: [
-        "'self'",
-        "https://www.youtube.com",
-        "https://www.twitch.tv/",
-        "https://player.twitch.tv/",
-        "https://kick.com/",
-        "https://player.kick.com/",
-      ],
-    },
-  })
-);
-
-app.use(helmet.xssFilter());
-app.use(helmet.noSniff());
-app.use(helmet.frameguard({ action: "deny" }));
-app.use(helmet.hsts({ maxAge: 63072000, includeSubDomains: true, preload: true }));
-app.disable("x-powered-by");
-app.set("trust proxy", 1);
+setupHelmet(app, sitesFilePath);
 
 // Middleware de rate limiting
 app.use(rateLimiter);
