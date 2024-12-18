@@ -1,6 +1,6 @@
 import express from "express";
-import * as webhook from "../serverUtils/js/webhook.js";
-import * as db from "../serverUtils/js/db.js";
+import * as webhook from "../utils/js/webhook.js";
+import * as db from "../utils/js/db.js";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import fs from "fs";

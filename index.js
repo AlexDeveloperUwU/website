@@ -7,9 +7,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import compression from "compression";
 import fs from "fs";
-import rateLimiter from "./serverUtils/js/ratelimiter.js";
-import { ensureDirExists, cleanOldLogs} from "./serverUtils/js/startup.js";
-import setupAuth from "./serverUtils/js/auth.js";
+import rateLimiter from "./utils/js/ratelimiter.js";
+import { ensureDirExists, cleanOldLogs} from "./utils/js/startup.js";
+import setupAuth from "./utils/js/auth.js";
 
 // Inicialización del servidor Express
 const app = express();

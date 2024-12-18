@@ -2,7 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import express from "express";
 import { fileURLToPath } from "url";
-import { getLink } from "../serverUtils/js/db.js";
+import { getLink } from "../utils/js/db.js";
 
 const router = express.Router();
 
@@ -11,10 +11,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Usa __dirname para construir rutas
-const contentRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "contentRoutes.json");
-const adminRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "adminRoutes.json");
-const errorRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "errorRoutes.json");
-const extrasRoutesPath = path.join(__dirname, "..", "serverUtils", "json", "extrasRoutes.json");
+const contentRoutesPath = path.join(__dirname, "..", "utils", "json", "contentRoutes.json");
+const adminRoutesPath = path.join(__dirname, "..", "utils", "json", "adminRoutes.json");
+const errorRoutesPath = path.join(__dirname, "..", "utils", "json", "errorRoutes.json");
+const extrasRoutesPath = path.join(__dirname, "..", "utils", "json", "extrasRoutes.json");
 
 const authenticateDiscord = (req, res, next) => {
   if (req.isAuthenticated()) {

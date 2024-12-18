@@ -221,7 +221,7 @@ body {
 }
 
 .fade-out {
-  animation: fadeOut 0.4s forwards; // Tiene que ser un segundo menos bc god knows why :D
+  animation: fadeOut 0.4s forwards; 
 }
 
 .hidden {
