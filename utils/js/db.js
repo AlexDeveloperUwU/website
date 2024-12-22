@@ -75,6 +75,20 @@ export function getAllEvents(style) {
   }
 }
 
+export function getEventsByDate(date) {
+  const formattedDate = date.split("/").reverse().join("-");
+  const entries = Array.from(calendarDB.entries());
+  return entries
+    .filter(([key, value]) => value.date === formattedDate)
+    .map(([key, value]) => ({
+      id: key,
+      date: value.date,
+      time: value.time,
+      type: value.type,
+      description: value.description,
+    }));
+}
+
 //* Funciones para manejar los enlaces
 export function addLink(id, url) {
   if (id) {
