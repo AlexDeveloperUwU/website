@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log("Evento añadido exitosamente:", data);
+        alert("Evento añadido exitosamente");
         // Puedes actualizar la lista de eventos si es necesario
       })
       .catch((error) => {
         console.error("Error al añadir el evento:", error);
+        alert("Error al añadir el evento");
       });
   });
 
@@ -62,10 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         console.log("Evento eliminado exitosamente:", data);
+        alert("Evento eliminado exitosamente");
         // Puedes actualizar la lista de eventos si es necesario
       })
       .catch((error) => {
         console.error("Error al eliminar el evento:", error);
+        alert("Error al eliminar el evento");
       });
   });
 

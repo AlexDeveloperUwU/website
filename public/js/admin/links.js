@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         console.log("Enlace eliminado exitosamente:", data.message);
         alert(data.message);
-        document.getElementById("deleteLinkForm").reset(); // Limpia el formulario
+        document.getElementById("deleteLinkForm").reset();
       })
       .catch((error) => {
         console.error("Error al eliminar el enlace:", error);
