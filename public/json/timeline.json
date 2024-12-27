@@ -185,6 +185,48 @@
         "title": "LiberTeis",
         "description": "Reestructuración de la base de datos y reescritura de la API y backend completo.",
         "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
+        "title": "Centro de documentación personal",
+        "description": "Actualización del CSS del centro de documentación.",
+        "url": "https://docs.alexdevuwu.com"
+      },
+      {
+        "title": "Página web personal",
+        "description": "Mejoras en el frontend y backend.",
+        "url": "https://alexdevuwu.com"
+      },
+      {
+        "title": "ESP32",
+        "description": "Creación de un repositorio que contiene mis pruebas con un ESP32.",
+        "url": "https://github.com/AlexDeveloperUwU/ESP32"
+      },
+      {
+        "title": "Git Server",
+        "description": "Creación de mi propio Git Server con Forgejo para backups y proyectos extra.",
+        "url": "https://git.alexdevuwu.com"
+      }
+    ],
+    "Diciembre": [
+      {
+        "title": "Página web personal",
+        "description": "Mejoras en el frontend y backend.",
+        "url": "https://alexdevuwu.com"
+      },
+      {
+        "title": "ESP32",
+        "description": "Creación de nuevos proyectos para pruebas.",
+        "url": "https://github.com/AlexDeveloperUwU/ESP32"
+      },
+      {
+        "title": "LiberTeis",
+        "description": "Reescritura de la API y backend completo.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
+        "title": "OBS Tools",
+        "description": "Creación del repositorio y herramientas y widgets necesarios para mis streams.",
+        "url": "https://github.com/AlexDeveloperUwU/obs-tools"
       }
     ]
   }
