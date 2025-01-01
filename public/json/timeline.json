@@ -229,5 +229,19 @@
         "url": "https://github.com/AlexDeveloperUwU/obs-tools"
       }
     ]
+  },
+  "2025": {
+    "Enero": [
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo de la API y la base de datos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
+        "title": "OBS Tools",
+        "description": "Creación del repositorio y herramientas y widgets necesarios para mis streams.",
+        "url": "https://github.com/AlexDeveloperUwU/obs-tools"
+      }
+    ]
   }
 }
