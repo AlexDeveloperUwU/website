@@ -242,6 +242,23 @@
         "description": "Creación del repositorio y herramientas y widgets necesarios para mis streams.",
         "url": "https://github.com/AlexDeveloperUwU/obs-tools"
       }
+    ],
+    "Febrero": [
+      {
+        "title": "LiberTeis",
+        "description": "Desarrollo de la API y la base de datos.",
+        "url": "https://github.com/AlexDeveloperUwU/LiberTeis"
+      },
+      {
+        "title": "GalaBot",
+        "description": "Creación del repositorio y código del bot de Discord para el bot de GalaYaki.",
+        "url": "https://github.com/AlexDeveloperUwU/galabot"
+      },
+      {
+        "title": "GalaCards",
+        "description": "Adaptación y mejora al juego Quién Soy para GalaYaki.",
+        "url": ""
+      }
     ]
   }
 }
