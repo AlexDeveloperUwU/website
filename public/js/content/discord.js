@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const statusElement = document.getElementById("myDiscordStatus");
-    statusElement.textContent = statusSpanish;
+    if (statusElement) {
+      statusElement.textContent = statusSpanish;
+    }
   }
 
   function updateDiscordStatus() {

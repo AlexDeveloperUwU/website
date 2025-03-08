@@ -23,6 +23,11 @@ const authenticateDiscord = (req, res, next) => {
   res.redirect("/auth/discord");
 };
 
+// Ruta exclusiva para el fichero sw.js
+router.get("/sw.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "js", "minified", "common", "sw.js"));
+});
+
 // Ruta para el archivo robots.txt
 router.get("/robots.txt", (req, res) => {
   res.status(404).end();
