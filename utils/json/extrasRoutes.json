@@ -14,6 +14,31 @@
       "view": "timeline",
       "title": "TimeLine",
       "folder": "extras/timeline"
+    },
+    {
+      "view": "kick",
+      "title": "Kick",
+      "folder": "extras/kick"
+    },
+    {
+      "view": "twitch",
+      "title": "Twitch",
+      "folder": "extras/twitch"
+    },
+    {
+      "view": "youtube",
+      "title": "YouTube",
+      "folder": "extras/youtube"
+    },
+    {
+      "view": "links",
+      "title": "Enlaces",
+      "folder": "extras/links"
+    },
+    {
+      "view": "mediacontent",
+      "title": "Plataformas de contenido",
+      "folder": "extras/mediacontent"
     }
   ]
 }

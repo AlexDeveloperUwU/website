@@ -9,31 +9,6 @@
       "view": "aboutme",
       "title": "Sobre mi",
       "folder": "content/aboutme"
-    },
-    {
-      "view": "kick",
-      "title": "Kick",
-      "folder": "content/kick"
-    },
-    {
-      "view": "twitch",
-      "title": "Twitch",
-      "folder": "content/twitch"
-    },
-    {
-      "view": "youtube",
-      "title": "YouTube",
-      "folder": "content/youtube"
-    },
-    {
-      "view": "links",
-      "title": "Enlaces",
-      "folder": "content/links"
-    },
-    {
-      "view": "mediacontent",
-      "title": "Plataformas de contenido",
-      "folder": "content/mediacontent"
     }
   ]
 }

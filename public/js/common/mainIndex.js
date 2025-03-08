@@ -5,7 +5,7 @@ function showMainContent() {
 
   setTimeout(function () {
     mainContent.classList.remove("fade-in");
-  }, 500); 
+  }, 500);
 }
 
 window.addEventListener("load", function () {
