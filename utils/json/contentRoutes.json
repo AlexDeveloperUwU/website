@@ -29,6 +29,11 @@
       "view": "links",
       "title": "Enlaces",
       "folder": "content/links"
+    },
+    {
+      "view": "mediacontent",
+      "title": "Plataformas de contenido",
+      "folder": "content/mediacontent"
     }
   ]
 }
