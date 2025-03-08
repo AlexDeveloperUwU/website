@@ -1,7 +1,7 @@
 [
   {
     "name": "Azirax",
-    "url": "https://azirax.site",
+    "url": "https://azirax.oops.wtf",
     "github": "https://github.com/alexdeveloperuwu/azirax",
     "icon": "fa-solid fa-code",
     "description": "Un simple pero amplio bot de Discord que ofrece una amplia gama de comandos. También permite a los usuarios interactuar de manera creativa y entretenida con otros miembros de la comunidad."
@@ -12,6 +12,20 @@
     "github": "https://github.com/alexdeveloperuwu/liberteis",
     "icon": "fa-solid fa-code",
     "description": "Una pequeña web que permite la gestión de eventos, material y espacios de la biblioteca del IES de Teis, aunque se puede aplicar en otros ámbitos."
+  },
+  {
+    "name": "OBS Tools",
+    "url": "https://github.com/AlexDeveloperUwU/obs-tools",
+    "github": "https://github.com/AlexDeveloperUwU/obs-tools",
+    "icon": "fa-solid fa-code",
+    "description": "Un conjunto de widgets para OBS customizados para mi canal y hechos de 0. También fueron creados para practicar a trabajar contra las distintas APIs."
+  },
+  {
+    "name": "GalaBot",
+    "url": "https://github.com/AlexDeveloperUwU/galabot",
+    "github": "https://github.com/AlexDeveloperUwU/galabot",
+    "icon": "fa-solid fa-code",
+    "description": "Un bot de Discord custom para el servidor de la VTuber GalaYaki, con varias funcionalidades como avisos de directos o sistemas de warnings."
   },
   {
     "name": "Mini Projects",

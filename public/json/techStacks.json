@@ -13,7 +13,7 @@
     {
       "icon": "fas fa-database",
       "title": "Bases de Datos",
-      "description": "SQLite (Enmap / Kysely)"
+      "description": "SQLite (Enmap / Kysely) / MySQL"
     },
     {
       "icon": "fas fa-box",
@@ -50,7 +50,7 @@
     {
       "icon": "fas fa-database",
       "title": "Bases de Datos",
-      "description": "SQLite (Enmap / Kysely)"
+      "description": "SQLite (Enmap / Kysely) / MySQL"
     },
     {
       "icon": "fas fa-box",
@@ -67,22 +67,22 @@
     {
       "icon": "fas fa-cogs",
       "title": "Motor",
-      "description": "Java (Versión 21)"
+      "description": "Java (Versión LTS)"
     },
     {
       "icon": "fas fa-desktop",
       "title": "Entorno de Desarrollo",
-      "description": "JetBrains IntelliJ"
+      "description": "JetBrains IntelliJ / Visual Studio Code"
     },
     {
       "icon": "fas fa-database",
       "title": "Bases de Datos",
-      "description": "MySQL (si necesita)"
+      "description": "H2 / MySQL (si necesita)"
     },
     {
       "icon": "fas fa-laptop",
       "title": "Sistemas Operativos",
-      "description": "Windows / Linux"
+      "description": "Windows / Linux / WSL"
     }
   ]
 }
