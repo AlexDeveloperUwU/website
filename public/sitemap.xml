@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <url>
-    <loc>https://alexdevuwu.com/</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>1.00</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/?view=index</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/?view=aboutme</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/?view=twitch</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/?view=kick</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/?view=youtube</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/extras?view=index</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/extras?view=timeline</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://alexdevuwu.com/extras?view=status</loc>
-    <lastmod>2024-09-15T10:50:27+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://alexdevuwu.com/</loc>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/aboutme</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras</loc>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/timeline</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/status</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/mediacontent</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/links</loc>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/twitch</loc>
+<priority>0.51</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/youtube</loc>
+<priority>0.51</priority>
+</url>
+<url>
+<loc>https://alexdevuwu.com/extras/kick</loc>
+<priority>0.51</priority>
+</url>
 </urlset>
