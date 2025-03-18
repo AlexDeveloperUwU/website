@@ -22,15 +22,15 @@
   },
   {
     "name": "GalaBot",
-    "url": "https://github.com/AlexDeveloperUwU/galabot",
-    "github": "https://github.com/AlexDeveloperUwU/galabot",
+    "url": "https://github.com/TakitosCorp/galabot",
+    "github": "https://github.com/TakitosCorp/galabot",
     "icon": "fa-solid fa-code",
     "description": "Un bot de Discord custom para el servidor de la VTuber GalaYaki, con varias funcionalidades como avisos de directos o sistemas de warnings."
   },
   {
     "name": "GalaCards",
-    "url": "https://github.com/AlexDeveloperUwU/galacards",
-    "github": "https://github.com/AlexDeveloperUwU/galacards",
+    "url": "https://github.com/TakitosCorp/galacards",
+    "github": "https://github.com/TakitosCorp/galacards",
     "icon": "fa-solid fa-code",
     "description": "Recreación del juego Quién Soy preparado para 4 personas y en stream. Incluye un túnel para salida a la red y un bot de discord que gestiona las tarjetas."
   },
