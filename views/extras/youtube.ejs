@@ -14,17 +14,17 @@
           </div>
         </div>
       </a>
-      <div id="youtubeCard1" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
+      <div id="youtubeCard1" class="rounded-lg bg-gray-800 p-8 h-auto flex flex-col">
         <h4 class="text-xl font-bold text-gray-100 mb-4">Último vídeo</h4>
-        <div class="flex-grow">
+        <div class="aspect-w-16 aspect-h-9">
           <lite-youtube vnum="0" class="w-full h-full">
             <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=VIDEO_ID_1">Watch on YouTube: "Latest Video"</a>
           </lite-youtube>
         </div>
       </div>
-      <div id="youtubeCard2" class="rounded-lg bg-gray-800 p-8 h-[600px] flex flex-col">
+      <div id="youtubeCard2" class="rounded-lg bg-gray-800 p-8 h-auto flex flex-col">
         <h4 class="text-xl font-bold text-gray-100 mb-4">Penúltimo vídeo</h4>
-        <div class="flex-grow">
+        <div class="aspect-w-16 aspect-h-9">
           <lite-youtube vnum="1" class="w-full h-full">
             <a class="lite-youtube-fallback" href="https://www.youtube.com/watch?v=VIDEO_ID_2">Watch on YouTube: "Second Latest Video"</a>
           </lite-youtube>
@@ -33,7 +33,7 @@
     </div>
   </section>
 
-  <!-- Sección de scripts -->
-  <script src="/js/minified/content/youtube.js"></script>
+  <script src="/js/minified/extras/youtube.js"></script>
+  <script type="module" src="/js/minified/thirdparty/lite-youtube.js"></script>
   <%- include(`../scripts.ejs`) %>
 </main>
