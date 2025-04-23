@@ -9,6 +9,11 @@
       "view": "aboutme",
       "title": "Sobre mi",
       "folder": "content/aboutme"
+    },
+    {
+      "view": "allProjects",
+      "title": "Proyectos",
+      "folder": "content/allProjects"
     }
   ]
 }

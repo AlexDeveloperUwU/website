@@ -275,6 +275,11 @@
         "title": "GalaCards",
         "description": "Adaptación y mejora al juego Quién Soy para GalaYaki.",
         "url": "https://github.com/TakitosCorp/galacards"
+      },
+      {
+        "title": "Unduck Search",
+        "description": "Creación de un buscador estilo Google que usa Unduck by Theo como buscador.",
+        "url": "https://github.com/AlexDeveloperUwU/unduck-search"
       }
     ]
   }
