@@ -4,11 +4,21 @@ const loadVideo = (liteYT) => {
   const reqURL = `https://api.rss2json.com/v1/api.json?rss_url=${channelURL}`;
 
   fetch(reqURL)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then((result) => {
-      const videoNumber = liteYT.getAttribute("vnum");
+      const videoNumber = parseInt(liteYT.getAttribute("vnum"), 10);
+      if (isNaN(videoNumber) || videoNumber < 0 || videoNumber >= result.items.length) {
+        throw new Error("Invalid video number or out of range.");
+      }
+
       const link = result.items[videoNumber].link;
-      const id = link.substr(link.indexOf("=") + 1);
+      const urlParams = new URLSearchParams(link.split('?')[1]);
+      const id = urlParams.get('v');
       liteYT.setAttribute("videoid", id);
 
       const fallbackLink = liteYT.querySelector(".lite-youtube-fallback");
@@ -16,7 +26,7 @@ const loadVideo = (liteYT) => {
         fallbackLink.setAttribute("href", `https://www.youtube.com/watch?v=${id}`);
       }
     })
-    .catch((error) => console.log("error", error));
+    .catch((error) => console.error("Error loading video:", error));
 };
 
 const liteYTs = document.getElementsByTagName("lite-youtube");
