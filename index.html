@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre acerca de mí, mis proyectos, mi contenido y mucho más en mi web oficial!">
+  <meta name="theme-color" content="#0f172a">
+
+  <title>Alex Verde | Desarrollador Full Stack</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'mono': ['JetBrains Mono', 'monospace'],
+            'sans': ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': {
+                transform: 'translateY(0px)'
+              },
+              '50%': {
+                transform: 'translateY(-10px)'
+              },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #1e40af, #0369a1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-hover {
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.15);
+    }
+
+    .tech-badge {
+      transition: all 0.3s ease;
+    }
+
+    .tech-badge:hover {
+      transform: scale(1.05);
+    }
+
+    .backdrop-blur-custom {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .section-divider {
+      position: relative;
+      margin: 3rem 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.4), transparent);
+    }
+
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(30, 64, 175, 0.6), rgba(3, 105, 161, 0.6), transparent);
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      background: #1e40af;
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(30, 64, 175, 0.4);
+    }
+
+    .code-block {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid #334155;
+      position: relative;
+    }
+
+    .linux-titlebar {
+      background: #374151;
+      border-bottom: 1px solid #4b5563;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .linux-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .linux-btn {
+      width: 12px;
+      height: 12px;
+      background: #64748b;
+      border-radius: 2px;
+      transition: background-color 0.2s;
+    }
+
+    .linux-btn:hover {
+      background: #94a3b8;
+    }
+
+    .linux-btn-minimize:hover {
+      background: #fbbf24;
+    }
+
+    .linux-btn-maximize:hover {
+      background: #10b981;
+    }
+
+    .linux-btn-close:hover {
+      background: #ef4444;
+    }
+
+    .syntax-comment {
+      color: #64748b;
+    }
+
+    .syntax-keyword {
+      color: #1e40af;
+    }
+
+    .syntax-string {
+      color: #10b981;
+    }
+
+    .syntax-function {
+      color: #f59e0b;
+    }
+
+    .syntax-variable {
+      color: #ec4899;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white font-sans">
+  <!-- Header -->
+  <header id="main-header" class="sticky top-0 z-50 backdrop-blur-custom bg-slate-900/90 border-b border-slate-700/50">
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-xl sm:text-2xl font-bold gradient-text font-mono">AlexDevUwU</h1>
+        <nav class="hidden md:flex space-x-6 font-mono text-sm">
+          <a href="#about" class="text-slate-300 hover:text-blue-800 transition-colors duration-300">.about()</a>
+          <a href="#projects" class="text-slate-300 hover:text-blue-800 transition-colors duration-300">.projects()</a>
+          <a href="#contact" class="text-slate-300 hover:text-blue-800 transition-colors duration-300">.contact()</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden" aria-hidden="true"></div>
+  <nav id="mobile-menu" class="fixed inset-y-0 right-0 w-64 code-block p-6 transform translate-x-full transition-transform duration-300 ease-in-out z-50 md:hidden">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-lg font-bold text-white">Menú</h2>
+      <button id="close-mobile-menu-btn" class="text-slate-400 hover:text-white transition-colors duration-300">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="space-y-4">
+      <a href="#about" class="block text-slate-300 hover:text-blue-800 transition-colors duration-300" data-menu-item>.about()</a>
+      <a href="#projects" class="block text-slate-300 hover:text-blue-800 transition-colors duration-300" data-menu-item>.projects()</a>
+      <a href="#contact" class="block text-slate-300 hover:text-blue-800 transition-colors duration-300" data-menu-item>.contact()</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-6">
+    <!-- Hero Section (Profile) -->
+    <section class="py-6 sm:py-8">
+      <div class="max-w-6xl mx-auto">
+        <!-- Main Profile Card -->
+        <div class="card-hover code-block rounded-xl relative overflow-hidden">
+          <!-- Linux-style titlebar -->
+          <div class="linux-titlebar">
+            <span class="text-white font-mono text-xs sm:text-sm">~/portfolio/developer.js</span>
+            <div class="linux-controls">
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-6">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+              <!-- Avatar -->
+              <div class="flex-shrink-0">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl ring-2 ring-blue-800/50 ring-offset-4 ring-offset-slate-900 overflow-hidden">
+                  <img src="https://alexdevuwu.com/img/logoSmall.webp" alt="Alex Verde" class="w-full h-full object-cover">
+                </div>
+              </div>
+
+              <!-- Profile Info - Clean and Simple -->
+              <div class="flex-1 text-center sm:text-left">
+                <h2 class="text-xl sm:text-2xl font-bold text-white mb-1">Alex Verde</h2>
+                <p class="text-blue-700 font-medium mb-4">Full Stack Developer</p>
+
+                <!-- Stats Grid - Responsive -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Experiencia:</span>
+                    <span class="text-white font-medium">3+ años</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Proyectos:</span>
+                    <span class="text-white font-medium">6+</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Estado:</span>
+                    <span class="text-green-400 font-medium">Disponible</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Ubicación:</span>
+                    <span class="text-white font-medium">España</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Especialidad:</span>
+                    <span class="text-white font-medium">Node.js</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-slate-400">Café:</span>
+                    <span class="text-white font-medium">∞</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal-like Bio Card -->
+        <div class="card-hover code-block rounded-xl mt-6 relative overflow-hidden">
+          <div class="linux-titlebar">
+            <span class="text-white font-mono text-xs sm:text-sm">~/about/bio.md</span>
+            <div class="linux-controls">
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-6">
+            <div class="flex flex-col lg:flex-row gap-6 items-start">
+              <div class="lg:w-1/3">
+                <div class="code-block rounded-xl p-4 border border-slate-600/50">
+                  <!-- Imagen con altura fija que coincide mejor con el texto -->
+                  <img src="https://i.ibb.co/FbSDvtgv/20241223-121455-1-VSee-Face.png" alt="Alex Verde Character" class="w-full max-h-48 rounded-lg object-cover object-center">
+                </div>
+              </div>
+              <div class="lg:w-2/3">
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-4 flex items-center gap-2">
+                  <i class="fas fa-user text-blue-800"></i>
+                  Sobre mí
+                </h3>
+                <div class="space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+                  <p>
+                    ¡Hola! Soy Alex, un apasionado programador, gamer y streamer en mi tiempo libre.
+                    Principalmente desarrollo páginas web y despliego servidores de diversos tipos,
+                    aunque también he creado aplicaciones de escritorio.
+                  </p>
+                  <p>
+                    Tengo una especial afición por experimentar con Node.js y otras tecnologías.
+                    Paso muchas horas en mi ordenador, trabajando en varios proyectos, siempre
+                    acompañado de mi café y mi entusiasmo por aprender y descubrir cosas nuevas!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center space-y-4 mb-8">
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
+            <i class="fas fa-laptop-code text-blue-800"></i>
+            <span class="syntax-comment">// </span>Stack Tecnológico
+          </h3>
+          <p class="text-slate-400 max-w-2xl mx-auto text-sm">
+            Las herramientas y tecnologías que domino para crear soluciones completas
+          </p>
+        </div>
+        <div class="card-hover code-block rounded-xl relative overflow-hidden">
+          <div class="linux-titlebar">
+            <span class="text-white font-mono text-xs sm:text-sm">~/skills/technologies.js</span>
+            <div class="linux-controls">
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-6">
+            <div class="space-y-6">
+              <!-- Frontend -->
+              <div>
+                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <i class="fas fa-palette text-blue-800"></i>
+                  Frontend
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">HTML</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">CSS</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">JavaScript</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">React</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Tailwind CSS</span>
+                </div>
+              </div>
+
+              <!-- Backend -->
+              <div>
+                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <i class="fas fa-server text-blue-800"></i>
+                  Backend
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Node.js</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Express.js</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Python</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Flask</span>
+                </div>
+              </div>
+
+              <!-- Database -->
+              <div>
+                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <i class="fas fa-database text-blue-800"></i>
+                  Base de Datos
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">MongoDB</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">PostgreSQL</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">MySQL</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Redis</span>
+                </div>
+              </div>
+
+              <!-- Other Tools -->
+              <div>
+                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <i class="fas fa-tools text-blue-800"></i>
+                  Otras Herramientas
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Git</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Docker</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Linux</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">Discord.js</span>
+                  <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors">APIs</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-slate-600">
+              <a href="/aboutme" class="inline-flex items-center bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition-colors duration-300 text-sm font-medium">
+                Ver más detalles
+                <i class="fas fa-chevron-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center space-y-4 mb-8">
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
+            <i class="fab fa-github text-blue-800"></i>
+            <span class="syntax-comment">// </span>Proyectos
+          </h3>
+          <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
+            <span class="syntax-comment">/* Una selección de mis proyectos más destacados */</span>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <!-- Project 1: Azirex -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/azirex</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-robot text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">Azirex</h4>
+                </div>
+                <a href="https://azirax.oops.wtf" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Un simple pero amplio bot de Discord que ofrece una amplia gama de comandos. También permite a los usuarios interactuar de manera creativa y entretenida con otros miembros de la comunidad.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Discord.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Node.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: LiberTeis -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/liberteis</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-database text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">LiberTeis</h4>
+                </div>
+                <a href="https://github.com/AlexDeveloperUwU/liberteis" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Una pequeña web que permite la gestión de eventos, material y espacios de la biblioteca del IES de Teis, aunque se puede aplicar en otros ámbitos.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">React</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Node.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: OBS Tools -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/obstools</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-wrench text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">OBS Tools</h4>
+                </div>
+                <a href="https://github.com/AlexDeveloperUwU/obs-tools" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Un conjunto de widgets para OBS customizados para mi canal y hechos de 0. También fueron creados para practicar a trabajar contra las distintas APIs.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">HTML</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">CSS</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">JavaScript</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">APIs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: GalaBot -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/galabot</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-robot text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">GalaBot</h4>
+                </div>
+                <a href="https://github.com/TakitosCorp/galabot" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Un bot de Discord custom para el servidor de la VTuber GalaYuki, con varias funcionalidades como avisos de directos o sistemas de warnings.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Discord.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Node.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">PostgreSQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: GalaCards -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/galacards</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-gamepad text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">GalaCards</h4>
+                </div>
+                <a href="https://github.com/TakitosCorp/galacards" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Recreación del juego Quién Soy preparado para 4 personas y en stream. Incluye un túnel para salida a la red y un bot de discord que gestiona las tarjetas.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Node.js</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Socket.io</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Discord.js</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: Mini Projects -->
+          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/projects/miniprojects</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fas fa-folder text-white"></i>
+                  </div>
+                  <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono">Mini Projects</h4>
+                </div>
+                <a href="https://github.com/AlexDeveloperUwU/miniprojects" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+              </div>
+              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
+                Mini proyectos que voy haciendo por distintos motivos y que son tan pequeños que no necesitan un repo para ellos solos.
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">JavaScript</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">Python</span>
+                <span class="border border-slate-600 text-slate-300 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">HTML/CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More Projects Link - Full Width -->
+        <div class="card-hover code-block rounded-xl hover:bg-slate-800/70 transition-all duration-300 relative overflow-hidden">
+          <div class="linux-titlebar">
+            <span class="text-white font-mono text-xs">/github/explore</span>
+            <div class="linux-controls">
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <a href="https://github.com/AlexDeveloperUwU" class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                <i class="fab fa-github text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-base sm:text-lg font-semibold text-white font-mono">github.explore()</h4>
+                <p class="text-slate-300 font-mono text-xs sm:text-sm">¿Quieres ver otros proyectos que tengo? ¡Pásate por mi GitHub!</p>
+              </div>
+              <div class="text-slate-400">
+                <i class="fas fa-arrow-right text-xl"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider"></div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center space-y-4 mb-8">
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
+            <i class="fas fa-envelope text-blue-800"></i>
+            <span class="syntax-comment">// </span>¿Trabajamos juntos?
+          </h3>
+          <p class="text-slate-300 max-w-2xl mx-auto font-mono text-sm">
+            <span class="syntax-comment">/* Siempre estoy abierto a nuevos proyectos y colaboraciones */</span>
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <!-- Email Contact -->
+          <div id="copyEmail" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/contact/email.js</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                  <i class="fas fa-envelope text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-semibold text-white font-mono">sendEmail()</h4>
+                  <p class="text-slate-300 font-mono text-xs sm:text-sm">Haz clic para copiar mi dirección</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discord Contact -->
+          <div id="copyDiscord" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
+            <div class="linux-titlebar">
+              <span class="text-white font-mono text-xs">/contact/discord.js</span>
+              <div class="linux-controls">
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+              </div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                  <i class="fab fa-discord text-white text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-semibold text-white font-mono">connectDiscord()</h4>
+                  <p class="text-slate-300 font-mono text-xs sm:text-sm">Haz clic para copiar mi usuario</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form - Full Width -->
+        <div class="code-block rounded-xl relative overflow-hidden">
+          <div class="linux-titlebar">
+            <span class="text-white font-mono text-xs">/contact/form.js</span>
+            <div class="linux-controls">
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">−</div>
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">□</div>
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">×</div>
+            </div>
+          </div>
+          <div class="p-4 sm:p-6">
+            <h4 class="text-lg sm:text-xl font-bold text-white mb-6 flex items-center gap-3 font-mono">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                <i class="fas fa-paper-plane text-white"></i>
+              </div>
+              submitForm()
+            </h4>
+            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const name =</label>
+                <input type="text" id="name" name="name" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" placeholder='"Tu nombre aquí"' required>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const email =</label>
+                <input type="email" id="email" name="email" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" placeholder='"tu@email.com"' required>
+              </div>
+              <div class="md:col-span-2">
+                <label for="message" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const message =</label>
+                <textarea id="message" name="message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono" placeholder='"Escribe aquí tu mensaje..."' maxlength="3584" required></textarea>
+              </div>
+              <div class="md:col-span-2">
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-900 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] font-mono">
+                  <i class="fas fa-paper-plane mr-2"></i>
+                  execute()
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 code-block border border-slate-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300 z-50">
+    <div class="flex items-center gap-3">
+      <i class="fas fa-check-circle text-green-400"></i>
+      <span id="toast-message" class="font-mono text-sm">¡Copiado al portapapeles!</span>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const mobileMenuItems = document.querySelectorAll('#mobile-menu [data-menu-item]');
+
+    function openMobileMenu() {
+      mobileMenu.classList.remove('translate-x-full');
+      mobileMenu.classList.add('translate-x-0');
+      mobileMenuOverlay.classList.remove('hidden');
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('translate-x-0');
+      mobileMenu.classList.add('translate-x-full');
+      mobileMenuOverlay.classList.add('hidden');
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    mobileMenuItems.forEach(item => {
+      item.addEventListener('click', closeMobileMenu);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          closeMobileMenu();
+        }
+      });
+    });
+
+    // Toast notification function
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+
+      toastMessage.textContent = message;
+      toast.classList.remove('translate-y-full', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-full', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3000);
+    }
+
+    // Copy email functionality
+    document.getElementById('copyEmail').addEventListener('click', async () => {
+      const email = 'alex@alexdevuwu.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast('¡Email copiado al portapapeles!');
+      } catch (err) {
+        console.error('Error copying email:', err);
+        showToast('Error al copiar el email');
+      }
+    });
+
+    // Copy Discord functionality
+    document.getElementById('copyDiscord').addEventListener('click', async () => {
+      const discord = 'alexdevuwu';
+      try {
+        await navigator.clipboard.writeText(discord);
+        showToast('¡Usuario de Discord copiado!');
+      } catch (err) {
+        console.error('Error copying Discord:', err);
+        showToast('Error al copiar el usuario');
+      }
+    });
+
+    // Contact form functionality
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+
+      console.log('Form data:', data);
+      showToast('¡Mensaje enviado correctamente!');
+      e.target.reset();
+    });
+
+    // Header background on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('main-header');
+      if (window.scrollY > 50) {
+        header.classList.add('bg-slate-900/95');
+      } else {
+        header.classList.remove('bg-slate-900/95');
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards for animation
+    document.querySelectorAll('.card-hover').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+
+</html>

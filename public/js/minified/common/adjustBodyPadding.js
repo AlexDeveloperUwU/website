@@ -1,1 +1,0 @@
-function adjustBodyPadding(){const d=document.getElementById("main-header").offsetHeight;document.body.style.paddingTop=d-50+"px"}window.addEventListener("load",adjustBodyPadding),window.addEventListener("resize",adjustBodyPadding);
