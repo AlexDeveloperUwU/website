@@ -1,0 +1,9 @@
+{
+  "discord": {
+    "online": "Conectado",
+    "offline": "Desconectado",
+    "idle": "Ausente",
+    "dnd": "Ocupado",
+    "unknown": "Desconocido"
+  }
+}

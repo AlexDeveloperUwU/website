@@ -1,77 +1,83 @@
 <template>
-  <main class="container mx-auto px-4 py-6">
-    <!-- Hero Section (Profile) -->
+  <main class="container mx-auto px-2 sm:px-4 py-6">
     <section>
       <div class="max-w-6xl mx-auto">
-        <!-- Main Profile Card -->
+        <div class="text-center space-y-4 mb-8">
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
+            <i class="fas fa-user text-blue-800"></i>
+            <span class="syntax-comment">// </span>Sobre mí
+          </h3>
+          <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
+            <span class="syntax-comment">/* Conóceme un poco más! */</span>
+          </p>
+        </div>
         <div class="card-hover code-block rounded-xl relative overflow-hidden">
-          <!-- Linux-style titlebar -->
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs sm:text-sm">~/portfolio/developer.js</span>
             <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                 −
               </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                 □
               </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                 ×
               </div>
             </div>
           </div>
 
           <div class="p-4 sm:p-6">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-              <!-- Avatar -->
-              <div class="flex-shrink-0">
-                <div
-                  class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl ring-2 ring-blue-800/50 ring-offset-4 ring-offset-slate-900 overflow-hidden"
-                >
-                  <img
-                    src="https://alexdevuwu.com/img/logoSmall.webp"
-                    alt="Alex Verde"
-                    class="w-full h-full object-cover"
-                  />
+            <div class="flex flex-col sm:flex-row items-center sm:items-center gap-6">
+              <div class="flex flex-col items-center justify-center w-full sm:w-1/4 h-full mb-4 sm:mb-0">
+                <div id="profileImage" class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl ring-2 ring-blue-800/50 ring-offset-4 ring-offset-slate-900 overflow-hidden mb-3" style="
+                    transition:
+                      border-color 0.4s,
+                      box-shadow 0.4s;
+                  ">
+                  <img src="https://alexdevuwu.com/img/logoSmall.webp" alt="Alex Verde" class="w-full h-full object-cover" />
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white mb-1 text-center">
+                  Alex Verde
+                </h2>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-blue-400 text-sm select-all">@alexdevuwu</span>
                 </div>
               </div>
-
-              <!-- Profile Info - Clean and Simple -->
-              <div class="flex-1 text-center sm:text-left">
-                <h2 class="text-xl sm:text-2xl font-bold text-white mb-1">Alex Verde</h2>
-                <p class="text-blue-700 font-medium mb-4">Full Stack Developer</p>
-
-                <!-- Stats Grid - Responsive -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-200">Experiencia:</span>
-                    <span class="text-white font-medium">3+ años</span>
+              <div class="flex-1 flex flex-col justify-center gap-4 w-full">
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <div class="flex-1 bg-slate-800/50 p-4 rounded-lg flex flex-col items-center justify-center mb-4 sm:mb-0">
+                    <div class="flex items-center gap-2 mb-2">
+                      <i class="fas fa-mug-hot text-blue-500"></i>
+                      <span class="text-slate-300">Estado actual</span>
+                    </div>
+                    <span class="text-white font-medium text-lg" :style="{ color: discordStatusStyle.color }">
+                      <i class="fas fa-circle mr-2" :style="{ color: discordStatusStyle.color }"></i>
+                      {{ discordStatusText }}
+                    </span>
                   </div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-200">Proyectos:</span>
-                    <span class="text-white font-medium">6+</span>
+                  <div class="flex-1 bg-slate-800/50 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="flex items-center gap-2 mb-2">
+                      <i class="fas fa-clock text-blue-500"></i>
+                      <span class="text-slate-300">Experiencia</span>
+                    </div>
+                    <span class="text-white font-medium text-lg">3+ años</span>
                   </div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-300">Estado:</span>
-                    <span class="text-green-400 font-medium">Disponible</span>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <div class="flex-1 bg-slate-800/50 p-4 rounded-lg flex flex-col justify-center items-center mb-4 sm:mb-0">
+                    <div class="flex items-center gap-2 mb-2">
+                      <i class="fas fa-coffee text-blue-500"></i>
+                      <span class="text-slate-300">Café consumido</span>
+                    </div>
+                    <span class="text-white font-medium text-lg"> {{ coffeeCups }} tazas </span>
                   </div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-300">Ubicación:</span>
-                    <span class="text-white font-medium">España</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-300">Especialidad:</span>
-                    <span class="text-white font-medium">Node.js</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <span class="text-slate-300">Café:</span>
-                    <span class="text-white font-medium">∞</span>
+                  <div class="flex-1 bg-slate-800/50 p-4 rounded-lg flex flex-col justify-center items-center">
+                    <div class="flex items-center gap-2 mb-2">
+                      <i class="fas fa-terminal text-blue-500"></i>
+                      <span class="text-slate-300">Proyecto actual</span>
+                    </div>
+                    <span class="text-white font-medium text-lg">LiberTeis</span>
                   </div>
                 </div>
               </div>
@@ -79,24 +85,17 @@
           </div>
         </div>
 
-        <!-- Terminal-like Bio Card -->
         <div class="card-hover code-block rounded-xl mt-6 relative overflow-hidden">
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs sm:text-sm">~/about/bio.md</span>
             <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                 −
               </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                 □
               </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                 ×
               </div>
             </div>
@@ -104,20 +103,13 @@
 
           <div class="p-4 sm:p-6">
             <div class="flex flex-col lg:flex-row gap-6 items-start">
-              <div class="lg:w-1/3">
+              <div class="w-full lg:w-1/3 mb-4 lg:mb-0">
                 <div class="code-block rounded-xl p-4 border border-slate-600/50">
-                  <!-- Imagen con altura fija que coincide mejor con el texto -->
-                  <img
-                    src="https://i.ibb.co/FbSDvtgv/20241223-121455-1-VSee-Face.png"
-                    alt="Alex Verde Character"
-                    class="w-full max-h-48 rounded-lg object-cover object-center"
-                  />
+                  <img src="https://i.ibb.co/FbSDvtgv/20241223-121455-1-VSee-Face.png" alt="Alex Verde Character" class="w-full h-40 sm:h-48 rounded-lg object-cover object-center" />
                 </div>
               </div>
-              <div class="lg:w-2/3">
-                <h3
-                  class="text-lg sm:text-xl font-semibold text-white mb-4 flex items-center gap-2"
-                >
+              <div class="w-full lg:w-2/3">
+                <h3 class="text-base sm:text-xl font-semibold text-white mb-4 flex items-center gap-2">
                   <i class="fas fa-user text-blue-800"></i>
                   Sobre mí
                 </h3>
@@ -139,179 +131,12 @@
         </div>
       </div>
     </section>
-    <!--
-    <div class="section-divider"></div>
-    <section id="about">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center space-y-4 mb-8">
-          <h3
-            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
-          >
-            <i class="fas fa-laptop-code text-blue-800"></i>
-            <span class="syntax-comment">// </span>Stack Tecnológico
-          </h3>
-          <p class="text-slate-300 max-w-2xl mx-auto text-sm">
-            Las herramientas y tecnologías que domino para crear soluciones completas
-          </p>
-        </div>
-        <div class="card-hover code-block rounded-xl relative overflow-hidden">
-          <div class="linux-titlebar">
-            <span class="text-white font-mono text-xs sm:text-sm">~/skills/technologies.js</span>
-            <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                −
-              </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                □
-              </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                ×
-              </div>
-            </div>
-          </div>
-
-          <div class="p-4 sm:p-6">
-            <div class="space-y-6">
-              <div>
-                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <i class="fas fa-palette text-blue-600"></i>
-                  Frontend
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >HTML</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >CSS</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >JavaScript</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >React</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Tailwind CSS</span
-                  >
-                </div>
-              </div>
-
-              <div>
-                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <i class="fas fa-server text-blue-800"></i>
-                  Backend
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Node.js</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Express.js</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Python</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Flask</span
-                  >
-                </div>
-              </div>
-
-              <div>
-                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <i class="fas fa-database text-blue-800"></i>
-                  Base de Datos
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >MongoDB</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >PostgreSQL</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >MySQL</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Redis</span
-                  >
-                </div>
-              </div>
-
-              <div>
-                <h4 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <i class="fas fa-tools text-blue-800"></i>
-                  Otras Herramientas
-                </h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Git</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Docker</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Linux</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >Discord.js</span
-                  >
-                  <span
-                    class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-3 py-1 rounded text-sm font-mono transition-colors"
-                    >APIs</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-6 border-t border-slate-600">
-              <a
-                href="/aboutme"
-                class="inline-flex items-center bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition-colors duration-300 text-sm font-medium"
-              >
-                Ver más detalles
-                <i class="fas fa-chevron-right ml-2"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    -->
-
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
-    <!-- Projects Section -->
     <section id="projects">
       <div class="max-w-6xl mx-auto">
         <div class="text-center space-y-4 mb-8">
-          <h3
-            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
-          >
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
             <i class="fab fa-github text-blue-800"></i>
             <span class="syntax-comment">// </span>Proyectos
           </h3>
@@ -319,432 +144,78 @@
             <span class="syntax-comment">/* Una selección de mis proyectos más destacados */</span>
           </p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <!-- Project 1: Azirex -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/azirex</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-robot text-white"></i>
+        <div v-if="loadingProjects" class="text-center text-slate-400 py-8 font-mono">
+          Cargando proyectos...
+        </div>
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="projects-container">
+          <template v-for="(project, index) in projects" :key="project.name">
+            <div class="card-hover code-block rounded-xl group relative overflow-hidden" :data-project-index="index" :data-project-id="project.name.replace(/\s+/g, '-').toLowerCase()">
+              <div class="linux-titlebar">
+                <span class="text-white font-mono text-xs project-path">
+                  ~/projects/{{ project.org.replace(/\s+/g, '').toLowerCase() }}/{{
+                    project.name.replace(/\s+/g, '-').toLowerCase()
+                  }}
+                </span>
+                <div class="linux-controls">
+                  <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+                    −
                   </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    Azirex
-                  </h4>
-                </div>
-                <a
-                  href="https://azirax.oops.wtf"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Un simple pero amplio bot de Discord que ofrece una amplia gama de comandos. También
-                permite a los usuarios interactuar de manera creativa y entretenida con otros
-                miembros de la comunidad.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Discord.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Node.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >JavaScript</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: LiberTeis -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/liberteis</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-database text-white"></i>
+                  <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+                    □
                   </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    LiberTeis
-                  </h4>
-                </div>
-                <a
-                  href="https://github.com/AlexDeveloperUwU/liberteis"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Una pequeña web que permite la gestión de eventos, material y espacios de la
-                biblioteca del IES de Teis, aunque se puede aplicar en otros ámbitos.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >React</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Node.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >MongoDB</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: OBS Tools -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/obstools</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-wrench text-white"></i>
+                  <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+                    ×
                   </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    OBS Tools
-                  </h4>
-                </div>
-                <a
-                  href="https://github.com/AlexDeveloperUwU/obs-tools"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Un conjunto de widgets para OBS customizados para mi canal y hechos de 0. También
-                fueron creados para practicar a trabajar contra las distintas APIs.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >HTML</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >CSS</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >JavaScript</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >APIs</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: GalaBot -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/galabot</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
                 </div>
               </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-robot text-white"></i>
+              <div class="p-4 sm:p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                      <i :class="project.icon + ' text-white project-icon'"></i>
+                    </div>
+                    <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono project-name">
+                      {{ project.name }}
+                    </h4>
                   </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    GalaBot
-                  </h4>
+                  <a v-if="project.url" :href="project.url" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white project-url" target="_blank" rel="noopener">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
                 </div>
-                <a
-                  href="https://github.com/TakitosCorp/galabot"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Un bot de Discord custom para el servidor de la VTuber GalaYuki, con varias
-                funcionalidades como avisos de directos o sistemas de warnings.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Discord.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Node.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >PostgreSQL</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: GalaCards -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/galacards</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
+                <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm project-description">
+                  {{ project.description }}
+                </p>
+                <div class="flex flex-wrap gap-2 project-techs">
+                  <span v-for="tech in project.tech" :key="tech" class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">{{ tech }}</span>
                 </div>
               </div>
             </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-gamepad text-white"></i>
-                  </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    GalaCards
-                  </h4>
-                </div>
-                <a
-                  href="https://github.com/TakitosCorp/galacards"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Recreación del juego Quién Soy preparado para 4 personas y en stream. Incluye un
-                túnel para salida a la red y un bot de discord que gestiona las tarjetas.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Node.js</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Socket.io</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Discord.js</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Mini Projects -->
-          <div class="card-hover code-block rounded-xl group relative overflow-hidden">
-            <div class="linux-titlebar">
-              <span class="text-white font-mono text-xs">~/projects/miniprojects</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
-            </div>
-            <div class="p-4 sm:p-6">
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                  >
-                    <i class="fas fa-folder text-white"></i>
-                  </div>
-                  <h4
-                    class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono"
-                  >
-                    Mini Projects
-                  </h4>
-                </div>
-                <a
-                  href="https://github.com/AlexDeveloperUwU/miniprojects"
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white"
-                >
-                  <i class="fas fa-external-link-alt"></i>
-                </a>
-              </div>
-              <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm">
-                Mini proyectos que voy haciendo por distintos motivos y que son tan pequeños que no
-                necesitan un repo para ellos solos.
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >JavaScript</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >Python</span
-                >
-                <span
-                  class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
-                  >HTML/CSS</span
-                >
-              </div>
-            </div>
-          </div>
+          </template>
         </div>
 
-        <!-- More Projects Link - Full Width -->
-        <div
-          class="card-hover code-block rounded-xl hover:bg-slate-800/70 transition-all duration-300 relative overflow-hidden"
-        >
+        <div class="card-hover code-block rounded-xl hover:bg-slate-800/70 transition-all duration-300 relative overflow-hidden">
           <div class="linux-titlebar">
-            <span class="text-white font-mono text-xs">~/github/explore</span>
+            <span class="text-white font-mono text-xs">~/projects/explore</span>
             <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                 −
               </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                 □
               </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                 ×
               </div>
             </div>
           </div>
           <div class="p-4 sm:p-6">
             <a href="https://github.com/AlexDeveloperUwU" class="flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-              >
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
                 <i class="fab fa-github text-white text-xl"></i>
               </div>
               <div class="flex-1">
                 <h4 class="text-base sm:text-lg font-semibold text-white font-mono">
-                  github.explore()
+                  GitHub.explore()
                 </h4>
                 <p class="text-slate-300 font-mono text-xs sm:text-sm">
                   ¿Quieres ver otros proyectos que tengo? ¡Pásate por mi GitHub!
@@ -759,62 +230,45 @@
       </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="section-divider"></div>
 
-    <!-- Contact Section -->
     <section id="contact">
       <div class="max-w-6xl mx-auto">
         <div class="text-center space-y-4 mb-8">
-          <h3
-            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
-          >
+          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
             <i class="fas fa-envelope text-blue-800"></i>
             <span class="syntax-comment">// </span>¿Trabajamos juntos?
           </h3>
           <p class="text-slate-300 max-w-2xl mx-auto font-mono text-sm">
-            <span class="syntax-comment"
-              >/* Siempre estoy abierto a nuevos proyectos y colaboraciones */</span
-            >
+            <span class="syntax-comment">/* Siempre estoy abierto a nuevos proyectos y colaboraciones */</span>
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <!-- Email Contact -->
-          <div
-            id="copyEmail"
-            class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden"
-          >
+          <div id="copyEmail" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/email.js</span>
               <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                   −
                 </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                   □
                 </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                   ×
                 </div>
               </div>
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                >
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
                   <i class="fas fa-envelope text-white text-xl"></i>
                 </div>
                 <div>
                   <h4 class="text-base sm:text-lg font-semibold text-white font-mono">
-                    sendEmail()
+                    Contact.sendEmail()
                   </h4>
                   <p class="text-slate-200 font-mono text-xs sm:text-sm">
                     Haz clic para copiar mi dirección
@@ -825,40 +279,29 @@
           </div>
 
           <!-- Discord Contact -->
-          <div
-            id="copyDiscord"
-            class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden"
-          >
+          <div id="copyDiscord" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/discord.js</span>
               <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                   −
                 </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                   □
                 </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
+                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                   ×
                 </div>
               </div>
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
-                <div
-                  class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-                >
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
                   <i class="fab fa-discord text-white text-xl"></i>
                 </div>
                 <div>
                   <h4 class="text-base sm:text-lg font-semibold text-white font-mono">
-                    connectDiscord()
+                    Contact.sendMessage()
                   </h4>
                   <p class="text-slate-200 font-mono text-xs sm:text-sm">
                     Haz clic para copiar mi usuario
@@ -874,84 +317,41 @@
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs">~/contact/form.js</span>
             <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
                 −
               </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
                 □
               </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
+              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
                 ×
               </div>
             </div>
           </div>
           <div class="p-4 sm:p-6">
-            <h4
-              class="text-lg sm:text-xl font-bold text-white mb-6 flex items-center gap-3 font-mono"
-            >
-              <div
-                class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg"
-              >
+            <h4 class="text-lg sm:text-xl font-bold text-white mb-6 flex items-center gap-3 font-mono">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
                 <i class="fas fa-paper-plane text-white"></i>
               </div>
-              submitForm()
+              Contact.sendRequest()
             </h4>
             <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
-                  >const name =</label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono"
-                  placeholder='"Tu nombre aquí"'
-                  required
-                />
+                <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const name =</label>
+                <input type="text" id="name" name="name" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" placeholder='"Tu nombre aquí"' required />
               </div>
               <div>
-                <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
-                  >const email =</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono"
-                  placeholder='"tu@email.com"'
-                  required
-                />
+                <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const email =</label>
+                <input type="email" id="email" name="email" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" placeholder='"tu@email.com"' required />
               </div>
               <div class="md:col-span-2">
-                <label
-                  for="message"
-                  class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
-                  >const message =</label
-                >
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono"
-                  placeholder='"Escribe aquí tu mensaje..."'
-                  maxlength="3584"
-                  required
-                ></textarea>
+                <label for="message" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const message =</label>
+                <textarea id="message" name="message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono" placeholder='"Escribe aquí tu mensaje..."' maxlength="3584" required></textarea>
               </div>
               <div class="md:col-span-2">
-                <button
-                  type="submit"
-                  class="w-full bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-900 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] font-mono"
-                >
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-900 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform font-mono">
                   <i class="fas fa-paper-plane mr-2"></i>
-                  execute()
+                  Contact.sendData()
                 </button>
               </div>
             </form>
@@ -963,122 +363,217 @@
 </template>
 
 <script>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { fetchDiscordStatus, getBorderColor, getStatus } from '@/assets/js/discord.js'
+import { fetchProjects } from '@/assets/js/loadProjects.js'
+import { useLangStore } from '@/stores/lang.js'
+
 export default {
   name: 'HomeView',
-  mounted() {
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn')
-    const mobileMenu = document.getElementById('mobile-menu')
-    const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn')
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay')
-    const mobileMenuItems = document.querySelectorAll('#mobile-menu [data-menu-item]')
+  setup() {
+    const { t, locale } = useI18n()
+    const langStore = useLangStore()
 
-    function openMobileMenu() {
-      mobileMenu.classList.remove('translate-x-full')
-      mobileMenu.classList.add('translate-x-0')
-      mobileMenuOverlay.classList.remove('hidden')
-    }
+    const discordStatus = ref('online')
+    const discordStatusStyle = ref({ color: '#22c55e' })
+    const projects = ref([])
+    const loadingProjects = ref(true)
 
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('translate-x-0')
-      mobileMenu.classList.add('translate-x-full')
-      mobileMenuOverlay.classList.add('hidden')
-    }
-
-    mobileMenuBtn.addEventListener('click', openMobileMenu)
-    closeMobileMenuBtn.addEventListener('click', closeMobileMenu)
-    mobileMenuOverlay.addEventListener('click', closeMobileMenu)
-    mobileMenuItems.forEach((item) => {
-      item.addEventListener('click', closeMobileMenu)
+    const coffeeCups = computed(() => {
+      const start = new Date(2018, 8, 11)
+      const now = new Date()
+      const msPerWeek = 1000 * 60 * 60 * 24 * 7
+      const weeks = Math.floor((now - start) / msPerWeek)
+      return weeks * 5
     })
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-        const target = document.querySelector(this.getAttribute('href'))
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+    const discordStatusText = computed(() => t(getStatus(discordStatus.value)))
+
+    let _discordInterval
+
+    async function setDiscordStatus(status) {
+      discordStatus.value = status
+      const colorMap = {
+        online: '#22c55e',
+        idle: '#eab308',
+        dnd: '#ef4444',
+        offline: '#64748b',
+        unknown: '#2563eb',
+      }
+      discordStatusStyle.value = {
+        color: colorMap[status] || colorMap.unknown,
+        transition: 'color 0.5s',
+      }
+      const borderColor = getBorderColor(status)
+      const profileImage = document.getElementById('profileImage')
+      if (profileImage) {
+        profileImage.style.boxShadow = `0 0 0 4px ${borderColor}80`
+        profileImage.style.borderColor = borderColor
+        profileImage.style.outline = `2px solid ${borderColor}`
+        profileImage.style.transition = 'box-shadow 0.5s, border-color 0.5s, outline 0.5s'
+      }
+    }
+
+    async function loadProjects(lang) {
+      loadingProjects.value = true
+      try {
+        const localeToUse = lang || locale.value || 'es'
+        projects.value = await fetchProjects(localeToUse)
+        window.__projects = projects.value
+      } catch (e) {
+        projects.value = []
+      }
+      loadingProjects.value = false
+    }
+
+    async function updateProjectDescriptions(lang) {
+      try {
+        const localeToUse = lang || locale.value || 'es'
+        const translatedProjects = await fetchProjects(localeToUse)
+        projects.value.forEach((proj, idx) => {
+          if (translatedProjects[idx]) {
+            proj.name = translatedProjects[idx].name
+            proj.description = translatedProjects[idx].description
+          }
+        })
+      } catch (e) { }
+    }
+
+    async function updateStatus() {
+      try {
+        const status = await fetchDiscordStatus()
+        await setDiscordStatus(status)
+      } catch (e) {
+        await setDiscordStatus('offline')
+      }
+    }
+
+    function addCopyListeners() {
+      const emailBtn = document.getElementById('copyEmail')
+      if (emailBtn) {
+        emailBtn.addEventListener('click', async () => {
+          const email = 'alex@alexdevuwu.com'
+          try {
+            await navigator.clipboard.writeText(email)
+            alert('¡Email copiado al portapapeles!')
+          } catch (err) {
+            console.error('Error copying email:', err)
+            alert('Error al copiar el email')
+          }
+        })
+      }
+
+      const discordBtn = document.getElementById('copyDiscord')
+      if (discordBtn) {
+        discordBtn.addEventListener('click', async () => {
+          const discord = 'alexdevuwu'
+          try {
+            await navigator.clipboard.writeText(discord)
+            alert('¡Usuario de Discord copiado!')
+          } catch (err) {
+            console.error('Error copying Discord:', err)
+            alert('Error al copiar el usuario')
+          }
+        })
+      }
+    }
+
+    function addContactFormListener() {
+      const form = document.getElementById('contactForm')
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault()
+          const formData = new FormData(e.target)
+          const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message'),
+          }
+          console.log('Form data:', data)
+          alert('¡Mensaje enviado correctamente!')
+          e.target.reset()
+        })
+      }
+    }
+
+    function addScrollHeaderListener() {
+      window.addEventListener('scroll', () => {
+        const header = document.getElementById('main-header')
+        if (header) {
+          if (window.scrollY > 50) {
+            header.classList.add('bg-slate-900/95')
+          } else {
+            header.classList.remove('bg-slate-900/95')
+          }
+        }
+      })
+    }
+
+    function addCardObserver() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+      const observer = new window.IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1'
+            entry.target.style.transform = 'translateY(0)'
+          }
+        })
+      }, observerOptions)
+
+      document.querySelectorAll('.card-hover').forEach((card) => {
+        card.style.opacity = '0'
+        card.style.transform = 'translateY(20px)'
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
+        observer.observe(card)
+      })
+    }
+
+    function addProjectsUpdatedListener() {
+      window.addEventListener('projects-updated', (event) => {
+        if (event.detail && event.detail.projects) {
+          const translatedProjects = event.detail.projects
+          projects.value.forEach((proj, idx) => {
+            if (translatedProjects[idx]) {
+              proj.name = translatedProjects[idx].name
+              proj.description = translatedProjects[idx].description
+            }
           })
-          closeMobileMenu()
         }
       })
-    })
-
-    // Copy email functionality
-    document.getElementById('copyEmail').addEventListener('click', async () => {
-      const email = 'alex@alexdevuwu.com'
-      try {
-        await navigator.clipboard.writeText(email)
-        alert('¡Email copiado al portapapeles!')
-      } catch (err) {
-        console.error('Error copying email:', err)
-        alert('Error al copiar el email')
-      }
-    })
-
-    // Copy Discord functionality
-    document.getElementById('copyDiscord').addEventListener('click', async () => {
-      const discord = 'alexdevuwu'
-      try {
-        await navigator.clipboard.writeText(discord)
-        alert('¡Usuario de Discord copiado!')
-      } catch (err) {
-        console.error('Error copying Discord:', err)
-        alert('Error al copiar el usuario')
-      }
-    })
-
-    // Contact form functionality
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-      e.preventDefault()
-
-      const formData = new FormData(e.target)
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message'),
-      }
-
-      console.log('Form data:', data)
-      alert('¡Mensaje enviado correctamente!')
-      e.target.reset()
-    })
-
-    // Header background on scroll
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('main-header')
-      if (window.scrollY > 50) {
-        header.classList.add('bg-slate-900/95')
-      } else {
-        header.classList.remove('bg-slate-900/95')
-      }
-    })
-
-    // Intersection Observer for animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px',
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1'
-          entry.target.style.transform = 'translateY(0)'
-        }
-      })
-    }, observerOptions)
+    onMounted(async () => {
+      await updateStatus()
+      _discordInterval = setInterval(updateStatus, 30000)
 
-    // Observe all cards for animation
-    document.querySelectorAll('.card-hover').forEach((card) => {
-      card.style.opacity = '0'
-      card.style.transform = 'translateY(20px)'
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease'
-      observer.observe(card)
+      await loadProjects(locale.value)
+
+      langStore.$subscribe(async (_, state) => {
+        locale.value = state.locale
+        await updateProjectDescriptions(state.locale)
+      })
+
+      addCopyListeners()
+      addContactFormListener()
+      addScrollHeaderListener()
+      addCardObserver()
+      addProjectsUpdatedListener()
     })
+
+    return {
+      discordStatus,
+      discordStatusStyle,
+      projects,
+      loadingProjects,
+      coffeeCups,
+      discordStatusText,
+      setDiscordStatus,
+      loadProjects,
+    }
   },
 }
 </script>

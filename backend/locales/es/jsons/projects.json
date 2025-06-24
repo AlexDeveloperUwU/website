@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Azirax",
+    "url": "https://azirax.oops.wtf",
+    "github": "https://github.com/alexdeveloperuwu/azirax",
+    "icon": "fa-solid fa-code",
+    "description": "Un simple pero amplio bot de Discord que ofrece una amplia gama de comandos. También permite a los usuarios interactuar de manera creativa y entretenida con otros miembros de la comunidad.",
+    "org": "Ci Devs",
+    "tech": ["Node.js", "Discord.js", "SQLite"],
+    "homepage": true
+  },
+  {
+    "name": "LiberTeis",
+    "url": "https://github.com/AlexDeveloperUwU/liberteis",
+    "github": "https://github.com/alexdeveloperuwu/liberteis",
+    "icon": "fa-solid fa-code",
+    "description": "Una pequeña web que permite la gestión de eventos, material y espacios de la biblioteca del IES de Teis, aunque se puede aplicar en otros ámbitos.",
+    "org": "AlexDevUwU",
+    "tech": ["Node.js", "Express", "MySQL", "Vue.js"],
+    "homepage": true
+  },
+  {
+    "name": "OBS Tools",
+    "url": "https://github.com/AlexDeveloperUwU/obs-tools",
+    "github": "https://github.com/AlexDeveloperUwU/obs-tools",
+    "icon": "fa-solid fa-code",
+    "description": "Un conjunto de widgets para OBS customizados para mi canal y hechos de 0. También fueron creados para practicar a trabajar contra las distintas APIs.",
+    "org": "AlexDevUwU",
+    "tech": ["Node.js", "WSS", "EJS", "SQLite"],
+    "homepage": false
+  },
+  {
+    "name": "GalaBot",
+    "url": "https://github.com/AlexDeveloperUwU/galabot",
+    "github": "https://github.com/AlexDeveloperUwU/galabot",
+    "icon": "fa-solid fa-code",
+    "description": "Un bot de Discord custom para el servidor de la VTuber GalaYaki, con varias funcionalidades como avisos de directos o sistemas de warnings.",
+    "org": "TakitosCorp",
+    "tech": ["Node.js", "Discord.js", "SQLite"],
+    "homepage": false
+  },
+  {
+    "name": "GalaCards",
+    "url": "https://github.com/TakitosCorp/galacards",
+    "github": "https://github.com/TakitosCorp/galacards",
+    "icon": "fa-solid fa-code",
+    "description": "Recreación del juego Quién Soy preparado para 4 personas y en stream. Incluye un túnel para salida a la red y un bot de discord que gestiona las tarjetas.",
+    "org": "TakitosCorp",
+    "tech": ["Node.js", "Discord.js", "Express", "Socket.IO", "WSS"],
+    "homepage": false
+  },
+  {
+    "name": "Mini Projects",
+    "url": "https://github.com/AlexDeveloperUwU/miniprojects",
+    "github": "https://github.com/alexdeveloperuwu/miniprojects",
+    "icon": "fa-solid fa-code",
+    "description": "Mini proyectos que voy haciendo por distintos motivos y que son tan pequeños que no necesitan un repo para ellos solos.",
+    "org": "AlexDevUwU",
+    "tech": ["Variado"],
+    "homepage": true
+  }
+]

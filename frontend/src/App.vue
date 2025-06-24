@@ -20,6 +20,15 @@ export default {
 }
 </script>
 
+<script setup>
+import { useI18n } from 'vue-i18n'
+import { useLangStore } from './stores/lang'
+const { t, locale } = useI18n()
+const langStore = useLangStore()
+
+locale.value = langStore.locale
+</script>
+
 <style>
 .gradient-text {
   background: linear-gradient(135deg, #1e40af, #0369a1);
@@ -29,7 +38,11 @@ export default {
 }
 
 .card-hover {
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    box-shadow 1.8s cubic-bezier(0.19, 1, 0.22, 1),
+    background-color 1.8s cubic-bezier(0.19, 1, 0.22, 1),
+    border-color 1.8s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-hover:hover {
@@ -120,20 +133,20 @@ export default {
   background: #6a7c9e;
 }
 
-.linux-btn-minimize:hover {
+.linux-btn-minimize {
   background: #fbbf24;
 }
 
-.linux-btn-maximize:hover {
+.linux-btn-maximize {
   background: #10b981;
 }
 
-.linux-btn-close:hover {
+.linux-btn-close {
   background: #ef4444;
 }
 
 .syntax-comment {
-  color: #64748b;
+  color: #6d7e96;
 }
 
 .syntax-keyword {
