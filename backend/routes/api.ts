@@ -13,7 +13,7 @@ const router: Router = express.Router();
 router.get("/projects", (async (req: Request, res: Response) => {
   const lang: string = req.query.lang?.toString() || "es";
   const type: string | undefined = req.query.type?.toString();
-  const projectsPath: string = join(__dirname, "..", "locales", lang, "jsons", "projects.json");
+  const projectsPath: string = join(__dirname, "..", "assets", "locales", lang, "jsons", "projects.json");
 
   try {
     const data: string = await readFile(projectsPath, "utf8");
