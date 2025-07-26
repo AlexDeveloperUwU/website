@@ -28,13 +28,13 @@ const langStore = useLangStore()
 const altLocale = computed(() => (langStore.locale === 'es' ? 'en' : 'es'))
 async function changeLang() {
   const newLocale = langStore.locale === 'es' ? 'en' : 'es'
-  
+
   langStore.toggleLocale()
-  
+
   window.dispatchEvent(
-    new CustomEvent('language-changed', { 
-      detail: { locale: newLocale }
-    })
+    new CustomEvent('language-changed', {
+      detail: { locale: newLocale },
+    }),
   )
 }
 </script>

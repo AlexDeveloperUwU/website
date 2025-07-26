@@ -35,7 +35,7 @@ let i18n
 
 function createI18nInstance() {
   const messages = loadLocaleMessages()
-  console.log('Mensajes cargados:', messages) 
+  console.log('Mensajes cargados:', messages)
   i18n = createI18n({
     legacy: false,
     locale: 'es',

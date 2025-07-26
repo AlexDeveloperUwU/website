@@ -1,11 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Inter&display=swap');
-
-/* Estilos globales */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @import 'tailwindcss';
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
 
 .gradient-text {
   background: linear-gradient(135deg, #163ab0, #0369a1);
@@ -102,19 +111,15 @@
   transition: background-color 0.2s;
 }
 
-.linux-btn:hover {
-  background: #94a3b8;
-}
-
-.linux-btn-minimize:hover {
+.linux-btn[data-type='minimize']:hover {
   background: #fbbf24;
 }
 
-.linux-btn-maximize:hover {
+.linux-btn[data-type='maximize']:hover {
   background: #10b981;
 }
 
-.linux-btn-close:hover {
+.linux-btn[data-type='close']:hover {
   background: #ef4444;
 }
 
@@ -138,20 +143,20 @@
   color: #ec4899;
 }
 
-@theme {
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.neo {
+  box-shadow:
+    inset 2px 2px 5px #1e293b,
+    inset -2px -2px 5px #334155;
+}
+
+:root {
   --font-mono: 'JetBrains Mono', monospace;
   --font-sans: 'Inter', sans-serif;
-
-  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
 }
