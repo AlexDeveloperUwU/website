@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { useI18n } from 'vue-i18n'
 
 export const useLangStore = defineStore('lang', {
   state: () => ({
@@ -9,13 +8,6 @@ export const useLangStore = defineStore('lang', {
     async setLocale(newLocale) {
       this.locale = newLocale
       localStorage.setItem('locale', newLocale)
-
-      try {
-        const { locale } = useI18n()
-        locale.value = newLocale
-      } catch (e) {
-        console.error('Error updating i18n locale:', e)
-      }
     },
     toggleLocale() {
       const newLocale = this.locale === 'es' ? 'en' : 'es'

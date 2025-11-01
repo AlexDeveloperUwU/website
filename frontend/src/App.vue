@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white font-sans"
-  >
+  <div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white font-sans">
     <header-component />
     <home-view />
   </div>
@@ -77,13 +75,11 @@ locale.value = langStore.locale
   transform: translate(-50%, -50%);
   width: 300px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(30, 64, 175, 0.6),
-    rgba(3, 105, 161, 0.6),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(30, 64, 175, 0.6),
+      rgba(3, 105, 161, 0.6),
+      transparent);
 }
 
 .section-divider::after {

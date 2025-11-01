@@ -1,0 +1,44 @@
+{
+  "about": {
+    "title": "Sobre mí",
+    "subtitle": "¡Conóceme un poco más!",
+    "paragraph1": "¡Hola! Soy Alex, un programador apasionado, jugador y streamer en mi tiempo libre. Principalmente desarrollo páginas web y despliego servidores de varios tipos, aunque también he creado aplicaciones de escritorio.",
+    "paragraph2": "Tengo un cariño especial por experimentar con Node.js y otras tecnologías. ¡Paso muchas horas en mi ordenador, trabajando en varios proyectos, siempre acompañado de mi café y mi entusiasmo por aprender y descubrir cosas nuevas!"
+  },
+  "status": {
+    "title": "Estado actual"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "value": "3+ años"
+  },
+  "coffee": {
+    "title": "Café consumido",
+    "value": "1770 tazas"
+  },
+  "project": {
+    "title": "Proyecto actual",
+    "value": "LiberTeis"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Una selección de mis proyectos más destacados",
+    "loading": "Cargando proyectos...",
+    "explore": "¿Quieres ver otros proyectos que tengo? ¡Echa un vistazo a mi GitHub!"
+  },
+  "contact": {
+    "title": "¿Trabajamos juntos?",
+    "subtitle": "Siempre estoy abierto a nuevos proyectos y colaboraciones",
+    "email": {
+      "copy": "Haz clic para copiar mi dirección"
+    },
+    "discord": {
+      "copy": "Haz clic para copiar mi usuario"
+    },
+    "form": {
+      "namePlaceholder": "\"Tu nombre aquí\"",
+      "emailPlaceholder": "\"tu@email.com\"",
+      "messagePlaceholder": "\"Escribe tu mensaje aquí...\""
+    }
+  }
+}

@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+    "start": "npx concurrently \"npm run dev --prefix frontend\" \"dotnet watch run --project backend\"",
+    "build:prod-linux": "echo '--- BUILDING FRONTEND (LINUX) ---' && npm run build --prefix frontend && echo '--- PREPARING BACKEND ---' && rm -rf backend/wwwroot && mkdir backend/wwwroot && cp -r frontend/dist/* backend/wwwroot/ && echo '--- PUBLISHING BACKEND ---' && dotnet publish backend -c Release -o ./publish",
+    "build:prod-win": "echo '--- BUILDING FRONTEND (WINDOWS) ---' && npm run build --prefix frontend && echo '--- PREPARING BACKEND ---' && (if exist backend\\wwwroot rmdir /s /q backend\\wwwroot) && mkdir backend\\wwwroot && xcopy frontend\\dist\\* backend\\wwwroot\\ /s /e /i /y && echo '--- PUBLISHING BACKEND ---' && dotnet publish backend -c Release -o .\\publish",
+    "build:prod": "echo '--- BUILDING FRONTEND (CROSS-PLATFORM) ---' && npm run build --prefix frontend && echo '--- PREPARING BACKEND ---' && rimraf backend/wwwroot && copyfiles -u 1 \"frontend/dist/**/*\" backend/wwwroot && echo '--- PUBLISHING BACKEND ---' && dotnet publish backend -c Release -o ./publish"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,9 @@
     "url": "https://github.com/AlexDeveloperUwU/website/issues"
   },
   "homepage": "https://github.com/AlexDeveloperUwU/website#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.1.0"
+  }
 }
