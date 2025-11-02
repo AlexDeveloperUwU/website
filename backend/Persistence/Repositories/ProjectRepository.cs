@@ -6,14 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Persistence.Repositories
 {
-    public class ProjectRepository : IProjectRepository
+    public class ProjectRepository(ApplicationDbContext context) : IProjectRepository
     {
-        private readonly ApplicationDbContext _context;
-
-        public ProjectRepository(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+        private readonly ApplicationDbContext _context = context;
 
         public async Task SyncProjects(IEnumerable<GitProject> gitProjects)
         {

@@ -9,16 +9,11 @@ using backend.Models.Response;
 
 namespace backend.Infrastructure.GitProviders
 {
-    public class GitHub : IGitHub
+    public class GitHub(IHttpClientFactory httpClientFactory, IResponseService responseService)
+        : IGitHub
     {
-        private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IResponseService _responseService;
-
-        public GitHub(IHttpClientFactory httpClientFactory, IResponseService responseService)
-        {
-            _httpClientFactory = httpClientFactory;
-            _responseService = responseService;
-        }
+        private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
+        private readonly IResponseService _responseService = responseService;
 
         public async Task<ApiResponseDto<List<GitProject>>> GetProjects(string token)
         {
