@@ -2,44 +2,38 @@ import { createI18n } from 'vue-i18n'
 
 function loadLocaleMessages() {
   const messages = {}
-  const locales = import.meta.glob('../locales/**/**.json', { eager: true })
-  for (const path in locales) {
-    const match = path.match(/\.\/locales\/([a-zA-Z0-9-_]+)\/(pages|components)\/(.+)\.json$/)
-    if (match) {
-      const locale = match[1]
-      const section = match[2]
-      const relativePath = match[3]
+  const localeFiles = import.meta.glob('../locales/**/*.json', { eager: true })
 
-      if (!messages[locale]) {
-        messages[locale] = {}
-      }
-      if (!messages[locale][section]) {
-        messages[locale][section] = {}
-      }
+  for (const path in localeFiles) {
+    const match = path.match(/\/locales\/([a-z0-9-_]+)\/(pages|components)\/(.+)\.json$/i)
+    if (!match) continue
 
-      const keys = relativePath.split('/')
-      let current = messages[locale][section]
-      for (let i = 0; i < keys.length - 1; i++) {
-        if (!current[keys[i]]) {
-          current[keys[i]] = {}
-        }
-        current = current[keys[i]]
-      }
-      current[keys[keys.length - 1]] = locales[path].default
+    const locale = match[1]
+    const section = match[2]
+    const keyPath = match[3]
+
+    if (!messages[locale]) {
+      messages[locale] = {}
     }
+    if (!messages[locale][section]) {
+      messages[locale][section] = {}
+    }
+
+    messages[locale][section][keyPath] = localeFiles[path].default
   }
+
+  console.log('Loaded messages with correct structure:', messages)
   return messages
 }
 
 let i18n
 
-function createI18nInstance() {
+function createI18nInstance(initialLocale = 'es') {
   const messages = loadLocaleMessages()
-  console.log('Loaded messages:', messages)
   i18n = createI18n({
     legacy: false,
-    locale: 'en',
-    fallbackLocale: 'en',
+    locale: initialLocale,
+    fallbackLocale: 'es',
     messages,
   })
 

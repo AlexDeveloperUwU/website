@@ -5,10 +5,10 @@
         <div class="text-center space-y-4 mb-8">
           <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
             <i class="fas fa-user text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('home.about.title') }}
+            <span class="syntax-comment">// </span>{{ $t('pages.home.about.title') }}
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
-            <span class="syntax-comment">/* {{ $t('home.about.subtitle') }} */</span>
+            <span class="syntax-comment">/* {{ $t('pages.home.about.subtitle') }} */</span>
           </p>
         </div>
         <div class="card-hover code-block rounded-xl relative overflow-hidden">
@@ -53,7 +53,7 @@
                   <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-mug-hot"></i>
-                      <span class="text-slate-300">{{ $t('home.status.title') }}</span>
+                      <span class="text-slate-300">{{ $t('pages.home.status.title') }}</span>
                     </div>
                     <span class="font-medium text-lg" :style="discordStatusStyle">
                       <i class="fas fa-circle mr-2" :style="discordStatusStyle"></i>
@@ -64,9 +64,9 @@
                   <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-clock"></i>
-                      <span class="text-slate-300">{{ $t('home.experience.title') }}</span>
+                      <span class="text-slate-300">{{ $t('pages.home.experience.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('home.experience.value') }}</span>
+                    <span class="text-white font-medium text-lg">{{ $t('pages.home.experience.value') }}</span>
                   </div>
                 </div>
 
@@ -74,17 +74,17 @@
                   <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-coffee"></i>
-                      <span class="text-slate-300">{{ $t('home.coffee.title') }}</span>
+                      <span class="text-slate-300">{{ $t('pages.home.coffee.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('home.coffee.value') }}</span>
+                    <span class="text-white font-medium text-lg">{{ $t('pages.home.coffee.value') }}</span>
                   </div>
 
                   <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-terminal"></i>
-                      <span class="text-slate-300">{{ $t('home.project.title') }}</span>
+                      <span class="text-slate-300">{{ $t('pages.home.project.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('home.project.value') }}</span>
+                    <span class="text-white font-medium text-lg">{{ $t('pages.home.project.value') }}</span>
                   </div>
                 </div>
               </div>
@@ -118,14 +118,14 @@
               <div class="w-full lg:w-2/3">
                 <h3 class="text-base sm:text-xl font-semibold text-white mb-4 flex items-center gap-2">
                   <i class="fas fa-user text-blue-800"></i>
-                  {{ $t('home.about.title') }}
+                  {{ $t('pages.home.about.title') }}
                 </h3>
                 <div class="space-y-4 text-slate-200 leading-relaxed text-sm sm:text-base">
                   <p>
-                    {{ $t('home.about.paragraph1') }}
+                    {{ $t('pages.home.about.paragraph1') }}
                   </p>
                   <p>
-                    {{ $t('home.about.paragraph2') }}
+                    {{ $t('pages.home.about.paragraph2') }}
                   </p>
                 </div>
               </div>
@@ -141,14 +141,14 @@
         <div class="text-center space-y-4 mb-8">
           <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
             <i class="fab fa-github text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('home.projects.title') }}
+            <span class="syntax-comment">// </span>{{ $t('pages.home.projects.title') }}
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
-            <span class="syntax-comment">/* {{ $t('home.projects.subtitle') }} */</span>
+            <span class="syntax-comment">/* {{ $t('pages.home.projects.subtitle') }} */</span>
           </p>
         </div>
         <div v-if="loadingProjects" class="text-center text-slate-400 py-8 font-mono">
-          {{ $t('home.projects.loading') }}
+          {{ $t('pages.home.projects.loading') }}
         </div>
         <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="projects-container">
           <template v-for="(project, index) in projects" :key="project.name">
@@ -221,7 +221,7 @@
                   GitHub.explore()
                 </h4>
                 <p class="text-slate-300 font-mono text-xs sm:text-sm">
-                  {{ $t('home.projects.explore') }}
+                  {{ $t('pages.home.projects.explore') }}
                 </p>
               </div>
               <div class="text-slate-400">
@@ -240,10 +240,10 @@
         <div class="text-center space-y-4 mb-8">
           <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
             <i class="fas fa-envelope text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('home.contact.title') }}
+            <span class="syntax-comment">// </span>{{ $t('pages.home.contact.title') }}
           </h3>
           <p class="text-slate-300 max-w-2xl mx-auto font-mono text-sm">
-            <span class="syntax-comment">/* {{ $t('home.contact.subtitle') }} */</span>
+            <span class="syntax-comment">/* {{ $t('pages.home.contact.subtitle') }} */</span>
           </p>
         </div>
 
@@ -274,7 +274,7 @@
                     Contact.sendEmail()
                   </h4>
                   <p class="text-slate-200 font-mono text-xs sm:text-sm">
-                    {{ $t('home.contact.email.copy') }}
+                    {{ $t('pages.home.contact.email.copy') }}
                   </p>
                 </div>
               </div>
@@ -307,7 +307,7 @@
                     Contact.sendMessage()
                   </h4>
                   <p class="text-slate-200 font-mono text-xs sm:text-sm">
-                    {{ $t('home.contact.discord.copy') }}
+                    {{ $t('pages.home.contact.discord.copy') }}
                   </p>
                 </div>
               </div>
@@ -341,15 +341,15 @@
             <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const name =</label>
-                <input type="text" id="name" name="name" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('home.contact.form.namePlaceholder')" required />
+                <input type="text" id="name" name="name" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('pages.home.contact.form.namePlaceholder')" required />
               </div>
               <div>
                 <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const email =</label>
-                <input type="email" id="email" name="email" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('home.contact.form.emailPlaceholder')" required />
+                <input type="email" id="email" name="email" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('pages.home.contact.form.emailPlaceholder')" required />
               </div>
               <div class="md:col-span-2">
                 <label for="message" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const message =</label>
-                <textarea id="message" name="message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono" :placeholder="$t('home.contact.form.messagePlaceholder')" maxlength="3584" required></textarea>
+                <textarea id="message" name="message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono" :placeholder="$t('pages.home.contact.form.messagePlaceholder')" maxlength="3584" required></textarea>
               </div>
               <div class="md:col-span-2">
                 <button type="submit" class="w-full bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-900 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform font-mono">
@@ -393,6 +393,8 @@ export default {
     })
 
     const discordStatusText = computed(() => t(getStatus(discordStatus.value)))
+
+    let _discordInterval
 
     async function setDiscordStatus(status) {
       discordStatus.value = status

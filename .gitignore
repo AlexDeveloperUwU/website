@@ -423,3 +423,4 @@ FodyWeavers.xsd
 # Custom AI tools files
 concat.ps1
 full_project_context.md
+/backend/.env.dev
