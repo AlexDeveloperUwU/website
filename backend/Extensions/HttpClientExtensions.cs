@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace backend.Extensions
 {
@@ -9,15 +10,17 @@ namespace backend.Extensions
             IConfiguration configuration
         )
         {
-            services.AddHttpClient();
-
             services.AddHttpClient(
                 "GitHub",
                 client =>
                 {
                     client.BaseAddress = new Uri("https://api.github.com/");
                     client.DefaultRequestHeaders.UserAgent.Add(
-                        new ProductInfoHeaderValue("AlexDevUwU-Portfolio-Sync", "1.0")
+                        new ProductInfoHeaderValue(
+                            "AlexDevUwU-Portfolio-Sync",
+                            Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)
+                                ?? "1.0.0"
+                        )
                     );
                 }
             );
@@ -31,7 +34,11 @@ namespace backend.Extensions
                     {
                         client.BaseAddress = new Uri(gitLabServerUrl);
                         client.DefaultRequestHeaders.UserAgent.Add(
-                            new ProductInfoHeaderValue("AlexDevUwU-Portfolio-Sync", "1.0")
+                            new ProductInfoHeaderValue(
+                                "AlexDevUwU-Portfolio-Sync",
+                                Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)
+                                    ?? "1.0.0"
+                            )
                         );
                     }
                 );

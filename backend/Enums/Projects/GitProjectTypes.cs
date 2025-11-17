@@ -4,6 +4,7 @@
     {
         Public,
         Private,
+        Backup,
         Unknown,
     }
 }
