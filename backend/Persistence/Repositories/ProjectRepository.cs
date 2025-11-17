@@ -12,17 +12,28 @@ namespace backend.Persistence.Repositories
 
         public async Task SyncProjects(IEnumerable<GitProject> gitProjects)
         {
-            var existingProjectsDict = await _context.Projects.ToDictionaryAsync(
-                p => p.Name,
-                p => p
-            );
+            var existingProjects = await _context.Projects.ToListAsync();
+            var gitProjectNames = new HashSet<string>(gitProjects.Select(p => p.Name));
+
+            foreach (var project in existingProjects)
+            {
+                if (!gitProjectNames.Contains(project.Name))
+                {
+                    project.Show = false;
+                }
+            }
+
+            var existingProjectsDict = existingProjects.ToDictionary(p => p.Name);
 
             foreach (var gitProject in gitProjects)
             {
+                if (gitProject.Owner == "Backups")
+                {
+                    continue;
+                }
+
                 if (existingProjectsDict.TryGetValue(gitProject.Name, out var existingProject))
                 {
-                    existingProject.DescriptionEn = gitProject.Description;
-                    existingProject.DescriptionEs = gitProject.Description;
                     existingProject.RepositoryUrl = gitProject.Url;
                     existingProject.Org = gitProject.Owner;
                 }
@@ -31,6 +42,7 @@ namespace backend.Persistence.Repositories
                     var newProject = new Project
                     {
                         Name = gitProject.Name,
+                        Show = false,
                         DescriptionEn = gitProject.Description,
                         DescriptionEs = gitProject.Description,
                         RepositoryUrl = gitProject.Url,

@@ -1,4 +1,7 @@
 ﻿namespace backend.Interfaces.Projects
 {
-    public interface IProjectService { }
+    public interface IProjectService
+    {
+        Task SyncProjects();
+    }
 }
