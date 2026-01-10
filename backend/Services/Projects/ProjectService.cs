@@ -1,4 +1,6 @@
-﻿using backend.Interfaces.GitProviders;
+﻿using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
+using backend.Interfaces.GitProviders;
 using backend.Interfaces.Projects;
 using backend.Models.Projects;
 using backend.Models.Response;
@@ -6,53 +8,138 @@ using backend.Persistence.IRepositories;
 
 namespace backend.Services.Projects
 {
-    public class ProjectService(
+    public partial class ProjectService(
         IGitHub gitHubProvider,
         IGitLab gitLabProvider,
         IProjectRepository projectRepository,
         IConfiguration configuration,
-        ILogger<ProjectService> logger
+        ILogger<ProjectService> logger,
+        IHttpClientFactory httpClientFactory
     ) : IProjectService
     {
+        private const string MirroredConfigPath =
+            "/api/v4/projects/personal%2Fothers%2Fpipelinerunner/repository/files/tasks%2Fbackups-gh-gl.yml/raw?ref=main";
+
         public async Task SyncProjects()
         {
-            var allProjects = new List<GitProject>();
-
-            allProjects.AddRange(
-                await FetchProjectsFromProviderAsync(
-                    gitHubProvider.GetProjects,
-                    configuration["GITHUB_TOKEN"],
-                    "GitHub"
-                )
+            var gitHubProjects = await FetchProjectsFromProviderAsync(
+                gitHubProvider.GetProjects,
+                configuration["GITHUB_TOKEN"],
+                "GitHub"
             );
 
-            allProjects.AddRange(
-                await FetchProjectsFromProviderAsync(
-                    gitLabProvider.GetProjects,
-                    configuration["GITLAB_TOKEN"],
-                    "GitLab"
-                )
+            var gitLabProjects = await FetchProjectsFromProviderAsync(
+                gitLabProvider.GetProjects,
+                configuration["GITLAB_TOKEN"],
+                "GitLab"
             );
 
-            if (allProjects.Any())
+            var mirroredTargetUrls = await GetMirroredGitLabUrls();
+
+            var filteredGitLab = gitLabProjects
+                .Where(p =>
+                {
+                    var normalizedUrl = p.Url.Trim().TrimEnd('/').ToLowerInvariant();
+                    return !mirroredTargetUrls.Contains(normalizedUrl);
+                })
+                .ToList();
+
+            var combinedProjects = gitHubProjects
+                .Concat(filteredGitLab)
+                .Where(p => !IsDeletionPending(p.Name) && !IsDeletionPending(p.Url))
+                .GroupBy(p => p.Name.ToLowerInvariant().Trim())
+                .Select(g => g.First())
+                .ToList();
+
+            if (combinedProjects.Count != 0)
             {
                 try
                 {
                     logger.LogInformation(
-                        "Syncing a total of {Count} projects with the database...",
-                        allProjects.Count
+                        "Syncing {Count} unique projects to database...",
+                        combinedProjects.Count
                     );
-                    await projectRepository.SyncProjects(allProjects);
-                    logger.LogInformation("Database synchronization completed successfully.");
+                    await projectRepository.SyncProjects(combinedProjects);
+                    logger.LogInformation("Synchronization completed.");
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "An error occurred while saving projects to the database.");
+                    logger.LogError(ex, "Error saving projects to database.");
                 }
             }
             else
             {
-                logger.LogWarning("No projects found from any Git provider to sync.");
+                logger.LogWarning("No projects found to sync.");
+            }
+        }
+
+        private static bool IsDeletionPending(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return false;
+            return input.Contains("deletion_scheduled", StringComparison.OrdinalIgnoreCase)
+                || input.Contains("deletion_pending", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private async Task<HashSet<string>> GetMirroredGitLabUrls()
+        {
+            var gitLabServer = configuration["GITLAB_SERVER"]?.TrimEnd('/');
+            if (string.IsNullOrEmpty(gitLabServer))
+                return [];
+
+            try
+            {
+                var mirroredConfigUrl = $"{gitLabServer}{MirroredConfigPath}";
+                var token = configuration["GITLAB_TOKEN"];
+
+                var client = httpClientFactory.CreateClient();
+                if (!string.IsNullOrEmpty(token))
+                {
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                        "Bearer",
+                        token
+                    );
+                }
+
+                logger.LogInformation(
+                    "Fetching mirrored projects configuration from {Url}...",
+                    mirroredConfigUrl
+                );
+                var content = await client.GetStringAsync(mirroredConfigUrl);
+
+                if (
+                    !string.IsNullOrWhiteSpace(content)
+                    && content
+                        .TrimStart()
+                        .StartsWith("<!DOCTYPE html", StringComparison.OrdinalIgnoreCase)
+                )
+                {
+                    logger.LogError(
+                        "Received HTML from API endpoint. Verify Project ID and Token scopes."
+                    );
+                    return [];
+                }
+
+                var matches = MirroredTargetsRegex().Matches(content);
+                var urls = matches
+                    .Select(m =>
+                        m.Groups["url"]
+                            .Value.Trim()
+                            .Trim('"')
+                            .Trim('\'')
+                            .TrimEnd('/')
+                            .ToLowerInvariant()
+                    )
+                    .Where(url => !string.IsNullOrEmpty(url))
+                    .ToHashSet();
+
+                logger.LogInformation("Identified {Count} mirrored targets.", urls.Count);
+                return urls;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Failed to fetch mirrored projects configuration.");
+                return [];
             }
         }
 
@@ -63,51 +150,32 @@ namespace backend.Services.Projects
         )
         {
             if (string.IsNullOrEmpty(token))
-            {
-                logger.LogWarning(
-                    "{ProviderName}_TOKEN is not configured. Skipping {ProviderName} synchronization.",
-                    providerName,
-                    providerName
-                );
                 return [];
-            }
 
             try
             {
-                logger.LogInformation(
-                    "Starting {ProviderName} projects synchronization...",
-                    providerName
-                );
                 var response = await getProjectsDelegate(token);
-
                 if (response.Success && response.Data != null)
-                {
-                    logger.LogInformation(
-                        "Fetched {Count} projects from {ProviderName}.",
-                        response.Data.Count,
-                        providerName
-                    );
                     return response.Data;
-                }
-                else
-                {
-                    logger.LogError(
-                        "Error fetching projects from {ProviderName}: {Message}",
-                        providerName,
-                        response.Error?.Message
-                    );
-                }
+
+                logger.LogError(
+                    "Error fetching from {Provider}: {Msg}",
+                    providerName,
+                    response.Error?.Message
+                );
             }
             catch (Exception ex)
             {
-                logger.LogError(
-                    ex,
-                    "An error occurred during {ProviderName} projects synchronization.",
-                    providerName
-                );
+                logger.LogError(ex, "Error fetching from {Provider}", providerName);
             }
 
             return [];
         }
+
+        [GeneratedRegex(
+            @"target\s*:\s*(?:[""']|>\-)?\s*(?:[""'])?(?<url>https?://[^""'\s]+)",
+            RegexOptions.IgnoreCase | RegexOptions.Multiline
+        )]
+        private static partial Regex MirroredTargetsRegex();
     }
 }
