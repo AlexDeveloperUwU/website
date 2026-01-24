@@ -1,4 +1,5 @@
 using System.Reflection;
+using AspNet.Security.OAuth.Discord;
 using backend.Extensions;
 using backend.Infrastructure.GitProviders;
 using backend.Infrastructure.Jobs;
@@ -16,6 +17,7 @@ using EasyLogging.Extensions;
 using EasyLogging.Loggers;
 using Hangfire;
 using Hangfire.PostgreSql;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Scalar.AspNetCore;
@@ -88,6 +90,20 @@ builder.Services.AddScoped<IGitLab, GitLab>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IBackgroundJobs, BackgroundJobs>();
+
+// Add authentication
+builder
+    .Services.AddAuthentication(options =>
+    {
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme; // This adds cookies
+        options.DefaultChallengeScheme = DiscordAuthenticationDefaults.AuthenticationScheme; // This sets Discord as auth challenge
+    })
+    .AddCookie()
+    .AddDiscord(options =>
+    {
+        options.ClientId = builder.Configuration["DISCORD_CLIENT_ID"] ?? string.Empty;
+        options.ClientSecret = builder.Configuration["DISCORD_CLIENT_SECRET"] ?? string.Empty;
+    });
 
 // Add HTTP Clients
 builder.Services.AddHttpClients(builder.Configuration);
@@ -183,6 +199,7 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 // Add auth
+app.UseAuthentication();
 app.UseAuthorization();
 
 // Add middleware for logging
