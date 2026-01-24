@@ -5,6 +5,7 @@ using backend.Interfaces.Projects;
 using backend.Models.Projects;
 using backend.Models.Response;
 using backend.Persistence.IRepositories;
+using EasyLogging.Loggers;
 
 namespace backend.Services.Projects
 {
@@ -13,13 +14,15 @@ namespace backend.Services.Projects
         IGitLab gitLabProvider,
         IProjectRepository projectRepository,
         IConfiguration configuration,
-        ILogger<ProjectService> logger,
         IHttpClientFactory httpClientFactory
     ) : IProjectService
     {
         private const string MirroredConfigPath =
             "/api/v4/projects/personal%2Fothers%2Fpipelinerunner/repository/files/tasks%2Fbackups-gh-gl.yml/raw?ref=main";
 
+        /// <summary>
+        /// Synchronizes projects from GitHub and GitLab, filters mirrored and pending deletions, and saves unique records.
+        /// </summary>
         public async Task SyncProjects()
         {
             var gitHubProjects = await FetchProjectsFromProviderAsync(
@@ -55,24 +58,27 @@ namespace backend.Services.Projects
             {
                 try
                 {
-                    logger.LogInformation(
+                    EasyLogger.Info(
                         "Syncing {Count} unique projects to database...",
                         combinedProjects.Count
                     );
                     await projectRepository.SyncProjects(combinedProjects);
-                    logger.LogInformation("Synchronization completed.");
+                    EasyLogger.Info("Synchronization completed.");
                 }
                 catch (Exception ex)
                 {
-                    logger.LogError(ex, "Error saving projects to database.");
+                    EasyLogger.Error(ex, "Error saving projects to database.");
                 }
             }
             else
             {
-                logger.LogWarning("No projects found to sync.");
+                EasyLogger.Warning("No projects found to sync.");
             }
         }
 
+        /// <summary>
+        /// Checks if the provided input contains strings indicating a pending deletion.
+        /// </summary>
         private static bool IsDeletionPending(string input)
         {
             if (string.IsNullOrEmpty(input))
@@ -81,6 +87,9 @@ namespace backend.Services.Projects
                 || input.Contains("deletion_pending", StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Retrieves the set of URLs identified as mirrored targets from the GitLab configuration.
+        /// </summary>
         private async Task<HashSet<string>> GetMirroredGitLabUrls()
         {
             var gitLabServer = configuration["GITLAB_SERVER"]?.TrimEnd('/');
@@ -101,7 +110,7 @@ namespace backend.Services.Projects
                     );
                 }
 
-                logger.LogInformation(
+                EasyLogger.Info(
                     "Fetching mirrored projects configuration from {Url}...",
                     mirroredConfigUrl
                 );
@@ -114,7 +123,7 @@ namespace backend.Services.Projects
                         .StartsWith("<!DOCTYPE html", StringComparison.OrdinalIgnoreCase)
                 )
                 {
-                    logger.LogError(
+                    EasyLogger.Error(
                         "Received HTML from API endpoint. Verify Project ID and Token scopes."
                     );
                     return [];
@@ -133,17 +142,20 @@ namespace backend.Services.Projects
                     .Where(url => !string.IsNullOrEmpty(url))
                     .ToHashSet();
 
-                logger.LogInformation("Identified {Count} mirrored targets.", urls.Count);
+                EasyLogger.Info("Identified {Count} mirrored targets.", urls.Count);
                 return urls;
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Failed to fetch mirrored projects configuration.");
+                EasyLogger.Error(ex, "Failed to fetch mirrored projects configuration.");
                 return [];
             }
         }
 
-        private async Task<List<GitProject>> FetchProjectsFromProviderAsync(
+        /// <summary>
+        /// Fetches projects from a specific git provider delegate.
+        /// </summary>
+        private static async Task<List<GitProject>> FetchProjectsFromProviderAsync(
             Func<string, Task<ApiResponseDto<List<GitProject>>>> getProjectsDelegate,
             string? token,
             string providerName
@@ -158,15 +170,15 @@ namespace backend.Services.Projects
                 if (response.Success && response.Data != null)
                     return response.Data;
 
-                logger.LogError(
+                EasyLogger.Error(
                     "Error fetching from {Provider}: {Msg}",
                     providerName,
-                    response.Error?.Message
+                    response.Error?.Message ?? string.Empty
                 );
             }
             catch (Exception ex)
             {
-                logger.LogError(ex, "Error fetching from {Provider}", providerName);
+                EasyLogger.Error(ex, "Error fetching from {Provider}", providerName);
             }
 
             return [];

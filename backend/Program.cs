@@ -12,12 +12,15 @@ using backend.Persistence.Repositories;
 using backend.Services.Projects;
 using backend.Services.Response;
 using dotenv.net;
+using EasyLogging.Extensions;
+using EasyLogging.Loggers;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Scalar.AspNetCore;
 
+// Load enviroment variables from .env files
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 var envFile = environment == "Development" ? ".env.dev" : ".env";
 
@@ -29,15 +32,29 @@ if (File.Exists(envFile))
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Load appsettings for the application
 builder
     .Configuration.SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
     .AddEnvironmentVariables();
 
+// Add SEQ logging via EasyLogging
+builder.AddEasyLogging(options =>
+{
+    options.ApplicationName = "PortfolioBackend";
+    options.EnableConsoleLogging = true;
+    options.LogOutputPath = "Logs";
+    options.EnableDetailedEnrichment = false;
+    options.LogHttpBodies = false;
+    options.SeqUrl = builder.Configuration["SEQ_URL"];
+    options.SeqApiKey = builder.Configuration["SEQ_API_KEY"];
+});
+
 var connectionString = builder.Configuration["DATABASE_URL"];
 var hangfireConnectionString = builder.Configuration["HANGFIRE_DATABASE_URL"];
 
+// Allow all CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(
@@ -49,18 +66,22 @@ builder.Services.AddCors(options =>
     );
 });
 
+// Add Database with PostgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
+// Add HangFire for background tasks
 builder.Services.AddHangfire(configuration =>
     configuration
         .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
         .UseSimpleAssemblyNameTypeSerializer()
         .UseRecommendedSerializerSettings()
         .UsePostgreSqlStorage(options => options.UseNpgsqlConnection(hangfireConnectionString))
+        .AddEasyLoggingHangfire()
 );
 
 builder.Services.AddHangfireServer();
 
+// Add scoped services
 builder.Services.AddScoped<IResponseService, ResponseService>();
 builder.Services.AddScoped<IGitHub, GitHub>();
 builder.Services.AddScoped<IGitLab, GitLab>();
@@ -68,11 +89,14 @@ builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IBackgroundJobs, BackgroundJobs>();
 
+// Add HTTP Clients
 builder.Services.AddHttpClients(builder.Configuration);
 
+// Add Controllers and Scalar Explorer
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+// Add Swagger Generator for Scalar Docs
 var assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "1.0.0";
 var apiTitle = $"Website Backend";
 
@@ -95,8 +119,10 @@ builder.Services.AddSwaggerGen(options =>
     );
 });
 
+// Build the application
 var app = builder.Build();
 
+// Migrate database if needed
 try
 {
     using var scope = app.Services.CreateScope();
@@ -106,10 +132,10 @@ try
 }
 catch (Exception ex)
 {
-    var logger = app.Services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "An error occurred while migrating the database.");
+    EasyLogger.Error(ex, "An error occurred while migrating the database.");
 }
 
+// Enable API explorer if development enviroment is set
 if (app.Environment.IsDevelopment())
 {
     app.MapSwagger("/openapi/{documentName}.json");
@@ -142,27 +168,38 @@ if (app.Environment.IsDevelopment())
 
     app.UseHangfireDashboard();
 }
+// Add HSTS and HTTPS if we are in production mode
 else
 {
     app.UseHsts();
     app.UseHttpsRedirection();
 }
 
+// Set CORS to use our policy
 app.UseCors("AllowAnyCorsPolicy");
 
+// Enable static files
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+// Add auth
 app.UseAuthorization();
 
+// Add middleware for logging
+app.UseEasyLoggingMiddleware();
+
+// Map the defined controllers
 app.MapControllers();
 
+// Fallback to index.html
 app.MapFallbackToFile("index.html");
 
+// Set the recurring job to trigger daily
 RecurringJob.AddOrUpdate<IBackgroundJobs>(
     "SyncProjectsJob",
     service => service.SyncProjectsJob(),
     Cron.Daily
 );
 
+// Run the application
 app.Run();

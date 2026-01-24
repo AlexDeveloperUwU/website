@@ -10,6 +10,9 @@ namespace backend.Persistence.Repositories
     {
         private readonly ApplicationDbContext _context = context;
 
+        /// <summary>
+        /// Maps projects, processes them by type, filters backups, and updates or adds them to the database.
+        /// </summary>
         public async Task SyncProjects(IEnumerable<GitProject> gitProjects)
         {
             var existingProjects = await _context.Projects.ToListAsync();

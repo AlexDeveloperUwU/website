@@ -15,6 +15,14 @@ namespace backend.Infrastructure.GitProviders
         private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
         private readonly IResponseService _responseService = responseService;
 
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNameCaseInsensitive = true,
+        };
+
+        /// <summary>
+        /// Fetches and serializes a list of all projects from GitLab.
+        /// </summary>
         public async Task<ApiResponseDto<List<GitProject>>> GetProjects(string token)
         {
             try
@@ -39,8 +47,10 @@ namespace backend.Infrastructure.GitProviders
                 }
 
                 var content = await response.Content.ReadAsStringAsync();
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                var apiRepos = JsonSerializer.Deserialize<List<GitLabRepoDto>>(content, options);
+                var apiRepos = JsonSerializer.Deserialize<List<GitLabRepoDto>>(
+                    content,
+                    _jsonOptions
+                );
 
                 if (apiRepos == null)
                 {

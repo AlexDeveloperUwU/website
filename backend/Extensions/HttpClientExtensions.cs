@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Reflection;
+using EasyLogging.Extensions;
 
 namespace backend.Extensions
 {
@@ -10,29 +11,13 @@ namespace backend.Extensions
             IConfiguration configuration
         )
         {
-            services.AddHttpClient(
-                "GitHub",
-                client =>
-                {
-                    client.BaseAddress = new Uri("https://api.github.com/");
-                    client.DefaultRequestHeaders.UserAgent.Add(
-                        new ProductInfoHeaderValue(
-                            "AlexDevUwU-Portfolio-Sync",
-                            Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)
-                                ?? "1.0.0"
-                        )
-                    );
-                }
-            );
-
-            var gitLabServerUrl = configuration["GITLAB_SERVER"];
-            if (!string.IsNullOrEmpty(gitLabServerUrl))
-            {
-                services.AddHttpClient(
-                    "GitLab",
+            // Add GitHub HTTP client
+            services
+                .AddHttpClient(
+                    "GitHub",
                     client =>
                     {
-                        client.BaseAddress = new Uri(gitLabServerUrl);
+                        client.BaseAddress = new Uri("https://api.github.com/");
                         client.DefaultRequestHeaders.UserAgent.Add(
                             new ProductInfoHeaderValue(
                                 "AlexDevUwU-Portfolio-Sync",
@@ -41,7 +26,29 @@ namespace backend.Extensions
                             )
                         );
                     }
-                );
+                )
+                .AddEasyLoggingClient();
+
+            // Add GitLab HTTP client
+            var gitLabServerUrl = configuration["GITLAB_SERVER"];
+            if (!string.IsNullOrEmpty(gitLabServerUrl))
+            {
+                services
+                    .AddHttpClient(
+                        "GitLab",
+                        client =>
+                        {
+                            client.BaseAddress = new Uri(gitLabServerUrl);
+                            client.DefaultRequestHeaders.UserAgent.Add(
+                                new ProductInfoHeaderValue(
+                                    "AlexDevUwU-Portfolio-Sync",
+                                    Assembly.GetExecutingAssembly().GetName().Version?.ToString(3)
+                                        ?? "1.0.0"
+                                )
+                            );
+                        }
+                    )
+                    .AddEasyLoggingClient();
             }
 
             return services;
