@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using AspNet.Security.OAuth.Discord;
 using backend.Services.Projects;
 using dotenv.net;
@@ -44,7 +44,7 @@ builder
 // Add SEQ logging via EasyLogging
 builder.AddEasyLogging(options =>
 {
-    options.ApplicationName = "PortfolioBackend";
+    options.ApplicationName = "Portfolio.Backend";
     options.EnableConsoleLogging = true;
     options.LogOutputPath = "Logs";
     options.EnableDetailedEnrichment = false;
@@ -123,8 +123,13 @@ builder.Services.AddSwaggerGen(options =>
         new OpenApiInfo
         {
             Version = $"v{assemblyVersion}",
-            Title = apiTitle,
-            Description = "API to manage my personal portfolio content.",
+            Title = $"✨ {apiTitle}",
+            Description =
+                "This API is the dedicated backbone designed exclusively to power my personal portfolio's features, "
+                + "content, and live integrations. \n\n"
+                + "⚠️ **Internal Use Only:** This service is not intended for public consumption. "
+                + "Access is strictly restricted to the portfolio's frontend and authorized personal integrations. "
+                + "Most endpoints require active authentication to ensure system integrity.",
             Contact = new OpenApiContact
             {
                 Name = "Alejandro Verde",

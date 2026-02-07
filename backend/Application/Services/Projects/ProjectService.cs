@@ -1,9 +1,12 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
 using EasyLogging.Loggers;
+using Portfolio.Backend.Application.Enums.Error;
 using Portfolio.Backend.Application.Interfaces.GitProviders;
 using Portfolio.Backend.Application.Interfaces.Projects;
 using Portfolio.Backend.Application.Interfaces.Repositories;
+using Portfolio.Backend.Application.Interfaces.Response;
+using Portfolio.Backend.Application.Models.Entities;
 using Portfolio.Backend.Application.Models.Projects;
 using Portfolio.Backend.Application.Models.Response;
 
@@ -14,7 +17,8 @@ namespace backend.Services.Projects
         IGitLab gitLabProvider,
         IProjectRepository projectRepository,
         IConfiguration configuration,
-        IHttpClientFactory httpClientFactory
+        IHttpClientFactory httpClientFactory,
+        IResponseService responseService
     ) : IProjectService
     {
         private const string MirroredConfigPath =
@@ -189,5 +193,128 @@ namespace backend.Services.Projects
             RegexOptions.IgnoreCase | RegexOptions.Multiline
         )]
         private static partial Regex MirroredTargetsRegex();
+
+        /// <summary>
+        /// Gets an specified project from the database.
+        /// </summary>
+        public async Task<ApiResponseDto<ProjectDto>> GetProject(int projectId)
+        {
+            var response = await projectRepository.GetProject(projectId);
+            if (!response.Success || response.Data == null)
+            {
+                return responseService.CreateErrorResponse<ProjectDto>(
+                    ParseErrorCode(response.Error?.Code),
+                    response.Error?.Message ?? "Project not found"
+                );
+            }
+
+            var dto = MapToDto(response.Data);
+            return responseService.CreateSuccessResponse(dto);
+        }
+
+        /// <summary>
+        /// Gets the list of all the projects inserted in the database.
+        /// </summary>
+        public async Task<ApiResponseDto<List<ProjectDto>>> GetProjects()
+        {
+            var response = await projectRepository.GetProjects();
+            if (!response.Success || response.Data == null)
+            {
+                return responseService.CreateErrorResponse<List<ProjectDto>>(
+                    ParseErrorCode(response.Error?.Code),
+                    response.Error?.Message ?? "Error fetching projects"
+                );
+            }
+
+            var dtos = response.Data.Select(MapToDto).ToList();
+            return responseService.CreateSuccessResponse(dtos);
+        }
+
+        /// <summary>
+        /// Adds the given project to the database.
+        /// </summary>
+        public async Task<ApiResponseDto<int>> AddProject(ProjectDto projectDto)
+        {
+            var entity = MapToEntity(projectDto);
+            return await projectRepository.AddProject(entity);
+        }
+
+        /// <summary>
+        /// Updates the given project in the database.
+        /// </summary>
+        public async Task<ApiResponseDto<int>> UpdateProject(int projectId, ProjectDto projectDto)
+        {
+            var existingResponse = await projectRepository.GetProject(projectId);
+            if (!existingResponse.Success || existingResponse.Data == null)
+            {
+                return responseService.CreateErrorResponse<int>(
+                    (int)Errors.DATA_NOT_FOUND,
+                    "Project not found"
+                );
+            }
+
+            var entity = MapToEntity(projectDto);
+            entity.Id = projectId;
+
+            return await projectRepository.UpdateProject(entity);
+        }
+
+        /// <summary>
+        /// Deletes the given project in the database.
+        /// </summary>
+        public async Task<ApiResponseDto<int>> DeleteProject(int projectId)
+        {
+            return await projectRepository.DeleteProject(projectId);
+        }
+
+        private static int ParseErrorCode(string? code)
+        {
+            if (string.IsNullOrEmpty(code))
+                return (int)Errors.UNKNOWN_ERROR;
+
+            if (int.TryParse(code, out var numericCode))
+                return numericCode;
+
+            if (Enum.TryParse<Errors>(code, out var errorEnum))
+                return (int)errorEnum;
+
+            return (int)Errors.UNKNOWN_ERROR;
+        }
+
+        private static ProjectDto MapToDto(Project entity)
+        {
+            return new ProjectDto
+            {
+                Id = entity.Id,
+                Show = entity.Show,
+                Name = entity.Name,
+                Url = entity.Url,
+                RepositoryUrl = entity.RepositoryUrl,
+                DescriptionEs = entity.DescriptionEs,
+                DescriptionEn = entity.DescriptionEn,
+                ShowOnHomepage = entity.ShowOnHomepage,
+                Org = entity.Org,
+                Icon = entity.Icon,
+                Tech = entity.Tech,
+            };
+        }
+
+        private static Project MapToEntity(ProjectDto dto)
+        {
+            return new Project
+            {
+                Id = dto.Id ?? 0,
+                Show = dto.Show,
+                Name = dto.Name,
+                Url = dto.Url,
+                RepositoryUrl = dto.RepositoryUrl,
+                DescriptionEs = dto.DescriptionEs,
+                DescriptionEn = dto.DescriptionEn,
+                ShowOnHomepage = dto.ShowOnHomepage,
+                Org = dto.Org,
+                Icon = dto.Icon,
+                Tech = dto.Tech,
+            };
+        }
     }
 }
