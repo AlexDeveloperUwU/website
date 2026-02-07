@@ -1,11 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
-using backend.Enums.Projects;
-using backend.Interfaces.GitProviders;
-using backend.Interfaces.Response;
-using backend.Models.GitProviders;
-using backend.Models.Projects;
-using backend.Models.Response;
+using backend.Application.Enums.Projects;
+using backend.Application.Interfaces.GitProviders;
+using backend.Application.Interfaces.Response;
+using backend.Application.Models.GitProviders;
+using backend.Application.Models.Projects;
+using backend.Application.Models.Response;
 
 namespace backend.Infrastructure.GitProviders
 {

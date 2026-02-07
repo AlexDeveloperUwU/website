@@ -1,5 +1,5 @@
-﻿using backend.Interfaces.Jobs;
-using backend.Interfaces.Projects;
+﻿using backend.Application.Interfaces.Jobs;
+using backend.Application.Interfaces.Projects;
 
 namespace backend.Infrastructure.Jobs
 {
