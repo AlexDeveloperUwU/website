@@ -1,7 +1,7 @@
-﻿using backend.Application.Models.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Portfolio.Backend.Application.Models.Entities;
 
-namespace backend.Infrastructure.Persistence.Context
+namespace Portfolio.Backend.Infrastructure.Persistence.Context
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : DbContext(options)

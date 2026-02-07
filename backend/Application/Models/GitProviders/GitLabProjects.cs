@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace backend.Application.Models.GitProviders
+namespace Portfolio.Backend.Application.Models.GitProviders
 {
     public class GitLabRepoDto
     {

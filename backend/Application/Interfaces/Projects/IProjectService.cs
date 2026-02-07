@@ -1,4 +1,4 @@
-﻿namespace backend.Application.Interfaces.Projects
+﻿namespace Portfolio.Backend.Application.Interfaces.Projects
 {
     public interface IProjectService
     {

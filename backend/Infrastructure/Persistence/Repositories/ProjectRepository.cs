@@ -1,10 +1,10 @@
-﻿using backend.Application.Models.Projects;
-using backend.Infrastructure.Persistence.Context;
-using backend.Infrastructure.Persistence.IRepositories;
-using backend.Models.Entities;
+﻿using backend.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.Backend.Application.Interfaces.Repositories;
+using Portfolio.Backend.Application.Models.Projects;
+using Portfolio.Backend.Infrastructure.Persistence.Context;
 
-namespace backend.Infrastructure.Persistence.Repositories
+namespace Portfolio.Backend.Infrastructure.Persistence.Repositories
 {
     public class ProjectRepository(ApplicationDbContext context) : IProjectRepository
     {

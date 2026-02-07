@@ -1,13 +1,13 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
-using backend.Application.Enums.Projects;
-using backend.Application.Interfaces.GitProviders;
-using backend.Application.Interfaces.Response;
-using backend.Application.Models.GitProviders;
-using backend.Application.Models.Projects;
-using backend.Application.Models.Response;
+using Portfolio.Backend.Application.Enums.Projects;
+using Portfolio.Backend.Application.Interfaces.GitProviders;
+using Portfolio.Backend.Application.Interfaces.Response;
+using Portfolio.Backend.Application.Models.GitProviders;
+using Portfolio.Backend.Application.Models.Projects;
+using Portfolio.Backend.Application.Models.Response;
 
-namespace backend.Infrastructure.GitProviders
+namespace Portfolio.Backend.Infrastructure.GitProviders
 {
     public class GitHub(IHttpClientFactory httpClientFactory, IResponseService responseService)
         : IGitHub

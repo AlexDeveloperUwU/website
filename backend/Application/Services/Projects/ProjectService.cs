@@ -1,11 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.RegularExpressions;
-using backend.Application.Interfaces.GitProviders;
-using backend.Application.Interfaces.Projects;
-using backend.Application.Models.Projects;
-using backend.Application.Models.Response;
-using backend.Infrastructure.Persistence.IRepositories;
 using EasyLogging.Loggers;
+using Portfolio.Backend.Application.Interfaces.GitProviders;
+using Portfolio.Backend.Application.Interfaces.Projects;
+using Portfolio.Backend.Application.Interfaces.Repositories;
+using Portfolio.Backend.Application.Models.Projects;
+using Portfolio.Backend.Application.Models.Response;
 
 namespace backend.Services.Projects
 {

@@ -1,6 +1,6 @@
-﻿using backend.Application.Enums.Projects;
+﻿using Portfolio.Backend.Application.Enums.Projects;
 
-namespace backend.Application.Models.Projects
+namespace Portfolio.Backend.Application.Models.Projects
 {
     public class GitProject
     {

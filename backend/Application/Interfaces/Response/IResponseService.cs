@@ -1,6 +1,6 @@
-﻿using backend.Application.Models.Response;
+﻿using Portfolio.Backend.Application.Models.Response;
 
-namespace backend.Application.Interfaces.Response
+namespace Portfolio.Backend.Application.Interfaces.Response
 {
     public interface IResponseService
     {

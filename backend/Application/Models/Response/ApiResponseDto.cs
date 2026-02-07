@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace backend.Application.Models.Response
+namespace Portfolio.Backend.Application.Models.Response
 {
     public class ApiResponseDto<T>
     {

@@ -1,4 +1,4 @@
-﻿namespace backend.Application.Interfaces.Jobs
+﻿namespace Portfolio.Backend.Application.Interfaces.Jobs
 {
     public interface IBackgroundJobs
     {

@@ -2,7 +2,7 @@
 using System.Reflection;
 using EasyLogging.Extensions;
 
-namespace backend.Infrastructure.Extensions
+namespace Portfolio.Backend.Infrastructure.Extensions
 {
     public static class HttpClientExtensions
     {

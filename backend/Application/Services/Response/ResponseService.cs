@@ -1,8 +1,9 @@
-﻿using backend.Application.Enums.Error;
-using backend.Application.Interfaces.Response;
-using backend.Application.Models.Response;
+﻿using backend.Application.Models.Response;
+using Portfolio.Backend.Application.Enums.Error;
+using Portfolio.Backend.Application.Interfaces.Response;
+using Portfolio.Backend.Application.Models.Response;
 
-namespace backend.Application.Services.Response
+namespace Portfolio.Backend.Application.Services.Response
 {
     public class ResponseService : IResponseService
     {

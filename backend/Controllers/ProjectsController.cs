@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace backend.Controllers
+namespace Portfolio.Backend.Controllers
 {
     [ApiController]
     [Route("projects")]

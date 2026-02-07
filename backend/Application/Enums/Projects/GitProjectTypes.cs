@@ -1,4 +1,4 @@
-﻿namespace backend.Application.Enums.Projects
+﻿namespace Portfolio.Backend.Application.Enums.Projects
 {
     public enum GitProjectTypes
     {

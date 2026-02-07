@@ -1,6 +1,6 @@
-﻿using backend.Application.Models.Projects;
+﻿using Portfolio.Backend.Application.Models.Projects;
 
-namespace backend.Infrastructure.Persistence.IRepositories
+namespace Portfolio.Backend.Application.Interfaces.Repositories
 {
     public interface IProjectRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace backend.Application.Models.Entities
+namespace Portfolio.Backend.Application.Models.Entities
 {
     public class Project
     {

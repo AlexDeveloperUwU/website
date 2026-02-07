@@ -1,16 +1,5 @@
 using System.Reflection;
 using AspNet.Security.OAuth.Discord;
-using backend.Application.Interfaces.GitProviders;
-using backend.Application.Interfaces.Jobs;
-using backend.Application.Interfaces.Projects;
-using backend.Application.Interfaces.Response;
-using backend.Application.Services.Response;
-using backend.Infrastructure.Extensions;
-using backend.Infrastructure.GitProviders;
-using backend.Infrastructure.Jobs;
-using backend.Infrastructure.Persistence.Context;
-using backend.Infrastructure.Persistence.IRepositories;
-using backend.Infrastructure.Persistence.Repositories;
 using backend.Services.Projects;
 using dotenv.net;
 using EasyLogging.Extensions;
@@ -20,6 +9,17 @@ using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using Portfolio.Backend.Application.Interfaces.GitProviders;
+using Portfolio.Backend.Application.Interfaces.Jobs;
+using Portfolio.Backend.Application.Interfaces.Projects;
+using Portfolio.Backend.Application.Interfaces.Repositories;
+using Portfolio.Backend.Application.Interfaces.Response;
+using Portfolio.Backend.Application.Services.Response;
+using Portfolio.Backend.Infrastructure.Extensions;
+using Portfolio.Backend.Infrastructure.GitProviders;
+using Portfolio.Backend.Infrastructure.Jobs;
+using Portfolio.Backend.Infrastructure.Persistence.Context;
+using Portfolio.Backend.Infrastructure.Persistence.Repositories;
 using Scalar.AspNetCore;
 
 // Load enviroment variables from .env files
