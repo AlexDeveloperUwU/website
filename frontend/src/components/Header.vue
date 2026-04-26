@@ -5,12 +5,18 @@
   >
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
-        <h1 class="text-xl sm:text-2xl font-bold text-white font-mono">AlexDevUwU</h1>
-        <nav class="flex space-x-6 font-mono text-sm">
+        <router-link to="/" class="text-xl sm:text-2xl font-bold text-white font-mono">AlexDevUwU</router-link>
+        <nav class="flex items-center space-x-6 font-mono text-sm">
+          <router-link to="/login" class="text-slate-300 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2">
+            <i class="fas fa-lock" v-if="!authStore.isAuthenticated && !authStore.isLoading"></i>
+            <i class="fas fa-unlock text-green-400" v-else-if="authStore.isAuthenticated && !authStore.isLoading"></i>
+            <i class="fas fa-spinner fa-spin" v-else></i>
+            .auth()
+          </router-link>
           <button
             v-if="altLocale"
             @click="changeLang"
-            class="text-slate-300 hover:text-blue-800 transition-colors duration-300"
+            class="text-slate-300 hover:text-blue-400 transition-colors duration-300"
           >
             .translate("{{ altLocale }}")
           </button>
@@ -21,11 +27,15 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useLangStore } from '../stores/lang'
+import { useAuthStore } from '../stores/auth'
+
 const langStore = useLangStore()
+const authStore = useAuthStore()
 
 const altLocale = computed(() => (langStore.locale === 'es' ? 'en' : 'es'))
+
 async function changeLang() {
   const newLocale = langStore.locale === 'es' ? 'en' : 'es'
 
@@ -37,6 +47,10 @@ async function changeLang() {
     }),
   )
 }
+
+onMounted(() => {
+  authStore.checkAuth()
+})
 </script>
 
 <script>
@@ -45,13 +59,15 @@ export default {
   mounted() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-        const target = document.querySelector(this.getAttribute('href'))
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute('href'))
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            })
+          }
         }
       })
     })

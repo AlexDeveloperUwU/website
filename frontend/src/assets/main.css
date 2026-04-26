@@ -2,6 +2,63 @@
 
 @import 'tailwindcss';
 
+:root {
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+
+  /* Surfaces — ordered dark to light */
+  --surface-0: #020617;
+  --surface-1: #0f172a;
+  --surface-2: #151e2c;
+  --surface-3: #1e2d42;
+
+  /* Borders */
+  --border-subtle: #2d3a54;
+  --border-default: #3b4d69;
+
+  /* Accent */
+  --accent: #3b82f6;
+  --accent-dim: #60a5fa;
+  --accent-secondary: #06b6d4;
+}
+
+/* --- Root background with ambient glow --- */
+
+.app-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 10%, rgba(59, 130, 246, 0.10) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 85% 90%, rgba(6, 182, 212, 0.07) 0%, transparent 100%),
+    linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+  min-height: 100vh;
+}
+
+/* --- Custom scrollbar --- */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-default) var(--surface-1);
+}
+
+/* --- Animations --- */
+
 @keyframes float {
   0%,
   100% {
@@ -16,20 +73,31 @@
   animation: float 6s ease-in-out infinite;
 }
 
+/* --- Typography --- */
+
 .gradient-text {
-  background: linear-gradient(135deg, #163ab0, #0369a1);
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* --- Card / Layout --- */
+
 .card-hover {
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition:
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .card-hover:hover {
-  box-shadow: 0 25px 50px -12px rgba(30, 64, 175, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(96, 165, 250, 0.35);
+  transform: translateY(-2px);
 }
+
+/* --- Tech Badges --- */
 
 .tech-badge {
   transition: all 0.3s ease;
@@ -39,16 +107,20 @@
   transform: scale(1.05);
 }
 
+/* --- Utilities --- */
+
 .backdrop-blur-custom {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* --- Section Divider --- */
+
 .section-divider {
   position: relative;
   margin: 3rem 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(71, 85, 105, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(59, 77, 105, 0.4), transparent);
 }
 
 .section-divider::before {
@@ -62,8 +134,8 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(30, 64, 175, 0.6),
-    rgba(3, 105, 161, 0.6),
+    rgba(59, 130, 246, 0.7),
+    rgba(6, 182, 212, 0.7),
     transparent
   );
 }
@@ -76,20 +148,24 @@
   transform: translate(-50%, -50%);
   width: 6px;
   height: 6px;
-  background: #1e40af;
+  background: #3b82f6;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(30, 64, 175, 0.4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
 }
 
+/* --- Terminal Card --- */
+
 .code-block {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px solid #334155;
+  background: linear-gradient(135deg, #151e2c 0%, #111827 100%);
+  border: 1px solid #2d3a54;
   position: relative;
 }
 
+/* --- Linux Titlebar --- */
+
 .linux-titlebar {
-  background: #374151;
-  border-bottom: 1px solid #4b5563;
+  background: #2c394f;
+  border-bottom: 1px solid #3b4d69;
   height: 32px;
   display: flex;
   align-items: center;
@@ -106,29 +182,35 @@
 .linux-btn {
   width: 12px;
   height: 12px;
-  background: #64748b;
+  background: #4a5b7a;
   border-radius: 2px;
   transition: background-color 0.2s;
 }
 
-.linux-btn[data-type='minimize']:hover {
+.linux-btn:hover {
+  background: #6a7c9e;
+}
+
+.linux-btn-minimize {
   background: #fbbf24;
 }
 
-.linux-btn[data-type='maximize']:hover {
+.linux-btn-maximize {
   background: #10b981;
 }
 
-.linux-btn[data-type='close']:hover {
+.linux-btn-close {
   background: #ef4444;
 }
 
-.syntax-comment {
-  color: #64748b;
-}
+/* --- Syntax Highlighting --- */
 
 .syntax-keyword {
-  color: #1e40af;
+  color: #60a5fa;
+}
+
+.syntax-comment {
+  color: #7d8fa8;
 }
 
 .syntax-string {
@@ -143,6 +225,16 @@
   color: #ec4899;
 }
 
+.syntax-type {
+  color: #7d8fa8;
+}
+
+.syntax-semicolon {
+  color: #4a5b7a;
+}
+
+/* --- Misc --- */
+
 .glass {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -154,9 +246,4 @@
   box-shadow:
     inset 2px 2px 5px #1e293b,
     inset -2px -2px 5px #334155;
-}
-
-:root {
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-sans: 'Inter', sans-serif;
 }

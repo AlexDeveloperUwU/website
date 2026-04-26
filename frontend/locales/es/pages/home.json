@@ -37,7 +37,7 @@
     },
     "form": {
       "namePlaceholder": "\"Tu nombre aquí\"",
-      "emailPlaceholder": "\"tu@email.com\"",
+      "emailPlaceholder": "\"tu{'@'}email.com\"",
       "messagePlaceholder": "\"Escribe tu mensaje aquí...\""
     }
   }

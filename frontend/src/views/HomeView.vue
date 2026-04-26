@@ -3,9 +3,11 @@
     <section>
       <div class="max-w-6xl mx-auto">
         <div class="text-center space-y-4 mb-8">
-          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
-            <i class="fas fa-user text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('pages.home.about.title') }}
+          <h3
+            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
+          >
+            <i class="fas fa-user text-blue-400"></i>
+            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.about.title') }}</span>
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.about.subtitle') }} */</span>
@@ -13,15 +15,21 @@
         </div>
         <div class="card-hover code-block rounded-xl relative overflow-hidden">
           <div class="linux-titlebar flex items-center justify-between px-3 py-2">
-            <span class="text-white font-mono text-xs">~/portfolio/developer.js</span>
+            <span class="text-white font-mono text-xs">~/portfolio/developer.md</span>
             <div class="linux-controls flex gap-1">
-              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 −
               </div>
-              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 □
               </div>
-              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 ×
               </div>
             </div>
@@ -29,9 +37,14 @@
 
           <div class="p-4 sm:p-6">
             <div class="flex flex-col sm:flex-row gap-4">
-              <div class="w-full sm:w-1/4 bg-slate-800/50 p-4 rounded-lg flex flex-col items-center text-center gap-1">
+              <div
+                class="w-full sm:w-1/4 bg-slate-800/50 p-4 rounded-lg flex flex-col items-center text-center gap-1"
+              >
                 <div class="p-1 rounded-full shadow-inner bg-slate-900/60">
-                  <div id="profileImage" class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl ring-4 ring-offset-2 ring-offset-slate-900 overflow-hidden aspect-square" style="
+                  <div
+                    id="profileImage"
+                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl ring-4 ring-offset-2 ring-offset-slate-900 overflow-hidden aspect-square"
+                    style="
                       --tw-ring-color: rgb(234 179 8);
                       box-shadow: rgba(234, 179, 8, 0.5) 0px 0px 0px 4px;
                       border-color: rgb(234, 179, 8);
@@ -40,8 +53,13 @@
                         box-shadow 0.5s,
                         border-color 0.5s,
                         outline 0.5s;
-                    ">
-                    <img src="https://alexdevuwu.com/img/logoSmall.webp" alt="Alex Verde" class="w-full h-full object-cover" />
+                    "
+                  >
+                    <img
+                      src="https://alexdevuwu.com/img/logoSmall.webp"
+                      alt="Alex Verde"
+                      class="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <h2 class="text-xl font-bold text-white leading-tight">Alex Verde</h2>
@@ -50,41 +68,57 @@
 
               <div class="flex-1 flex flex-col gap-4">
                 <div class="flex flex-wrap gap-4 justify-between">
-                  <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
+                  <div
+                    class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center"
+                  >
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-mug-hot"></i>
                       <span class="text-slate-300">{{ $t('pages.home.status.title') }}</span>
                     </div>
-                    <span class="font-medium text-lg" :style="discordStatusStyle">
-                      <i class="fas fa-circle mr-2" :style="discordStatusStyle"></i>
-                      {{ discordStatusText }}
+                    <span class="font-mono text-lg">
+                      <span :style="discordStatusStyle">
+                        <i class="fas fa-circle mr-1" :style="discordStatusStyle"></i>
+                        <span class="syntax-string">"</span>{{ discordStatusText }}<span class="syntax-string">"</span>
+                      </span><span class="syntax-semicolon">;</span>
                     </span>
                   </div>
 
-                  <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
+                  <div
+                    class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center"
+                  >
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-clock"></i>
                       <span class="text-slate-300">{{ $t('pages.home.experience.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('pages.home.experience.value') }}</span>
+                    <span class="font-mono text-lg">
+                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.experience.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                    </span>
                   </div>
                 </div>
 
                 <div class="flex flex-wrap gap-4 justify-between">
-                  <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
+                  <div
+                    class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center"
+                  >
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-coffee"></i>
                       <span class="text-slate-300">{{ $t('pages.home.coffee.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('pages.home.coffee.value') }}</span>
+                    <span class="font-mono text-lg">
+                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.coffee.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                    </span>
                   </div>
 
-                  <div class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center">
+                  <div
+                    class="flex-1 min-w-[140px] bg-slate-800/50 p-4 rounded-lg flex flex-col items-center"
+                  >
                     <div class="flex items-center gap-2 mb-2 text-blue-500">
                       <i class="fas fa-terminal"></i>
                       <span class="text-slate-300">{{ $t('pages.home.project.title') }}</span>
                     </div>
-                    <span class="text-white font-medium text-lg">{{ $t('pages.home.project.value') }}</span>
+                    <span class="font-mono text-lg">
+                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.project.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -96,13 +130,19 @@
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs sm:text-sm">~/about/bio.md</span>
             <div class="linux-controls">
-              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 −
               </div>
-              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 □
               </div>
-              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 ×
               </div>
             </div>
@@ -112,21 +152,29 @@
             <div class="flex flex-col lg:flex-row gap-6 items-start">
               <div class="w-full lg:w-1/3 mb-4 lg:mb-0">
                 <div class="code-block rounded-xl p-4 border border-slate-600/50">
-                  <img src="https://i.ibb.co/FbSDvtgv/20241223-121455-1-VSee-Face.png" alt="Alex Verde Character" class="w-full h-40 sm:h-48 rounded-lg object-cover object-center" />
+                  <img
+                    src="https://i.ibb.co/FbSDvtgv/20241223-121455-1-VSee-Face.png"
+                    alt="Alex Verde Character"
+                    class="w-full h-40 sm:h-48 rounded-lg object-cover object-center"
+                  />
                 </div>
               </div>
               <div class="w-full lg:w-2/3">
-                <h3 class="text-base sm:text-xl font-semibold text-white mb-4 flex items-center gap-2">
-                  <i class="fas fa-user text-blue-800"></i>
+                <h3
+                  class="text-base sm:text-xl font-semibold text-white mb-4 flex items-center gap-2"
+                >
+                  <i class="fas fa-user text-blue-400"></i>
                   {{ $t('pages.home.about.title') }}
                 </h3>
-                <div class="space-y-4 text-slate-200 leading-relaxed text-sm sm:text-base">
-                  <p>
-                    {{ $t('pages.home.about.paragraph1') }}
-                  </p>
-                  <p>
-                    {{ $t('pages.home.about.paragraph2') }}
-                  </p>
+                <div class="space-y-3 text-slate-200 leading-relaxed text-sm sm:text-base">
+                  <div class="flex gap-3 items-start">
+                    <span class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right">1</span>
+                    <p>{{ $t('pages.home.about.paragraph1') }}</p>
+                  </div>
+                  <div class="flex gap-3 items-start">
+                    <span class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right">2</span>
+                    <p>{{ $t('pages.home.about.paragraph2') }}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,9 +187,11 @@
     <section id="projects">
       <div class="max-w-6xl mx-auto">
         <div class="text-center space-y-4 mb-8">
-          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
-            <i class="fab fa-github text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('pages.home.projects.title') }}
+          <h3
+            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
+          >
+            <i class="fab fa-github text-blue-400"></i>
+            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.projects.title') }}</span>
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.projects.subtitle') }} */</span>
@@ -151,22 +201,32 @@
           {{ $t('pages.home.projects.loading') }}
         </div>
         <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8" id="projects-container">
-          <template v-for="(project, index) in projects" :key="project.name">
-            <div class="card-hover code-block rounded-xl group relative overflow-hidden" :data-project-index="index" :data-project-id="project.name.replace(/\s+/g, '-').toLowerCase()">
+          <template v-for="(project, index) in projects" :key="project.name || index">
+            <div
+              class="card-hover code-block rounded-xl group relative overflow-hidden"
+              :data-project-index="index"
+              :data-project-id="project.name?.replace(/\s+/g, '-').toLowerCase() || ''"
+            >
               <div class="linux-titlebar">
                 <span class="text-white font-mono text-xs project-path">
-                  ~/projects/{{ project.org.replace(/\s+/g, '').toLowerCase() }}/{{
-                    project.name.replace(/\s+/g, '-').toLowerCase()
-                  }}
+                  ~/projects/{{ project.org?.replace(/\s+/g, '').toLowerCase() || '' }}/{{
+                    project.name?.replace(/\s+/g, '-').toLowerCase() || ''
+                  }}.md
                 </span>
                 <div class="linux-controls">
-                  <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+                  <div
+                    class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+                  >
                     −
                   </div>
-                  <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+                  <div
+                    class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+                  >
                     □
                   </div>
-                  <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+                  <div
+                    class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+                  >
                     ×
                   </div>
                 </div>
@@ -174,46 +234,73 @@
               <div class="p-4 sm:p-6">
                 <div class="flex items-center justify-between mb-4">
                   <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
-                      <i :class="project.icon + ' text-white project-icon'"></i>
+                    <div
+                      class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg"
+                    >
+                      <i :class="(project.icon || 'fas fa-code') + ' text-white project-icon'"></i>
                     </div>
-                    <h4 class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono project-name">
+                    <h4
+                      class="text-lg sm:text-xl font-semibold text-white group-hover:text-blue-300 transition-colors font-mono project-name"
+                    >
                       {{ project.name }}
                     </h4>
                   </div>
-                  <a v-if="project.url" :href="project.url" class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white project-url" target="_blank" rel="noopener">
+                  <a
+                    v-if="project.url"
+                    :href="project.url"
+                    class="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 hover:text-white project-url"
+                    target="_blank"
+                    rel="noopener"
+                  >
                     <i class="fas fa-external-link-alt"></i>
                   </a>
                 </div>
-                <p class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm project-description">
+                <p
+                  class="text-slate-300 leading-relaxed mb-4 text-xs sm:text-sm project-description"
+                >
                   {{ project.description }}
                 </p>
                 <div class="flex flex-wrap gap-2 project-techs">
-                  <span v-for="tech in project.tech" :key="tech" class="border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors">{{ tech }}</span>
+                  <span
+                    v-for="tech in project.tech"
+                    :key="tech"
+                    class="tech-badge border border-slate-600 text-slate-200 hover:bg-slate-700 px-2 py-1 rounded text-xs font-mono transition-colors"
+                    >{{ tech }}</span
+                  >
                 </div>
               </div>
             </div>
           </template>
         </div>
 
-        <div class="card-hover code-block rounded-xl hover:bg-slate-800/70 transition-all duration-300 relative overflow-hidden">
+        <div
+          class="card-hover code-block rounded-xl hover:bg-slate-800/70 transition-all duration-300 relative overflow-hidden"
+        >
           <div class="linux-titlebar">
-            <span class="text-white font-mono text-xs">~/projects/explore</span>
+            <span class="text-white font-mono text-xs">~/projects/explore.js</span>
             <div class="linux-controls">
-              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 −
               </div>
-              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 □
               </div>
-              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 ×
               </div>
             </div>
           </div>
           <div class="p-4 sm:p-6">
             <a href="https://github.com/AlexDeveloperUwU" class="flex items-center gap-4">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+              <div
+                class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg"
+              >
                 <i class="fab fa-github text-white text-xl"></i>
               </div>
               <div class="flex-1">
@@ -238,9 +325,11 @@
     <section id="contact">
       <div class="max-w-6xl mx-auto">
         <div class="text-center space-y-4 mb-8">
-          <h3 class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono">
-            <i class="fas fa-envelope text-blue-800"></i>
-            <span class="syntax-comment">// </span>{{ $t('pages.home.contact.title') }}
+          <h3
+            class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
+          >
+            <i class="fas fa-envelope text-blue-400"></i>
+            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.contact.title') }}</span>
           </h3>
           <p class="text-slate-300 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.contact.subtitle') }} */</span>
@@ -248,25 +337,35 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <!-- Email Contact -->
-          <div id="copyEmail" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
+          <div
+            id="copyEmail"
+            class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden"
+          >
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/email.js</span>
               <div class="linux-controls">
-                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   −
                 </div>
-                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   □
                 </div>
-                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   ×
                 </div>
               </div>
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg"
+                >
                   <i class="fas fa-envelope text-white text-xl"></i>
                 </div>
                 <div>
@@ -281,25 +380,35 @@
             </div>
           </div>
 
-          <!-- Discord Contact -->
-          <div id="copyDiscord" class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden">
+          <div
+            id="copyDiscord"
+            class="card-hover code-block rounded-xl cursor-pointer relative overflow-hidden"
+          >
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/discord.js</span>
               <div class="linux-controls">
-                <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   −
                 </div>
-                <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   □
                 </div>
-                <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+                <div
+                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+                >
                   ×
                 </div>
               </div>
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+                <div
+                  class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg"
+                >
                   <i class="fab fa-discord text-white text-xl"></i>
                 </div>
                 <div>
@@ -315,46 +424,88 @@
           </div>
         </div>
 
-        <!-- Contact Form - Full Width -->
         <div class="code-block rounded-xl relative overflow-hidden">
           <div class="linux-titlebar">
-            <span class="text-white font-mono text-xs">~/contact/form.js</span>
+            <span class="text-white font-mono text-xs">~/contact/form.cs</span>
             <div class="linux-controls">
-              <div class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 −
               </div>
-              <div class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 □
               </div>
-              <div class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600">
+              <div
+                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
+              >
                 ×
               </div>
             </div>
           </div>
           <div class="p-4 sm:p-6">
-            <h4 class="text-lg sm:text-xl font-bold text-white mb-6 flex items-center gap-3 font-mono">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 flex items-center justify-center shadow-lg">
+            <h4
+              class="text-lg sm:text-xl font-bold text-white mb-6 flex items-center gap-3 font-mono"
+            >
+              <div
+                class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 flex items-center justify-center shadow-lg"
+              >
                 <i class="fas fa-paper-plane text-white"></i>
               </div>
-              Contact.sendRequest()
+              Contact.SendRequest()
             </h4>
             <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const name =</label>
-                <input type="text" id="name" name="name" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('pages.home.contact.form.namePlaceholder')" required />
+                <label for="name" class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
+                  ><span class="syntax-type">string</span> name =</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:outline-none transition-all duration-300 font-mono"
+                  :placeholder="$t('pages.home.contact.form.namePlaceholder')"
+                  required
+                />
               </div>
               <div>
-                <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const email =</label>
-                <input type="email" id="email" name="email" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-800 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 font-mono" :placeholder="$t('pages.home.contact.form.emailPlaceholder')" required />
+                <label for="email" class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
+                  ><span class="syntax-type">string</span> email =</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:outline-none transition-all duration-300 font-mono"
+                  :placeholder="$t('pages.home.contact.form.emailPlaceholder')"
+                  required
+                />
               </div>
               <div class="md:col-span-2">
-                <label for="message" class="block text-sm font-semibold text-slate-200 mb-2 font-mono">const message =</label>
-                <textarea id="message" name="message" rows="4" class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-800/20 focus:outline-none transition-all duration-300 resize-none font-mono" :placeholder="$t('pages.home.contact.form.messagePlaceholder')" maxlength="3584" required></textarea>
+                <label
+                  for="message"
+                  class="block text-sm font-semibold text-slate-200 mb-2 font-mono"
+                  ><span class="syntax-type">string</span> message =</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20 focus:outline-none transition-all duration-300 resize-none font-mono"
+                  :placeholder="$t('pages.home.contact.form.messagePlaceholder')"
+                  maxlength="3584"
+                  required
+                ></textarea>
               </div>
               <div class="md:col-span-2">
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-800 to-blue-700 hover:from-blue-900 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform font-mono">
+                <button
+                  type="submit"
+                  class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform font-mono"
+                >
                   <i class="fas fa-paper-plane mr-2"></i>
-                  Contact.sendData()
+                  Contact.SendData()
                 </button>
               </div>
             </form>
@@ -441,7 +592,7 @@ export default {
             proj.description = translatedProjects[idx].description
           }
         })
-      } catch (e) { }
+      } catch (e) {}
     }
 
     async function updateStatus() {
