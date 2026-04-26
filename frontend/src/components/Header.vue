@@ -5,11 +5,19 @@
   >
     <div class="container mx-auto px-4 py-4">
       <div class="flex items-center justify-between">
-        <router-link to="/" class="text-xl sm:text-2xl font-bold text-white font-mono">AlexDevUwU</router-link>
+        <router-link to="/" class="text-xl sm:text-2xl font-bold text-white font-mono"
+          >AlexDevUwU</router-link
+        >
         <nav class="flex items-center space-x-6 font-mono text-sm">
-          <router-link to="/login" class="text-slate-300 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2">
+          <router-link
+            to="/login"
+            class="text-slate-300 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2"
+          >
             <i class="fas fa-lock" v-if="!authStore.isAuthenticated && !authStore.isLoading"></i>
-            <i class="fas fa-unlock text-green-400" v-else-if="authStore.isAuthenticated && !authStore.isLoading"></i>
+            <i
+              class="fas fa-unlock text-green-400"
+              v-else-if="authStore.isAuthenticated && !authStore.isLoading"
+            ></i>
             <i class="fas fa-spinner fa-spin" v-else></i>
             .auth()
           </router-link>

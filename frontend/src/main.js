@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import App from './App.vue'
+import WindowControls from './components/WindowControls.vue'
 import router from './router'
 import { createI18nInstance } from './i18n.js'
 import { useLangStore } from './stores/lang.js'
@@ -19,5 +20,7 @@ const i18n = createI18nInstance(initialLocale)
 
 app.use(router)
 app.use(i18n)
+
+app.component('WindowControls', WindowControls)
 
 app.mount('#app')

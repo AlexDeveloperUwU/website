@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="app-bg text-white font-sans"
-  >
+  <div class="app-bg text-white font-sans">
     <header-component />
     <router-view />
   </div>

@@ -7,7 +7,8 @@
             class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
           >
             <i class="fas fa-user text-blue-400"></i>
-            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.about.title') }}</span>
+            <span class="syntax-comment">// </span
+            ><span class="gradient-text">{{ $t('pages.home.about.title') }}</span>
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.about.subtitle') }} */</span>
@@ -16,23 +17,7 @@
         <div class="card-hover code-block rounded-xl relative overflow-hidden">
           <div class="linux-titlebar flex items-center justify-between px-3 py-2">
             <span class="text-white font-mono text-xs">~/portfolio/developer.md</span>
-            <div class="linux-controls flex gap-1">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                −
-              </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                □
-              </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                ×
-              </div>
-            </div>
+            <window-controls />
           </div>
 
           <div class="p-4 sm:p-6">
@@ -56,7 +41,7 @@
                     "
                   >
                     <img
-                      src="https://alexdevuwu.com/img/logoSmall.webp"
+                      src="@/assets/img/profile.jpeg"
                       alt="Alex Verde"
                       class="w-full h-full object-cover"
                     />
@@ -78,8 +63,9 @@
                     <span class="font-mono text-lg">
                       <span :style="discordStatusStyle">
                         <i class="fas fa-circle mr-1" :style="discordStatusStyle"></i>
-                        <span class="syntax-string">"</span>{{ discordStatusText }}<span class="syntax-string">"</span>
-                      </span><span class="syntax-semicolon">;</span>
+                        <span class="syntax-string">"</span>{{ discordStatusText
+                        }}<span class="syntax-string">"</span> </span
+                      ><span class="syntax-semicolon">;</span>
                     </span>
                   </div>
 
@@ -91,7 +77,9 @@
                       <span class="text-slate-300">{{ $t('pages.home.experience.title') }}</span>
                     </div>
                     <span class="font-mono text-lg">
-                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.experience.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                      <span class="syntax-string">"</span
+                      ><span class="text-white">{{ $t('pages.home.experience.value') }}</span
+                      ><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
                     </span>
                   </div>
                 </div>
@@ -105,7 +93,9 @@
                       <span class="text-slate-300">{{ $t('pages.home.coffee.title') }}</span>
                     </div>
                     <span class="font-mono text-lg">
-                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.coffee.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                      <span class="syntax-string">"</span
+                      ><span class="text-white">{{ $t('pages.home.coffee.value') }}</span
+                      ><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
                     </span>
                   </div>
 
@@ -117,7 +107,9 @@
                       <span class="text-slate-300">{{ $t('pages.home.project.title') }}</span>
                     </div>
                     <span class="font-mono text-lg">
-                      <span class="syntax-string">"</span><span class="text-white">{{ $t('pages.home.project.value') }}</span><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
+                      <span class="syntax-string">"</span
+                      ><span class="text-white">{{ $t('pages.home.project.value') }}</span
+                      ><span class="syntax-string">"</span><span class="syntax-semicolon">;</span>
                     </span>
                   </div>
                 </div>
@@ -129,23 +121,7 @@
         <div class="card-hover code-block rounded-xl mt-6 relative overflow-hidden">
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs sm:text-sm">~/about/bio.md</span>
-            <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                −
-              </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                □
-              </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                ×
-              </div>
-            </div>
+            <window-controls />
           </div>
 
           <div class="p-4 sm:p-6">
@@ -168,11 +144,17 @@
                 </h3>
                 <div class="space-y-3 text-slate-200 leading-relaxed text-sm sm:text-base">
                   <div class="flex gap-3 items-start">
-                    <span class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right">1</span>
+                    <span
+                      class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right"
+                      >1</span
+                    >
                     <p>{{ $t('pages.home.about.paragraph1') }}</p>
                   </div>
                   <div class="flex gap-3 items-start">
-                    <span class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right">2</span>
+                    <span
+                      class="text-slate-700 font-mono text-xs select-none shrink-0 mt-1 w-4 text-right"
+                      >2</span
+                    >
                     <p>{{ $t('pages.home.about.paragraph2') }}</p>
                   </div>
                 </div>
@@ -191,7 +173,8 @@
             class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
           >
             <i class="fab fa-github text-blue-400"></i>
-            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.projects.title') }}</span>
+            <span class="syntax-comment">// </span
+            ><span class="gradient-text">{{ $t('pages.home.projects.title') }}</span>
           </h3>
           <p class="text-slate-400 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.projects.subtitle') }} */</span>
@@ -213,23 +196,7 @@
                     project.name?.replace(/\s+/g, '-').toLowerCase() || ''
                   }}.md
                 </span>
-                <div class="linux-controls">
-                  <div
-                    class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                  >
-                    −
-                  </div>
-                  <div
-                    class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                  >
-                    □
-                  </div>
-                  <div
-                    class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                  >
-                    ×
-                  </div>
-                </div>
+                <window-controls />
               </div>
               <div class="p-4 sm:p-6">
                 <div class="flex items-center justify-between mb-4">
@@ -278,23 +245,7 @@
         >
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs">~/projects/explore.js</span>
-            <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                −
-              </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                □
-              </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                ×
-              </div>
-            </div>
+            <window-controls />
           </div>
           <div class="p-4 sm:p-6">
             <a href="https://github.com/AlexDeveloperUwU" class="flex items-center gap-4">
@@ -329,7 +280,8 @@
             class="text-2xl sm:text-3xl font-bold text-white flex items-center justify-center gap-3 font-mono"
           >
             <i class="fas fa-envelope text-blue-400"></i>
-            <span class="syntax-comment">// </span><span class="gradient-text">{{ $t('pages.home.contact.title') }}</span>
+            <span class="syntax-comment">// </span
+            ><span class="gradient-text">{{ $t('pages.home.contact.title') }}</span>
           </h3>
           <p class="text-slate-300 max-w-2xl mx-auto font-mono text-sm">
             <span class="syntax-comment">/* {{ $t('pages.home.contact.subtitle') }} */</span>
@@ -343,23 +295,7 @@
           >
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/email.js</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
+              <window-controls />
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
@@ -386,23 +322,7 @@
           >
             <div class="linux-titlebar">
               <span class="text-white font-mono text-xs">~/contact/discord.js</span>
-              <div class="linux-controls">
-                <div
-                  class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  −
-                </div>
-                <div
-                  class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  □
-                </div>
-                <div
-                  class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-                >
-                  ×
-                </div>
-              </div>
+              <window-controls />
             </div>
             <div class="p-4 sm:p-6">
               <div class="flex items-center gap-4">
@@ -427,23 +347,7 @@
         <div class="code-block rounded-xl relative overflow-hidden">
           <div class="linux-titlebar">
             <span class="text-white font-mono text-xs">~/contact/form.cs</span>
-            <div class="linux-controls">
-              <div
-                class="linux-btn linux-btn-minimize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                −
-              </div>
-              <div
-                class="linux-btn linux-btn-maximize flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                □
-              </div>
-              <div
-                class="linux-btn linux-btn-close flex items-center justify-center text-xs font-bold text-slate-600"
-              >
-                ×
-              </div>
-            </div>
+            <window-controls />
           </div>
           <div class="p-4 sm:p-6">
             <h4
