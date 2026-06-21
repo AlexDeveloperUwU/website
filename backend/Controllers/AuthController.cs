@@ -13,12 +13,26 @@ namespace Portfolio.Backend.Controllers
         [HttpGet("login")]
         public IActionResult Login([FromQuery] string returnUrl = "/")
         {
-            EasyLogger.Info("Initiating Discord login sequence.");
-            var properties = new AuthenticationProperties { RedirectUri = returnUrl };
+            EasyLogger.Info(
+                $"Initiating Discord login sequence. Target return context: {returnUrl}"
+            );
+
+            var callbackUrl = Url.Action("Callback", "Auth", new { returnUrl });
+            var properties = new AuthenticationProperties { RedirectUri = callbackUrl };
+
             return Challenge(properties, DiscordAuthenticationDefaults.AuthenticationScheme);
         }
 
-        [HttpGet("logout")]
+        [HttpGet("callback")]
+        public IActionResult Callback([FromQuery] string returnUrl = "/")
+        {
+            EasyLogger.Info(
+                $"External authentication completed. Redirecting execution matrix to: {returnUrl}"
+            );
+            return Redirect(returnUrl);
+        }
+
+        [HttpPost("logout")]
         public IActionResult Logout([FromQuery] string returnUrl = "/")
         {
             EasyLogger.Info("Initiating logout sequence.");
