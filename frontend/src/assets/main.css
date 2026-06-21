@@ -22,6 +22,13 @@
   --accent-secondary: #06b6d4;
 }
 
+/* --- Base background (prevents white flash before the app mounts) --- */
+html,
+body {
+  background-color: var(--surface-0);
+  color-scheme: dark;
+}
+
 /* --- Surface Background Utility --- */
 .bg-surface-2 {
   background-color: var(--surface-2);
@@ -80,6 +87,48 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* --- Page Transitions --- */
+/* Keyframe-based so the entrance applies opacity:0 on the first painted frame
+   (no appear flash) and fires reliably on first load via `appear`. */
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.page-enter-active {
+  animation: page-enter 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.page-leave-active {
+  animation: page-leave 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    animation: none;
+  }
 }
 
 /* --- Typography --- */

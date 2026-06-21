@@ -23,4 +23,4 @@ app.use(i18n)
 
 app.component('WindowControls', WindowControls)
 
-app.mount('#app')
+router.isReady().then(() => app.mount('#app'))
