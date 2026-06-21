@@ -23,5 +23,27 @@ export const useAuthStore = defineStore('auth', {
         this.isLoading = false
       }
     },
+    async logout(returnUrl = '/') {
+      this.isLoading = true
+      try {
+        console.log('Attempting logout...')
+        const response = await fetch('/api/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ returnUrl }),
+        })
+        const data = await response.json()
+        this.isAuthenticated = data.isAuthenticated
+        this.user = data.username || null
+        return data
+      } catch (error) {
+        console.error('Logout failed:', error)
+        throw error
+      } finally {
+        this.isLoading = false
+      }
+    },
   },
 })

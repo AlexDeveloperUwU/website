@@ -424,3 +424,5 @@ FodyWeavers.xsd
 concat.ps1
 full_project_context.md
 /backend/.env.dev
+/frontend/repomix-output.xml
+/repomix-output.xml
